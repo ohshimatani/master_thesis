@@ -1,0 +1,72 @@
+% preamble for "jsartcle"
+
+\documentclass[a4paper, dvipdfmx, 9truept, 9trueptj]{jsreport}
+\usepackage[top=30truemm,bottom=30truemm,left=25truemm,right=25truemm]{geometry}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{ascmac}
+\usepackage{mathtools}
+\mathtoolsset{showonlyrefs=true}
+\usepackage{bm}
+\usepackage{graphicx}
+
+\usepackage{cancel}
+\usepackage{mathrsfs}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+
+
+%-------定理環境のカスタマイズ
+
+% \newtheoremstyle{mystyle}%   % スタイル名
+%     {3truept}%                   % 上部スペース
+%     {3truept}%                   % 下部スペース
+%     {\itshape}%              % 本文フォント
+%     {9truept}%               % 1行目のインデント量
+%     {\bfseries}%             % 見出しフォント
+%     {.}%                     % 見出し後の句読点
+%     {\\}%                      % 見出し後のスペース
+%     {}%                      % 見出しの書式(後述)
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{.}%
+  {\newline}{}%
+% \@addtoreset{theorem}{subsection}
+%以下、定理環境の日本語化
+\theoremstyle{definition}
+\newtheorem{theorem}{定理}
+% \newtheorem*{theorem*}{定理}
+\newtheorem{definition}[theorem]{定義}
+% \newtheorem*{definition*}[theorem]{定義}
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{proposition}[theorem]{命題}% jsarticleのみ
+\newtheorem{example}[theorem]{例}
+\newtheorem*{example*}{例}
+\newtheorem{problem}[theorem]{問題}
+\newtheorem{solution}[theorem]{解}
+\newtheorem{fact}[theorem]{事実}
+\newtheorem{remark}[theorem]{注意}
+\def\proofname{証明}
+
+%-------番号のカスタマイズ
+\numberwithin{equation}{section}
+\numberwithin{theorem}{section}
+
+%-------マクロ
+\newcommand{\groebner}[1]{Gr\"{o}bner#1}
+\newcommand{\ideal}[1]{\langle #1 \rangle}
+\renewcommand{\algorithmicrequire}{\textbf{input:}}
+\renewcommand{\algorithmicensure}{\textbf{output:}}
+\newcommand{\ForTo}[1]{\; \mathbf{to} \; #1}
+\newcommand{\ForToBy}[2]{\; \mathbf{to} \; #1 \; \mathbf{by} \; #2}
+\newcommand{\ForEach}[1]{\mathbf{each} \; #1}
+\algdef{SE}[DOWHILE]{Do}{doWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1} %do-while文
+% ---使用例---
+% \Do
+% 	\State Something
+% \doWhile{$i = j$}
+% のように使う
+
