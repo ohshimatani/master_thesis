@@ -1,0 +1,36 @@
+% chapter01_はじめに
+\section{基本的な記法の確認}
+以下では本論文全体を通して使用される記法を定義しておく．
+\par
+自然数全体の集合$\mathbb{N}$は$0$以上の整数とする．$K$を体とし，$K$の代数閉包を$L$とする．
+$n$変数の項全体の集合を$T_n = \left\{ x_1^{e_1} \cdots x_n^{e_n} : e_i \in \mathbb{N} \right\}$とし，項$t \in T_n$の指数ベクトルを$e(t) \in \mathbb{N}^{1\times n}$と表す．
+項順序を以下のように定義する．
+\begin{definition}[項順序]
+	$T_n$における全順序$\prec$が項順序であるとは，
+	\begin{itemize}
+		\item 任意の$t \in T_n$に対し$1 \prec t$
+		\item 任意の$t_1, t_2, s \in T_n$に対し，$t_1 \prec t_2 \Longrightarrow s\cdot t_1 \prec s\cdot t_2$
+	\end{itemize}
+	を満たすことを言う．
+\end{definition}
+項順序$\prec$において，多項式$f\in K[\bar{X}]$に含まれる項で，最も項順序が大きい単項式を$\mathrm{hm}_{\prec}(f)$，その係数を除いた部分を$\mathrm{ht}_{\prec}(f)$，その係数を$\mathrm{hc}_{\prec}(f)$と定義し，それぞれ\emph{頭単項式，頭項，頭係数}と呼ぶ．
+項順序が明らかな場合には，$\mathrm{hm}_{\prec}(f)$を単に$\mathrm{hm}(f)$などと書くこともある．
+重み行列$M$で表されるmatrix order$\prec_M$を以下のように定義する．
+\begin{definition}[matrix order]
+	項$t_1, t_2 \in T_n$の指数ベクトル$e(t_1), e(t_2) \in \mathbb{N}^{1\times n}$に対し，行列$M \in \mathbb{R}^{d\times n}$がmatrix orderであるとは，
+	$$t_1 \prec_M t_2 \Longleftrightarrow Me(t_1) <_{\ne} Me(t_2)$$
+	を満たすことを言う．ただし，$<_{\ne}$や$>_{\ne}$は，ベクトルの等しくない最初の成分での比較を表す不等号である．$d=1$のときは，通常の大小関係での比較となる．
+\end{definition}
+matrix orderは任意の項順序を表現可能\cite{MR826583}であるということがわかっており，column full rankな行列を考えれば十分であるということがわかっている．
+\par
+項順序を$M$とする．多項式$f, g \in K[x_1,\dots, x_n]$に対し，$f$に含まれる単項式$t$が$\mathrm{ht}_M(g)$で割り切られるとする．このとき，$h = f - \frac{t}{\mathrm{ht}_M(g)}g$に対し，$f \to_g h$と書き，\emph{$f$の$g$での単項簡約}と呼ぶ．この操作を$0$回を含む有限回繰り返し，これ以上単項簡約できない$h$が得られたとき，$h$を\emph{$f$の$g$による正規形（normal form）}と呼び，$h = \mathrm{nf}_g(f)$で表す．
+また，多項式集合$G=\left\{g_i :i \in \{1,2, \dots\}\right\} \subset K[x_1, \dots, x_n]$において，$\forall g_i \in G$で$f$を単項簡約することを繰り返すことで$h$が得られるとき，同様に$h$を$f$の$G$による正規形と呼び，$h = \mathrm{nf}_G(f)$で表す．
+
+
+
+
+
+
+
+
+

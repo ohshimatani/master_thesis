@@ -12,11 +12,6 @@ Stephane Collart, Michael Kalkbrener, and Daniel Mall.
 \newblock The gr{\"o}bner walk.
 \newblock {\em Dept. of Math., Swiss Federal Inst. of Tech}, 8092, 1993.
 
-\bibitem[Fau99]{faugere1999new}
-Jean-Charles Faugere.
-\newblock A new efficient algorithm for computing gr{\"o}bner bases (f4).
-\newblock {\em Journal of pure and applied algebra}, 139(1-3):61--88, 1999.
-
 \bibitem[FGLM93]{faugere1993efficient}
 Jean-Charles Faugere, Patrizia Gianni, Daniel Lazard, and Teo Mora.
 \newblock Efficient computation of zero-dimensional gr{\"o}bner bases by change
@@ -28,6 +23,12 @@ Peter Gritzmann and Bernd Sturmfels.
 \newblock Minkowski addition of polytopes: computational complexity and
   applications to gr{\"o}bner bases.
 \newblock {\em SIAM Journal on Discrete Mathematics}, 6(2):246--269, 1993.
+
+\bibitem[Rob85]{MR826583}
+Lorenzo Robbiano.
+\newblock Term orderings on the polynomial ring.
+\newblock In {\em E{UROCAL} '85, {V}ol. 2 ({L}inz, 1985)}, volume 204 of {\em
+  Lecture Notes in Comput. Sci.}, pages 513--517. Springer, Berlin, 1985.
 
 \bibitem[SW97]{sturmfels1997structural}
 Bernd Sturmfels and Markus Wiegelmann.
