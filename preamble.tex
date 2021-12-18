@@ -30,12 +30,12 @@
 %     {}%                      % 見出しの書式(後述)
 \newtheoremstyle{break}
   {\topsep}{\topsep}%
-  {\itshape}{}%
+  {}{}%
   {\bfseries}{.}%
-  {\newline}{}%
+  {\newline} {\thmname{#1}\thmnumber{ #2}\thmnote{ \bfseries{(#3)}}}%
 % \@addtoreset{theorem}{subsection}
 %以下、定理環境の日本語化
-\theoremstyle{definition}
+\theoremstyle{break}
 \newtheorem{theorem}{定理}
 % \newtheorem*{theorem*}{定理}
 \newtheorem{definition}[theorem]{定義}

@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2020.2.26)  18 DEC 2021 21:37
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2020.2.26)  18 DEC 2021 22:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -385,7 +385,7 @@ LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 9.60999pt on input line 16.
 ) [1
 
-]
+] [2]
 第1章
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 19.9311pt on input line 10.
@@ -408,26 +408,26 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 (Font)              scaled to size 13.83836pt on input line 2.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 13.83836pt on input line 2.
-) [2
+) [3
 
 ]
 第2章
-[3
-
-]
-第3章
 [4
 
 ]
+第3章
+[5
+
+]
 第4章
-(./main.bbl [5
+(./main.bbl [6
 
 ]
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 23.90964pt on input line 1.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 23.90964pt on input line 1.
-) [6
+) [7
 
 ] (./main.aux)
 
@@ -436,12 +436,12 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 3807 strings out of 493223
- 51506 string characters out of 6144415
- 134943 words of memory out of 5000000
- 7707 multiletter control sequences out of 15000+600000
+ 3809 strings out of 493223
+ 51550 string characters out of 6144415
+ 136006 words of memory out of 5000000
+ 7709 multiletter control sequences out of 15000+600000
  26454 words of font info for 119 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 29i,8n,27p,551b,225s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,8n,27p,645b,225s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (6 pages, 9124 bytes).
+Output written on main.dvi (7 pages, 11080 bytes).

@@ -11,11 +11,14 @@ $F_4$アルゴリズム\cite{faugere1999new}など他の多くのアルゴリズ
 \end{example*}
 このように，直接\groebner{}基底の計算をする前に，計算対象である$F$自身がそのまま\groebner{}基底となっているような項順序を求めることができれば，項順序を指定しない\groebner{}基底が必要な場面では有効な計算方法であることが考えられる．また，仮に一定の項順序が必要な場面でも，FGLMアルゴリズム\cite{faugere1993efficient}や\groebner{} walk\cite{collart1993grobner}などに代表されるchange of orderingのアルゴリズムを活用することによって，有用な計算手段となることが考えられる．
 \par
-例えば，連立代数方程式の求解のための計算では，多くの場合で辞書式順序（一般的には消去順序）での\groebner{}基底が必要となるが，辞書式順序での計算は遅くなることが知られており，入力の多項式集合の大きさによっては
+例えば，連立代数方程式の求解のための計算では，多くの場合で辞書式順序（一般的には消去順序）での\groebner{}基底が必要となるが，辞書式順序での計算は遅くなることが知られており，入力の多項式集合の大きさによっては莫大な時間がかかってしまう可能性も否定できない．そこで，多項式集合がそのまま\groebner{}基底となっているような項順序が存在していれば，その項順序を求めたあとにchange of orderingにより辞書式順序の\groebner{}基底を求めることができる．これらの$2$つの計算の計算量が，元々行おうとしていた計算の計算量に比べて少なくなっているのであれば，この計算は有用な計算であったと言える．
 \par
 このように「そのまま\groebner{}基底である」ような項順序を検出する問題は，Sturmfelsらによって解かれた既知の問題であり，\emph{\groebner{} basis detection}\cite{gritzmann1993minkowski}や\emph{Structural \groebner{} basis detection}\cite{sturmfels1997structural}という名前が付けられている．
-本論文では，これらの問題において，問題の設定をパラメータを伴った多項式環へと拡張し，それに付随して発見された定理についても取り上げる．
-まず第\ref{chapter01:chapter_num}章では，Sturmfelsらとは違ったアプローチから，\emph{Structural \groebner{} basis detection}の問題を捉え，そこで新たに発見された定理を紹介する．
-次に，第\ref{chapter02:chapter_num}章では，\emph{\groebner{} basis detection}と\emph{Structural \groebner{} basis detection}について，既に知られている部分について述べる．
+\par
+一方で，パラメータを伴った多項式環において，場合分けされたパラメータ空間と，それぞれに対応する\groebner{}基底を組にしたものを\emph{包括的\groebner{}基底系}\cite{weispfenning1992comprehensive}と呼ぶ．包括的\groebner{}基底系は，\groebner{}基底計算の中で，\textrm{S-polynomial}の計算が行われる際にパラメータの付いた係数が$0$か否かで場合分けを行い，項を確定させながら\groebner{}基底の計算を行っている．
+\par
+これら$2$つの議論を踏まえ，本論文では，(Structural) \groebner{} basis detectionにおいて，問題の設定をパラメータを伴った多項式環へと拡張し，それに付随して発見された定理についても取り上げる．
+まず第\ref{chapter01:chapter_num}章では，Sturmfelsらとは違ったアプローチから，Structural \groebner{} basis detectionの問題を捉え，そこで新たに発見された定理を紹介する．
+次に，第\ref{chapter02:chapter_num}章では，\groebner{} basis detectionとStructural \groebner{} basis detectionについて，既に知られている部分について述べる．
 第\ref{chapter03:chapter_num}章では，これらの問題をパラメータを伴った多項式環へと拡張するために，パラメータ空間を分割するためのアルゴリズムの直接的な方法を紹介する．
 最後に，第\ref{chapter04:chapter_num}章では，パラメータ空間の分割を効率化するための議論を行い，最終的なアルゴリズムを完成させる．

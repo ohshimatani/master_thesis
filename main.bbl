@@ -35,4 +35,9 @@ Bernd Sturmfels and Markus Wiegelmann.
 \newblock {\em Applicable Algebra in Engineering, Communication and Computing},
   8(4):257--263, 1997.
 
+\bibitem[Wei92]{weispfenning1992comprehensive}
+Volker Weispfenning.
+\newblock Comprehensive gr{\"o}bner bases.
+\newblock {\em Journal of Symbolic Computation}, 14(1):1--29, 1992.
+
 \end{thebibliography}
