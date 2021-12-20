@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2020.2.26)  20 DEC 2021 18:37
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2020.2.26)  20 DEC 2021 19:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -427,7 +427,7 @@ LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 9.60999pt on input line 28.
  [6] [7] [8]) (./chapter02_section03.tex) [9]
 第3章
-[10
+(./chapter03_section01.tex) [10
 
 ]
 第4章
@@ -446,12 +446,12 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 3803 strings out of 493223
- 51863 string characters out of 6144415
- 138543 words of memory out of 5000000
- 7692 multiletter control sequences out of 15000+600000
+ 3808 strings out of 493223
+ 51947 string characters out of 6144415
+ 138563 words of memory out of 5000000
+ 7694 multiletter control sequences out of 15000+600000
  29491 words of font info for 130 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  29i,13n,27p,689b,355s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (13 pages, 38464 bytes).
+Output written on main.dvi (13 pages, 41656 bytes).
