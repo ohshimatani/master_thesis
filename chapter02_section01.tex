@@ -1,0 +1,31 @@
+% chapter 02
+\section{はじめに}
+この章では，後に紹介するstructural \groebner{} basis detectionと同じ問題設定において，Sturmfelsらによる方法とは違った独自のアプローチによるアルゴリズムを考案する中で発見した新たな定理やアルゴリズムについて述べる．第\ref{chapter01:chapter_num}章にあったとおり，項順序$M$はcolumn full rankな行列を考えれば，項順序を十分に定義できることが分かっているため，この章では$M$を$n \times n$の正方で正則な行列であると仮定する．ただし，$n$は多項式環の変数の個数である．
+\par
+目標とする問題は次の通りであった．
+\begin{problem}
+	\label{chapter02:problem:original_SGBD}
+	多項式集合$F$がイデアル$I = \ideal{F}$の\groebner{}基底となるような項順序$M$を求めよ．
+\end{problem}
+この問題を解くにあたって，\groebner{}基底となるための必要十分条件ではなく，以下の定理\ref{chapter02:theorem:buchbergers_criterion}をもとに十分条件を考えることで，系\ref{chapter02:corollary:buchberger}を満たすような項順序$M$を考える（この問題は，structural \groebner{} basis detectionと同じ問題設定である）．
+\begin{theorem}[Buchbergerの判定条件]
+	\label{chapter02:theorem:buchbergers_criterion}
+	項順序を$M$とする．任意の多項式$f, g \in K[\bar{X}]$において，$$\gcd(\mathrm{ht}_M(f), \mathrm{ht}_M(g))=1$$が成り立つとき，$\mathrm{nf}_{\{f, g\}}(\mathrm{Spoly}(f, g)) = 0$が成立する．
+	\end{theorem}
+	\begin{corollary}
+	\label{chapter02:corollary:buchberger}
+	項順序を$M$とする．多項式集合$F=\{ f_1, \dots, f_k \} \subset K[\bar{X}]$に対して，イデアル$I = \ideal{F}$とおく．このとき，
+	$$\forall i, j \; (i \ne j), \; \gcd(\mathrm{ht}_M(f_i), \mathrm{ht}_M(f_j))=1$$
+	が成り立つとき， $F$は項順序$M$に関する$I$の\groebner{}基底である．
+\end{corollary}
+つまり，ある項順序において各多項式の頭項同士が全て互いに素であれば，入力の多項式集合はそのまま\groebner{}基底である．
+これにより，多項式集合$F = \{f_1, \dots, f_k\}\subset K[\bar{X}]$に対して問題\ref{chapter02:problem:original_SGBD}を解くためには次の2つのステップが必要となることがわかる．
+\par
+\begin{enumerate}
+	\item 互いに素な単項式の組$t_1, \dots, t_k$をそれぞれの多項式から選出する．
+	\item $i \in \{1, \dots, k\}$において，$\mathrm{ht}_M(f_i) = t_i$となるような項順序$M$を求める．
+\end{enumerate}
+
+
+
+

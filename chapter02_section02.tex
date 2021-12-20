@@ -1,0 +1,215 @@
+% chapter 02
+\section{互いに素な項の選出（Step1）}
+多項式集合$F = \{f_1, \dots, f_k\}\subset K[\bar{X}]$に対して，多項式$f_i$に含まれる係数が$0$でない項で，定数項を除く項全体の集合を$T(f_i)$とする．また多項式集合$F$に対しても$\displaystyle T(F) = \bigotimes_{i=1}^k T(f_i)$と定義する．
+集合$V(t)$を項$t$に含まれる次数$1$以上の変数全体の集合とし，集合$T_{\mathrm{cp}}$を
+$$
+T_{\mathrm{cp}} = \{ (t_1, \dots, t_k)\in T(F) \;:\; \forall t_i, t_j \in T_n, \; \gcd(t_i,  t_j)=1\; (i\ne j) \}
+$$
+とする．
+\par
+Step1では，互いに素である項を探索し集合$T_{\mathrm{cp}}$を構成したいが，このままでは全探索によってそれぞれが互いに素かどうかのチェックが行う必要が出てしまう．
+% そこで，系\ref{chapter02:corollary:buchberger}に関連する性質（確実に互いに素とならない項など）についてのいくつかの補題を与える．
+そこで，あらかじめ除外できることが分かっている項は除外しておき，探索のコストをできるだけ小さくしておきたい．
+項が除外できる理由として，次の$3$つを考える．
+\begin{itemize}
+	\item 互いに素となり得ない．
+	\item 互いに素にはなるが，それぞれが頭項となるような項順序に矛盾が生じてしまう．
+	\item 互いに素にはなるが，同じ多項式内で頭項としたときに矛盾が生じてしまう．
+\end{itemize}
+\subsection{互いに素となり得ない項の性質}
+まず，確実に互いに素とならない場合や，そもそも問題\ref{chapter02:problem:original_SGBD}の解が存在しない場合について考える．
+\begin{lemma}
+	\label{chapter02:lemma:1}
+	多項式集合$F=\{ f_1, \dots, f_k \} \subset K[\bar{X}]\setminus K$において，
+	$$f_i \in F, \; t_i \in T(f_i), \; |V(t_i)| > n - k + 1$$
+	が成り立つとき，$T_{\mathrm{cp}}$の元で$i$番目の要素が$t_i$であるようなものは存在しない．
+\end{lemma}
+\begin{proof}
+	$|V(t_i)| > n - k + 1$が成り立ち，$T_{\mathrm{cp}}$の元で$i$番目の要素が$t_i$であるようなものが存在すると仮定する．
+	定義より，任意の項$t$に対して$|V(t)| \ge 1$が成り立つ．
+	従って，$j = 1, \dots, i-1, i+1, \dots, k$において，
+	$$t_j \in T(f_j), \quad \sum_j |V(t_j)| \ge k -1$$
+	よって，
+	\begin{align*}
+		|V(t_i)| + \sum_j|V(t_j)| &> (n - k + 1) + (k - 1)\\
+		& > n
+	\end{align*}
+	これより変数の個数の合計が$n$個以上であり$t_1, \dots, t_k$の中に，ある特定の変数を含む項が$2$つ以上存在する．しかし，$T_{\mathrm{cp}}$の定義より，$t_1,\dots, t_k$は互いに素でなくてはならない．\\
+	よって，補題\ref{chapter02:lemma:1}が成り立つ．
+\end{proof}
+\begin{corollary}
+	\label{chapter02:cororally:2}
+	多項式集合$F=\{ f_1, \dots, f_k \} \subset K[\bar{X}]\setminus K$において次が成り立つ．
+	$$n<k \Longrightarrow T_{\mathrm{cp}}= \phi$$
+\end{corollary}
+系\ref{chapter02:cororally:2}より，$n<k$のときに系\ref{chapter02:corollary:buchberger}を満たすような項順序は存在せず，問題\ref{chapter02:problem:original_SGBD}の解が存在しないことがわかり，補題\ref{chapter02:lemma:1}より，$F$の多項式に含まれる項から互いに素になり得ないものを除外することができる．
+\subsection{互いに素にはなるが，それぞれが頭項となるような項順序に矛盾が生じる項の性質}
+\begin{lemma}
+	\label{chapter02:lemma:3}
+	多項式$f$において，$t \mid t^\prime\; (t \ne t^\prime)$を満たすような項$t, t^\prime \in T(f)$が存在するとき，$t$は$f$の頭項となり得ない．
+\end{lemma}
+\begin{proof}
+	$t \mid t^\prime$より，$t^\prime = rt$と置ける．ただし，$r\in T_n$．
+	$t$が$f$の頭項であると仮定する．
+	このとき，$t^\prime \prec t$であるため，$rt^\prime \prec rt = t^\prime$となり，項順序の定義に矛盾する．よって，$t$は$f$の頭項となり得ない．
+\end{proof}
+
+\subsubsection{互いに素にはなるが，それぞれが頭項となるような項順序に矛盾が生じる項の性質}
+\begin{lemma}
+	\label{chapter02:lemma:4}
+	多項式$f_1, f_2 \in K[\bar{X}]$と単項式$t_1, t_1^\prime \in T(f_1), \; t_2, t_2^\prime \in T(f_2)$に対して，
+	$$t_2 \mid t_1^\prime, \; t_1 \mid t_2^\prime$$
+	が満たされるとき，$t_1, t_2$はそれぞれの多項式で同時に頭項となり得ない．
+	ただし，$t_1 \ne t_1^\prime, t_2 \ne t_2^\prime$．
+\end{lemma}
+\begin{proof}
+	$t_1, t_2$はそれぞれ$f_1, f_2$の頭項であると仮定する．
+	仮定より，$t_2 \mid t_1^\prime, \; t_1 \mid t_2^\prime$．
+	つまり，
+	\begin{align*}
+		t_1^\prime &= r_2t_2, \\
+		t_2^\prime &= r_1t_1
+	\end{align*}
+	ただし，$r_1, r_2 \in T_n$．
+	いま，$t_2 \succ t_2^\prime$より，
+	\begin{align*}
+		r_2t_2 & \succ r_2t_2^\prime \\
+		t_1^\prime & \succ r_2t_2^\prime & (\because t_1^\prime = r_2 t_2) \\
+		t_1 & \succ r_2 \cdot r_1t_1 & (\because t_2^\prime = r_1t_1)
+	\end{align*}
+	これは，$t_1$が$f_1$の頭項であることに矛盾する．
+\end{proof}
+\begin{lemma}
+\label{chapter02:lemma:5}
+	多項式$f_1, f_2 \in K[\bar{X}]$と項$t_1^\prime \in T(f_1), t_2 \in T(f_2)$に対して，
+	$$t_2 \mid t_1^\prime$$
+	が成り立ち，
+	項$t_1 \in T(f_1), t_2^\prime \in T(\frac{t_1^\prime}{t_2}f_2)$に対して，
+	$$t_1 \mid t_2^\prime$$
+	が成り立つとき，$t_1, t_2$はそれぞれの多項式で同時に頭項になり得ない．
+	ただし，$t_1 \ne t_1^\prime, t_2 \ne t_2^\prime$．
+\end{lemma}
+\begin{proof}
+	補題\ref{chapter02:lemma:4}とほぼ同じ手順で証明できる．
+\end{proof}
+
+\subsection{アルゴリズムの詳細と具体例}
+以上より，まず補題\ref{chapter02:lemma:1}と系\ref{chapter02:cororally:2}によって，互いに素となり得ない項を除外でき，補題\ref{chapter02:lemma:3}によって，同じ多項式内にて頭項としたときに矛盾する項を除外できる．更に，補題\ref{chapter02:lemma:4}と補題\ref{chapter02:lemma:5}によって，複数の多項式間で矛盾が発生する項を除外することにより，探索対象の単項を減らすことができる．これらの性質を用いても，総当たりであることには変わらないが，ひとまずこの性質のみで話を進めることにする．
+\par
+アルゴリズムは以下のように記述できる．
+\begin{algorithm}
+	\label{chapter02:algorithm:1}
+	\caption{そのままグレブナー基底となっているような項順序の導出}
+	\begin{algorithmic}[1]
+		\Require 多項式集合$F=\{f_1, \dots, f_k \} \subset K[\bar{X}]$
+		\Ensure $F$がイデアル$I = \langle F \rangle$のグレブナー基底であるような項順序$M$又はNone
+		\If{$n<k$}:
+			\State \Return None
+		\EndIf
+		\State 補題\ref{chapter02:lemma:1}，系\ref{chapter02:cororally:2}，補題\ref{chapter02:lemma:3}の条件を満たす$f_i$の項を除外し，新たに$\tilde{F} = \{ \tilde{f_1}, \dots, \tilde{f_k} \}$とする．
+		\State $T_{\tilde{F}} \leftarrow T(\tilde{F})$
+		\State 補題\ref{chapter02:lemma:4}，補題\ref{chapter02:lemma:5}の条件を満たす項の組を含むものを$T_{\tilde{F}}$の中から除外し，$\tilde{T}_{\tilde{F}}$とする．
+		\State $T_{\mathrm{cp}}$と$\tilde{T}_{\tilde{F}}$の共通部分を取り，それらを$t_1, \dots, t_k$とする．
+		\State $i = 1, \dots , k$において，$\mathrm{ht}_M(f_i)=t_i$となる項順序$M$を求める．
+		\State \Return $M$
+	\end{algorithmic}
+\end{algorithm}
+
+このアルゴリズムをもとに，以下のような例を考えてステップ1の項の除去を実際に行ってみる．
+\begin{example}
+	次のような多項式集合$F \subset K[x, y]$を考える．
+	\begin{equation}
+		F = 
+		\left\{
+		\begin{array}{l}
+			f_1 = x^2 + xy + y, \\
+			f_2 = x + y^2 \notag
+		\end{array}
+		\right\}
+	\end{equation}
+	まず，$f_1$において$y \mid xy$が満たされることから，補題\ref{chapter02:lemma:3}より$xy$が除外される．
+	次に，$y \in T(f_1)$と$y^2 \in T(f_2)$において，$y \mid y^2$を満たし，$x \in T(f_2)$と$x^2 \in T(f_1)$において，$x \mid x^2$を満たすことから，補題\ref{chapter02:lemma:4}より$f_1$の$y$と$f_2$の$x$が除外される．
+	よって，最終的に
+	\begin{equation}
+		\tilde{T}(\tilde{F}) = \{ (x^2, y^2) \} \notag
+	\end{equation}
+	から互いに素となる項の組を選べば良いことになり，
+	$$t_1 = x^2, \; t_2 = y^2$$
+	となる．
+\end{example}
+
+\begin{example}
+	次のような多項式集合$F\subset K[x, y, z]$を考える．
+	\begin{equation}
+		F = 
+		\left\{
+		\begin{array}{l}
+			f_1 = xy + yz, \\
+			f_2 = x^2 + y + z \notag
+		\end{array}
+		\right\}
+	\end{equation}
+	まず，$z \in T(f_2)$と$yz \in T(f_1)$において，$z \mid yz$を満たす．一方で，$f_2$の項を割り切るような$f_1$の項は存在しない．しかし，$yz \div z$の商である$y$を$f_2$に掛け，
+	\begin{equation}
+		\begin{array}{rl}
+			f_1 &= xy + yz, \\
+			y\cdot f_2 &= x^2y + y^2 + yz \notag
+		\end{array}
+	\end{equation}
+	を考えると，$xy \in T(f_1)$と$x^2y \in T(y \cdot f_2)$が$xy \mid x^2y$を満たすので，補題\ref{chapter02:lemma:5}より，$f_1$の$xy$と$f_2$の$z$は除外され，最終的に
+	\begin{equation}
+		\tilde{T}(\tilde{F}) = \{ (yz, x^2), (yz, y) \} \notag
+	\end{equation}
+	から互いに素となる項の組を選べば良いことになり，
+	$$t_1 = yz, \; t_2 = x^2$$
+	となる．
+\end{example}
+
+\section{項順序$M$の導出（Step2）}
+求めたい項順序$M$を，
+$$
+	M = \begin{pmatrix}
+		\bm{m_1} \\
+		\vdots \\
+		\bm{m_n}
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		m_{11} & \cdots & m_{1n} \\
+		\vdots & \ddots & \vdots \\
+		m_{n1} & \cdots & m_{nn}
+	\end{pmatrix}
+$$
+とする．
+matrix orderの定義より，項$t_1, t_2$が$t_1 \succ_M t_2$を満たすとき，$Me(t_1) >_{\ne} Me(t_2)$が満たされる．これを一般の等号と不等号を用いて表すと以下のようになる．
+\begin{equation}
+	\left\{
+	\begin{aligned}
+		\bm{m_1} \cdot e(t_1) &= \bm{m_1} \cdot e(t_2)\\
+		&\;\; \vdots \\
+		\bm{m_{\ell-1}} \cdot e(t_1) &= \bm{m_{\ell-1}} \cdot e(t_2)
+	\end{aligned}
+	\right.
+	\quad
+	,
+	\quad \bm{m_{\ell}} \cdot e(t_1)> \bm{m_{\ell}} \cdot e(t_2) \notag
+\end{equation}
+ここで，$\ell$は，$M$の第$(\ell-1)$行ベクトルまでとの積が等しく，第$\ell$ベクトルで初めて差がつくときことを表している．
+この連立不等式を解くことによって，重み行列$M$を求めることができるが，その効率的な方法については検討中である．
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
