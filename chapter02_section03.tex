@@ -1,0 +1,32 @@
+% chpter 02
+\section{項順序$M$の導出（Step2）}
+求めたい項順序$M$を，
+$$
+	M = \begin{pmatrix}
+		\bm{m_1} \\
+		\vdots \\
+		\bm{m_n}
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		m_{11} & \cdots & m_{1n} \\
+		\vdots & \ddots & \vdots \\
+		m_{n1} & \cdots & m_{nn}
+	\end{pmatrix}
+$$
+とする．
+matrix orderの定義より，項$t_1, t_2$が$t_1 \succ_M t_2$を満たすとき，$Me(t_1) >_{\ne} Me(t_2)$が満たされる．これを一般の等号と不等号を用いて表すと以下のようになる．
+\begin{equation}
+	\left\{
+	\begin{aligned}
+		\bm{m_1} \cdot e(t_1) &= \bm{m_1} \cdot e(t_2)\\
+		&\;\; \vdots \\
+		\bm{m_{\ell-1}} \cdot e(t_1) &= \bm{m_{\ell-1}} \cdot e(t_2)
+	\end{aligned}
+	\right.
+	\quad
+	,
+	\quad \bm{m_{\ell}} \cdot e(t_1)> \bm{m_{\ell}} \cdot e(t_2) \notag
+\end{equation}
+ここで，$\ell$は，$M$の第$(\ell-1)$行ベクトルまでとの積が等しく，第$\ell$ベクトルで初めて差がつくときことを表している．
+この連立不等式を解くことによって，重み行列$M$を求めることができるが，その効率的な方法については検討中である．
