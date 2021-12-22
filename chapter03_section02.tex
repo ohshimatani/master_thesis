@@ -6,33 +6,33 @@
 \begin{definition}[{\cite[p8,9, Definition3.1]{freeke2009linking}}]
 	集合$\mathcal{U, V} \subseteq \mathbb{R}^d$に対して，
 	\begin{itemize}
-		\item $\mathcal{U}$が\emph{凸(convex)}であるとは，$$\forall \bm{u, v} \in \mathcal{U}, \; \lambda \in \mathbb{R}, \; 0 \le \lambda \le 1, \; \lambda\bm{u} + (1 - \lambda) \bm{v} \in \mathcal{U}$$を満たすときをいう．
-		\item \emph{凸多面体(convex polyhedron)}とは，有限個の半空間の共通部分として得られる凸型の集合である．
-		\item 集合$\mathcal{V}$の\emph{凸包(convex hull)}とは，その集合を含む$\mathbb{R}^d$のすべての凸部分集合の共通部分と定義される．
-		\item  $\mathcal{U}$は有界な多面体である場合，\emph{超多面体(polytope)}と呼ばれる．すべてのpolytopeは，有限の点の集合のconvex hullである．
+		\item $\mathcal{U}$が\textbf{凸(convex)}であるとは，$$\forall \bm{u, v} \in \mathcal{U}, \; \lambda \in \mathbb{R}, \; 0 \le \lambda \le 1, \; \lambda\bm{u} + (1 - \lambda) \bm{v} \in \mathcal{U}$$を満たすときをいう．
+		\item \textbf{凸多面体(convex polyhedron)}とは，有限個の半空間の共通部分として得られる凸型の集合である．
+		\item 集合$\mathcal{V}$の\textbf{凸包(convex hull)}とは，その集合を含む$\mathbb{R}^d$のすべての凸部分集合の共通部分と定義される．
+		\item  $\mathcal{U}$は有界な多面体である場合，\textbf{超多面体(polytope)}と呼ばれる．すべてのpolytopeは，有限の点の集合のconvex hullである．
 		% また，polytope $P \subset \mathbb{R}^n$の$\mathcal{V}$-presentationとは，$d$個の点$v_1, \dots, v_d$によって$P = \mathrm{conv} \{v_1, \dots, v_d\}$と表されるときをいう．ただし，$1 \le n < d$．
 		% \item 凸多面体$P$の\emph{面(face)}とは，$P$とそれに接する任意の超平面との交点である．$P$のすべての面は，$\mathbb{R}^d$の任意のベクトル$\bm{c}$に対して$\mathrm{face}_c(P) = \left\{ \bm{x} \in P \; : \; \bm{cx} \ge \bm{cy}, \; \forall \bm{y} \in P \right\}$の部分集合である．
 		% \item 多面体$P$の面$F$の\emph{次元(demension)}は$\bm{v} \in F$としたときに$\mathbb{R}^d$の部分空間$\bm{v} + H$の次元として定義される．また，$H$はベクトル$\bm{u} \in F, \; \bm{u - v}$によってspanされ，$\bm{v} + H$を$F$の\emph{affine span}と呼ぶ．
 		% \item $d$-次元polytopeの$(d - 1)$-次元面を\emph{切子面(facets)}と呼ぶ．
-		\item $\mathbb{R}^d$の凸多面体(convex polyhedron)の\emph{円錐(cone)}$C$は，$$\forall \bm{u, v} \in C, \; \lambda \in \mathbb{R}_{\ge 0}, \; \bm{u+v}, \lambda\bm{u} \in c$$のように定義される．
+		\item $\mathbb{R}^d$の凸多面体(convex polyhedron)の\textbf{円錐(cone)}$C$は，$$\forall \bm{u, v} \in C, \; \lambda \in \mathbb{R}_{\ge 0}, \; \bm{u+v}, \lambda\bm{u} \in c$$のように定義される．
 	\end{itemize}
 \end{definition}
 $2$つ以上のpolytopeの和を次のように定義する．
 \begin{definition}[Minkowski和, {\cite[p247]{gritzmann1993minkowski}}]
-	$2$つのpolytope $P_1, P_2 \subset \mathbb{R}^n$に対して，\emph{Minkowski和}$P_1 + P_2$を
+	$2$つのpolytope $P_1, P_2 \subset \mathbb{R}^n$に対して，\textbf{Minkowski和}$P_1 + P_2$を
 	$$P_1 + P_2 = \{ x \in \mathbb{R}^n \;:\; \exists x_1 \in P_1, \exists x_2 \in P_2, x = x_1 + x_2\}$$
 	のように定義する．
 	Minkowski和は，可換であり結合法則が成り立つため，$2$つ以上のpolytopeにも自然に一般化することができる．
 \end{definition}
 変数の集合$\bar{X}$に対し，$\bar{X}$の任意の指数ベクトル$\alpha \in \mathbb{N}^n$とし，$K[\bar{X}]$の任意の単項式を$X^\alpha$と表現する．また，ベクトル$\bm{u}, \bm{v}$の内積を$(\bm{u}, \bm{v})$と表す．集合$\mathbb{R}_{-}$は$0$以下の実数全体の集合である．
 \begin{definition}[Newton polytope]
-	多項式$\displaystyle f = \sum_{i=1}^t c_i X^{\alpha_i}$の\emph{Newton polytope} $\mathcal{N}(f)$を，$\mathbb{R}^n$における単項式のconvex hullで定義する．つまり，
+	多項式$\displaystyle f = \sum_{i=1}^t c_i X^{\alpha_i}$の\textbf{Newton polytope} $\mathcal{N}(f)$を，$\mathbb{R}^n$における単項式のconvex hullで定義する．つまり，
 	$$\mathcal{N}(f) = \mathrm{conv}\{\alpha_1, \dots, \alpha_t\}$$
 	である．
 	また，多項式集合$F = \{f_1, \dots, f_k\} \subset K[\bar{X}]$のNewton polytopeを，それぞれの多項式のNewton polytopeのMinkowski和
 	$$\mathcal{N}(F) = \mathcal{N}(f_1) + \cdots + \mathcal{N}(F)$$
 	で定義する．
-	また，多項式$f$の\emph{affine Newton polyhedron} $\mathcal{N}_{\mathrm{aff}}(f)$をMinkowski和
+	また，多項式$f$の\textbf{affine Newton polyhedron} $\mathcal{N}_{\mathrm{aff}}(f)$をMinkowski和
 	$$\mathcal{N}_{\mathrm{aff}}(f) = \mathcal{N}(f) + \mathbb{R}_{-}^n$$
 	で定義する．
 	多項式集合$F$についても同様に，$$\mathcal{N}_{\mathrm{aff}}(F) = \mathcal{N}(F) + \mathbb{R}_{-}^n$$で定義する．

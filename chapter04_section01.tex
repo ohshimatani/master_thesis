@@ -1,0 +1,37 @@
+% chapter 04
+\section{はじめに}
+第\ref{chapter03:chapter_num}章では，\groebner{} basis detection及びstructural \groebner{} basis detectionにおけるSturmfelsらの先行研究について述べた．この章では，特にstructural \groebner{} basis detectionの問題において，対象の多項式環が，パラメータを伴った多項式環へと拡張された場合について述べる．
+\par
+簡単な例を考える．
+\begin{example}
+	\label{chapter04:example:PD_example}
+	$K[a][x, y, z]$を$x, y, z$に関する多項式環とする．次のような多項式集合$F\subset K[a][x, y, z]$を考える．
+	\begin{equation}
+		F = \left\{
+			\begin{aligned}
+				f_1 &= x + (a-3)y^2, \\
+				f_2 &= x^3 + z, \\
+				f_3 &= y + z^3
+			\end{aligned}
+		\right\}
+	\end{equation}
+	\begin{itemize}
+		\item $a - 3 \ne 0$のとき\\
+			$f_1$の$y^2$の項は$0$にならず，SGBDを行うと，$$\mathrm{HT}_{\bm{w_1}}(f_1) = y^2, \quad \mathrm{HT}_{\bm{w_1}}(f_2) = x^3,\quad \mathrm{HT}_{\bm{w_1}}(f_3) = z^3$$を満たすような項順序$\bm{w_1}$を求めたい．実際，$\bm{w_1}=(1, 2, 3)$などが条件を満たすベクトルとなる．
+		\item $a - 3 = 0$のとき\\
+			$f_1$の$y^2$の項が$0$となるため，残った項でSGBDを行うと，$$\mathrm{HT}_{\bm{w_2}}(f_1) = x,\quad \mathrm{HT}_{\bm{w_2}}(f_2) = z,\quad \mathrm{HT}_{\bm{w_3}}(f_3) = y$$を満たすような項順序$\bm{w_2}$を求めたい．実際，$\bm{w_2} = (1, 16, 4)$などが条件を満たすベクトルとなる．
+	\end{itemize}
+\end{example}
+このように，パラメータを伴った多項式環においては，パラメータの付いた係数が$0$となるか否かによって多項式に含まれる項が変わるため，項を確定させるためにパラメータ空間を分割させる必要がある．逆に，最初にパラメータ空間を確定させる事ができれば，SGBDにおいてはその後に項同士の計算が発生しないため，パラメータを伴わない通常のSGBDに帰着することができる．
+
+
+
+
+
+
+
+
+
+
+
+
