@@ -16,6 +16,7 @@
 \contentsline {subsection}{\numberline {3.2.2}Gr\"{o}bner基底とNewton polytope}{12}% 
 \contentsline {section}{\numberline {3.3}structural Gr\"{o}bner basis detection\cite {sturmfels1997structural}}{14}% 
 \contentsline {subsection}{\numberline {3.3.1}$n = k$のとき}{14}% 
+\contentsline {subsection}{\numberline {3.3.2}$n \not =k$のとき}{17}% 
 \contentsline {chapter}{\numberline {第4章}パラメータを伴った場合への拡張}{18}% 
 \contentsline {chapter}{\numberline {第5章}パラメータ空間の分割の効率化}{19}% 
 \contentsline {chapter}{参考文献}{20}% 

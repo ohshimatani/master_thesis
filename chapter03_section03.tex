@@ -88,7 +88,7 @@ $$X_{\varphi(1)}^{a_{1\varphi(1)}}, \dots, X_{\varphi(n)}^{a_{n\varphi(n)}}$$
 \end{algorithm}
 
 \begin{theorem}
-	アルゴリズム\ref{chapter03:algorithm:SGBD}は正当性と有限停止性を有する．
+	Algorithm 2は正当性と有限停止性を有する．
 \end{theorem}
 \begin{proof}
 	まず，1行目のfor文において，入力の多項式を例\ref{chapter03:example:example_polynomial_set}の条件を満たすような項のみを残すように変換している．10行目〜16行目は補題\ref{chapter03:lemma:bipartite_graph}に基づいて二部グラフを構成し，17行目では補題\ref{chapter03:lemmma:lin_prog}に基づいて行列を構成し，線形計画問題を解いている．
@@ -103,7 +103,19 @@ $$X_{\varphi(1)}^{a_{1\varphi(1)}}, \dots, X_{\varphi(n)}^{a_{n\varphi(n)}}$$
 2つ目のステップでは，Hungarian method\cite{plummer1986matching}にて，3つ目のステップではKhachian's Ellipsoid method\cite{schrijver1998theory}などの方法を採用することで，アルゴリズム全体は多項式時間で解くことができる\cite{sturmfels1997structural}．
 
 \subsection{$n \ne k$のとき}
-
+次に，$n \ne k$のときを考える．$n < k$を満たすときには，系\ref{chapter02:cororally:2}で示されている通り，SGBDで求めるべき互いに素な項が存在しない．そのため，$n > k$のときを考える．
+\begin{lemma}[{\cite[Lemma9]{sturmfels1997structural}}]
+	$\bar{X} \cap \bar{Y} = \phi$を満たすような新たな変数の集合として$\bar{Y} = \{y_1, \dots, y_p\}$を定義する．
+	$S_1 \cup \cdots \cup S_p$を変数$\{ x_1, \dots, x_n \}$の分割とし，写像$\pi$を$x_i \mapsto y_i$で定義される$K[\bar{X}]$から$K[\bar{Y}]$への写像とする．
+写像$\varphi:\{1, \dots, p\} \to \{1, \dots, p\}$を今までと同様のものとする．
+$\mathrm{HT}_{\bm{w}_y}(\pi(f_i))$が$y_{\varphi(i)}$のべき乗であるような$K[\bar{Y}]$上の項順序$\bm{w}_y$がある場合に限り，$\mathrm{HT}_{\bm{w}_x}(f_i)$が$S_{\varphi(i)}$にサポートを持つような$K[\bar{X}]$上の項順序$\bm{w}_x$が存在する．
+\end{lemma}
+\begin{proof}
+	項順序$\bm{w}_y$を，$\displaystyle \bm{w}_y(j) = \sum_{i \in S_j}\bm{w}_x(i)$を満たすようにとることで，
+	$$\pi(X^\alpha) \prec_{\bm{w}_y} \pi(X^\beta) \Longrightarrow X^\alpha \prec_{\bm{w}_x} X^\beta$$
+	を満たすことができる．
+\end{proof}
+この補題のように$n = k$となるように変数の組み合わせを構成し，$n = k$のときのアルゴリズム(Algorithm 2)に帰着することができることがわかった．
 
 
 
