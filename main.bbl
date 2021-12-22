@@ -28,11 +28,21 @@ Peter Gritzmann and Bernd Sturmfels.
   applications to gr{\"o}bner bases.
 \newblock {\em SIAM Journal on Discrete Mathematics}, 6(2):246--269, 1993.
 
+\bibitem[PL86]{plummer1986matching}
+Michael~D Plummer and L{\'a}szl{\'o} Lov{\'a}sz.
+\newblock {\em Matching theory}.
+\newblock Elsevier, 1986.
+
 \bibitem[Rob85]{MR826583}
 Lorenzo Robbiano.
 \newblock Term orderings on the polynomial ring.
 \newblock In {\em E{UROCAL} '85, {V}ol. 2 ({L}inz, 1985)}, volume 204 of {\em
   Lecture Notes in Comput. Sci.}, pages 513--517. Springer, Berlin, 1985.
+
+\bibitem[Sch98]{schrijver1998theory}
+Alexander Schrijver.
+\newblock {\em Theory of linear and integer programming}.
+\newblock John Wiley \& Sons, 1998.
 
 \bibitem[SW97]{sturmfels1997structural}
 Bernd Sturmfels and Markus Wiegelmann.

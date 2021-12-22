@@ -1,130 +1,121 @@
 % chapter 03
-\section{\groebner{}基底とNewton polytope}
-多項式集合が\groebner{}基底となるためには，Buchbergerアルゴリズムの計算過程にもある通り，全てのSペアが$0$へ簡約される必要がある．その際にS多項式の計算を行うためには，多項式の先頭項を確定させる必要がある．もし，多項式集合における項順序の同値類の数が分かれば，それぞれの適当な代表元において，全てのSペアの簡約が$0$となるかどうかを調べることで，与えられた多項式集合がそのまま\groebner{}基底となるような項順序が存在するのかどうかを確かめることができる．
-次の定理では，項順序の同値類を，先程定義した多項式集合のaffine Newton polyhedronで記述するものとなっている．
-\begin{theorem}[{\cite[p263, Proposition3.2.1]{gritzmann1993minkowski}}]
-	\label{chapter03:theorem:GBD_main_theorem}
-	多項式集合$F = \{f_1, \dots, f_k\} \subset K[\bar{X}]$に対して，affine Newton polyhedron $\mathcal{N}_{\mathrm{aff}}(F)$の各頂点は，$F$に関する項順序の同値類と一対一に対応している．
-\end{theorem}
-
+\section{structural \groebner{} basis detection\cite{sturmfels1997structural}}
+\groebner{} basis detectionの問題は，結局は項順序の同値類の数だけS多項式の計算をする必要があり，Buchbergerアルゴリズム等の前処理としての役割には適していない．そこで，Buchbergerの判定条件を用いて問題を簡略化したものが問題\ref{chapter03:problem:SGBD}のstructural \groebner{} basis detectionである．
+\subsection{$n = k$のとき}
+まず，変数の個数$n$と多項式集合の濃度$k$が等しいときを考える．後になってわかることだが，$n \ne k$のときも，この場合のアルゴリズムに帰着して考えることができる．
+\par
+次のような多項式を例に考える．
+\begin{example}
+	\label{chapter03:example:example_polynomial_set}
+	多項式集合$F = \{f_1, \dots, f_n\}$を$n$変数の多項式環$K[\bar{X}]$の部分集合とし，
+	$$f_i = X_{1}^{a_{i1}} + \cdots + X_n^{a_{in}} - 1$$
+	と表されるとものとする．
+\end{example}
+このような多項式集合$F$に対して，項順序$\bm{w} \in \mathbb{R}_{+}^n$における各多項式の先頭項の集合は，
+$$\mathrm{HT}_{\bm{w}}(F) = \{X_{\varphi(1)}^{a_{1\varphi(1)}}, \dots, X_{\varphi(i)}^{a_{i\varphi(i)}}\}$$
+のように各多項式の先頭項のインデックスを表す写像$\varphi: \{1, \dots, n\} \to \{1, \dots, n\}$によって表すことができる．
+SGBDの問題を解くためには，この$\mathrm{HT}_{\bm{w}}(F)$を適切に定める必要があるが，写像$\varphi$で表現可能な$n!$通りの中から探さなくてはならない．
+\par
+次の補題により，$\mathrm{HT}_{\bm{w}}(F)$は$n!$通りのうち$1$通りに絞られることがわかる．
+\begin{lemma}[{\cite[Lemma5]{sturmfels1997structural}}]
+	\label{chapter03:lemma:bipartite_graph}
+	例\ref{chapter03:example:example_polynomial_set}の条件を満たす多項式集合$F$に対して，
+	$$\prod_{i=1}^n a_{i\rho(i)} \ge \prod_{i=1}^n a_{i\varphi(i)}$$
+	を満たすような$\rho$は存在しない．
+\end{lemma}
 \begin{proof}
-	多項式$f_i \in F$は$\displaystyle f_i = \sum_{j=1}^{t_i}c_{ij}X^{\alpha_{ij}}$で表されるとする．
-	2つの異なる項順序$\bm{w_1}, \bm{w_2} \in \mathbb{R}^n$は多項式集合$F$が任意の$i \in \{1, \dots, k\}$に対して
-	$$\max \{(\alpha_{ij}, \bm{w_1}) \; : \; 1 \le j \le t_i\} = \max \{(\alpha_{ij}, \bm{w_2}) \; : \; 1 \le j \le t_i\}$$
-	を満たすときに限り等しくなる．
-	以下のような項のインデックスに関する集合$\mathcal{J}$を考える．
-	$$\mathcal{J} = \{ \bm{j} = (j_1, \dots, j_k) \in \mathbb{N}^k \;:\; \forall i \in \{1, \dots, k\}, \; 1 \le j_i \le t_i\}$$
-	$\mathcal{J}$の各要素$\bm{j}$にpolyhedral cone $C_{\bm{j}}$を
-	$$C_{\bm{j}} = \{\bm{w} \in \mathbb{R}^n \;:\; \forall i \in \{1, \dots, k\}, \; \forall j \in \{1, \dots, t_i\} \setminus \{j_i\}, \; (\alpha_{ij_i}, \bm{w}) > (\alpha_{ij}, \bm{w}) \}$$
-	のように定義する．
-	重みベクトル$\bm{w}$が$C_{\bm{j}}$に含まれるのは，$\bm{j}$でインデックス付けされた単項式が$\bm{w}$に関する$F$の先頭項である場合に限られる．したがって，$F$に関する項順序の同値類は、空ではない$C_{\bm{j}}$と一対一に対応している．
-	\par
-	Newton polytope $\mathcal{N}(F)$は、点$\displaystyle \alpha_{\bm{j}} = \sum^k_{i=1} \alpha_{ij_i}$のconvex hullである(ただし$\bm{j} = (j_1, \dots, j_k) \in \mathcal{J}$)．
-	また，affine Newton polyhedron $\mathcal{N}_{\mathrm{aff}}(F)$の頂点の集合は，$\mathcal{N}(F)$の頂点の部分集合である．
-	頂点$\alpha_{\bm{j}}$は$\mathbb{R}^n$への線型汎関数$(\mathbb{R}_{+}^d \to \mathbb{R}_+)$が最大値である場合に先頭項となるため，その場合に限って$\mathcal{N}_{\mathrm{aff}}(F) (= \mathcal{N}(F) + \mathbb{R}_{-}^n)$の頂点となる．
-	これは、$\displaystyle (\alpha_{\bm{j}}, \bm{w}) = \sum_{i = 1}^k \alpha_{j_i}\bm{w}$が他のすべての$\bm{j}^\prime \in \mathcal{J}$に対して$(\alpha_{\bm{j}^\prime}, \bm{w})$より大きいような重みベクトル$\bm{w}$が存在することを意味している．
-	しかし，このとき$\bm{w} \in C_{\bm{j}}$となる．よって，空でない$C_{\bm{j}}$はpolyhedron $\mathcal{N}_{\mathrm{aff}}(F)$の頂点への法線円錐(the normal cones to the vertices)であることを示した。
-\end{proof}
-
-特に，多項式集合が斉次のとき，次のような系を得られる．
-\begin{corollary}[{\cite[p264, Corollary3.2.2]{gritzmann1993minkowski}}]
-	\label{chapter03:corollary:GBD_main_corollary}
-	斉次な多項式集合$F = \{f_1, \dots, f_k\}$に対して，Newton polytope $\mathcal{N}(F)$の各頂点は，$F$に対する項順序の同値類と一対一対応している．
-\end{corollary}
-\begin{proof}
-	$f_i$が$R_i$-斉次であるとし，$R = R_1 + \cdots + R_k$とする．
-	このとき，Newton polytope $\mathcal{N}(F)$はaffine超平面(affine hyperplane)
-	$$\left\{ \bm{y} \in \mathbb{R}^n \;:\; \sum_{j=1}^n y_j = R\right\}$$
-	に含まれる．
-	$\mathcal{N}(F)$のある頂点$\alpha_{\bm{j}}$があるベクトル$\bm{w}$に対して極大(extremal)であるならば，それは任意の$c \in \mathbb{R}_+$に対して$\bm{w} +(c, c, \dots, c)$の方向でも極大(extremal)である．$$(\because \forall \alpha \in \mathcal{N}(F), \; (\alpha, \bm{c}) = cR = (const)\; )$$
-	\par
-	$c$を適切にとったときに，$\alpha_{\bm{j}}$は$\mathcal{N}_{\mathrm{aff}}(F)$の頂点でもあることを示す．
-	$$\beta \in \mathcal{N}_{\mathrm{aff}}(F), \; \gamma \in \mathbb{R}^n_{-}, \; \beta = \alpha + \gamma$$とする．
-	$\mathcal{N}_{\mathrm{aff}}(F) \subseteq \mathcal{N}(F)$より，$\beta \in \mathcal{N}(F)$．故に，$(\alpha_{\bm{j}}, \bm{c}) = (\beta, \bm{c}) = cR$．
-	よって，
+	$f_i$の項$X_{\varphi(i)}^{a_{i\varphi(i)}}$を先頭項とするような項順序を$\bm{w} = (w_i)_{i \in \{1, \dots, n\}} \in \mathbb{R}_{+}^n$とし，それ以外の任意の像を$\rho \ne \varphi$とする．項順序$\bm{w}$の下で各多項式の先頭項は$X_{\varphi(i)}^{a_{i\varphi(i)}}$となるので，任意の$i \in \{1, 2, \dots, n\}$に対して
+	$$w_{\varphi(i)}a_{i\varphi(i)} > w_{\rho(i)}a_{i\rho(i)}$$
+	となる．つまり，$\varphi(i) \ne \rho(i)$を満たす$i$が少なくとも$1$つ存在する．
+	従って，$n$個の不等式の総積によって，以下の式が得られる．
 	\begin{align}
-		(\bm{w} + \bm{c}, \beta) &= (\bm{w}, \beta) + cR \label{chapter03:formula:GBD_main_corollary_1}\\
-		(\bm{w} + \bm{c}, \alpha_{\bm{j}}+\gamma) &= (\bm{w}, \alpha_{\bm{j}}) + cR + (\bm{w}, \gamma) + (\bm{c}, \gamma) \label{chapter03:formula:GBD_main_corollary_2}
+		& \prod_{i=1}^n w_{\varphi(i)}a_{i\varphi(i)} > \prod_{i=1}^n w_{\rho(i)}a_{i\rho(i)} \\
+		\Longleftrightarrow & \prod_{i=1}^n w_i a_{i\varphi(i)} > \prod_{i=1}^n w_i a_{i\rho(i)}
 	\end{align}
-	式(\ref{chapter03:formula:GBD_main_corollary_1})と式(\ref{chapter03:formula:GBD_main_corollary_2})は等しくなるため，
-	\begin{equation*}
-		(\bm{w}, \gamma) + (\bm{c}, \gamma) = \bm{0}
-	\end{equation*}
-	よって，
-	\begin{align*}
-		&\gamma = \bm{0} \\
-		\Longleftrightarrow \; & \alpha_{\bm{j}} = \beta \in \mathcal{N}_{\mathrm{aff}}(F)
-	\end{align*}
-	$\alpha_{\bm{j}} \in \mathcal{N}_{\mathrm{aff}}(F)$がわかったため，定理\ref{chapter03:theorem:GBD_main_theorem}と同様に導ける．
+	両辺を$\displaystyle \prod_{i=1}^n w_i > 0$で割ると，
+	$$\prod_{i=1}^n a_{i\rho(i)} < \prod_{i=1}^n a_{i\varphi(i)}$$
+\end{proof}
+この補題により，SGBDを解くために先頭項候補は，総積$\displaystyle \prod_{i=1}^n a_{i\varphi(i)}$
+を最大化するような項の組
+$$X_{\varphi(1)}^{a_{1\varphi(1)}}, \dots, X_{\varphi(n)}^{a_{n\varphi(n)}}$$
+であることがわかる．このような項の組は二部グラフの最大マッチング問題を解くことによって求めることができる（詳細は後述のアルゴリズム\ref{chapter03:algorithm:SGBD}を参照）．
+\par
+次に，実際にそのような項の組$X_{\varphi(1)}^{a_{1\varphi(1)}}, \dots, X_{\varphi(n)}^{a_{n\varphi(n)}}$がそれぞれの先頭項となるような項順序$\bm{w} \in \mathbb{R}_{+}^n$を求める方法を考える．以下の補題により，これは線形計画問題を解くことで求めることができることがわかる．
+\begin{lemma}[{\cite[Lemma6]{sturmfels1997structural}}]
+	\label{chapter03:lemmma:lin_prog}
+	多項式集合$F$を例\ref{chapter03:example:example_polynomial_set}の条件を満たすような集合とし，$X^{\alpha_i}$を多項式$f_i \in F$の項とする．
+	任意の$i \in \{1, \dots, n\}$と
+	$X^{\beta_i} \ne X^{\alpha_i}$を満たす$f_i$の任意の項$X^{\beta_i}$に対して，指数ベクトルの差のベクトル$\alpha_i - \beta_i$を列として持つ行列を$\varGamma$とする．
+	このとき，$\mathrm{HT}_{\bm{w}}(f_i) = X^{\alpha_i}$を満たすような項順序$\bm{w} \in \mathbb{R}_{+}^n$が唯一存在し，連立不等式$\varGamma \bm{w} > 0, \bm{w} > 0$を解くことによって求めることができる．
+\end{lemma}
+\begin{proof}
+	$\mathrm{HT}_{\bm{w}}(f_i) = X^{\alpha_i}$という仮定から，行列$\varGamma$と$\bm{w}$との積は正となる必要がある．
 \end{proof}
 
-これらの定理により，\groebner{} basis detectionは次のように解くことができる．多項式集合$F$に対して，
-\begin{itemize}
-	\item affine Newton polyhedron $\mathcal{N}_{\mathrm{aff}}(F)$を求める．
-	\item その頂点の数をして項順序の同値類の数を得る．
-	\item 適当な代表元において，S多項式のペアが全て$0$に簡約化されるかどうかを調べ，そのような項順序がGBDで求めたいものである．
-\end{itemize}
-具体的には，定理\ref{chapter03:theorem:GBD_main_theorem}の証明より，次の図のように各頂点を結ぶ辺の法線ベクトルで区切られた領域が，一つの同値類に対応している．
-\begin{figure}[h]
-	\centering
-	\begin{tikzpicture}[scale=0.6]
-		% x軸y軸の描画
-		\draw[->,>=stealth,semithick] (-2,0)--(8,0)node[below]{$x$};
-		\draw[->,>=stealth,semithick] (0,-2)--(0,9)node[left]{$y$};
-		% 点の定義
-		\coordinate (A) at (2, 7);
-		\coordinate (B) at (5, 6);
-		\coordinate (C) at (6, 3);
-		\coordinate (A_out) at (-2, 7);
-		\coordinate (C_out) at (6, -1);
-		\coordinate (x_start) at (1, 7);
-		\coordinate (x_end) at (1, 9);
-		\coordinate (y_start) at (3.5, 6.5);
-		\coordinate (y_end) at (4.33333, 9);
-		\coordinate (z_start) at (5.5, 4.5);
-		\coordinate (z_end) at (8, 5.3333);
-		\coordinate (w_start) at (6, 1.5);
-		\coordinate (w_end) at (8, 1.5);
-		% 斜線用の点
-		\coordinate (x_start_right) at (1.1, 7);
-		\coordinate (x_end_right) at (1.1, 9);
-		\coordinate (y_start_left) at (3.4, 6.55);
-		\coordinate (y_end_left) at (4.23333, 9);
-		\coordinate (y_start_right) at (3.6, 6.45);
-		\coordinate (y_end_right) at (4.43333, 9);
-		\coordinate (z_start_left) at (5.45, 4.6);
-		\coordinate (z_end_left) at (8, 5.4333);
-		\coordinate (z_start_right) at (5.55, 4.4);
-		\coordinate (z_end_right) at (8, 5.2333);
-		\coordinate (w_start_left) at (6, 1.6);
-		\coordinate (w_end_left) at (8, 1.6);
-		% 点の描画
-		\draw (0,0) node[below right]{$O$};
-		% \draw (A) node [above, circle] {$(1, 3)$};
-		% \draw (C) node [right, circle] {$(3, 2)$};
-		% \draw (explanation_point) node [above right] {$\mathcal{N}_{\mathrm{aff}}(f)$};
-		\fill (A) circle (3pt) (B) circle (3pt) (C) circle (3pt);
-		% 線の描画
-		\draw (A)--(B);
-		\draw (B)--(C);
-		\draw (A_out)--(A);
-		\draw (C)--(C_out);
-		\draw [->] (x_start)--(x_end);
-		\draw [->] (y_start)--(y_end);
-		\draw [->] (z_start)--(z_end);
-		\draw [->] (w_start)--(w_end);
-		% 斜線の描画
-		% \path [pattern=north east lines] plot [smooth] (D)--(B)--(C)--(E)--(F);
-		\path [pattern=north west lines] plot [smooth] (x_end_right)--(x_start_right)--(A)--(y_start_left)--(y_end_left);
-		\path [pattern=north east lines] plot [smooth] (y_end_right)--(y_start_right)--(B)--(z_start_left)--(z_end_left)--(8, 9);
-		\path [pattern=north west lines] plot [smooth] (z_end_right)--(z_start_right)--(C)--(w_start_left)--(w_end_left);
-		% 領域を表す記号の描画
-		\draw (2.5, 9.5) node {$A_1$};
-		\draw (8.5, 9.5) node {$A_2$};
-		\draw (8.5, 3) node {$A_3$};
-	\end{tikzpicture}
-	\caption{項順序の同値類に対応している領域}
-\end{figure}
+これらの補題をもとに，$n=k$のときにSGBDを解くアルゴリズムは以下のように記述することができる．
+尚，SGBDの条件を満たすような項順序が存在しなかった場合には，ゼロベクトルを返すようにしている．
+\begin{algorithm}[htbp]
+	\label{chapter03:algorithm:SGBD}
+	\caption{solving structural \groebner{} basis detection for $n = k$ {\cite[Algorighm7]{sturmfels1997structural}}}
+	\begin{algorithmic}[1]
+		\Require 多項式集合$F \subset K[\bar{X}]$
+		\Ensure $F$が$\ideal{F}$の\groebner{}基底となるような項順序$w \in \mathbb{R}_{+}^n$ or ゼロベクトル$\bm{0} \in \mathbb{R}^n$
+		\For{$1 \le i, j \le n$}
+			\If{$X_j^\alpha \notin T(f_i) \quad (\alpha \ne 0)$}
+				\State $a_{ij} \gets 0$
+			\EndIf
+			\State $a_{ij} \gets (f_i\text{の単項式}X_j\text{の最大指数})$
+			\If{$X_j^{a_{ij}}X^\alpha \in T(f_i) \quad (\alpha \ne 0)$}
+				\State $a_{ij} \gets 0$
+			\EndIf
+		\EndFor
+		\State 頂点が$2n$個ある二部グラフ$B = \{\bar{V}, \bar{E}\}$を次のように構成
+		$$\bar{V} = \{u_1, \dots, u_n, v_1, \dots, v_n\}, \quad (u_i, v_i) \in \bar{E} \quad(a_{ij} > 0 \text{のときのみ})$$
+		\State $B$の最大マッチング$M$を求める．
+		\If{$\left| M \right| < n$}
+			\State \Return $\bm{0} \in \mathbb{R}^n$
+		\Else 
+			\State $M = \{(u_i, v_{\varphi(i)})\;:\; i \in \{1, 2, \dots, n\}\}$
+		\EndIf
+		\State 行列$\varGamma$を補題\ref{chapter03:lemmma:lin_prog}と同じように構成し，
+		$$\begin{cases}
+			\varGamma \bm{w} > 0\\
+			\bm{w} > 0
+		\end{cases}$$
+		を解く．
+		\State \Return $\bm{w}$
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{theorem}
+	アルゴリズム\ref{chapter03:algorithm:SGBD}は正当性と有限停止性を有する．
+\end{theorem}
+\begin{proof}
+	まず，1行目のfor文において，入力の多項式を例\ref{chapter03:example:example_polynomial_set}の条件を満たすような項のみを残すように変換している．10行目〜16行目は補題\ref{chapter03:lemma:bipartite_graph}に基づいて二部グラフを構成し，17行目では補題\ref{chapter03:lemmma:lin_prog}に基づいて行列を構成し，線形計画問題を解いている．
+\end{proof}
+このアルゴリズムでは，大きく分けて
+\begin{enumerate}
+	\item 単項のみから成り，且つ倍単項式が同じ多項式に存在しないような項のみを残す
+	\item 二部グラフの最大マッチング問題を解く
+	\item 線形計画問題を解く
+\end{enumerate}
+という$3$つのステップがある．
+2つ目のステップでは，Hungarian method\cite{plummer1986matching}にて，3つ目のステップではKhachian's Ellipsoid method\cite{schrijver1998theory}などの方法を採用することで，アルゴリズム全体は多項式時間で解くことができる\cite{sturmfels1997structural}．
+
+\subsection{$n \ne k$のとき}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

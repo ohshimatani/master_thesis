@@ -1,5 +1,5 @@
 % chapter 03
-\section{\groebner{} basis detection}
+\section{\groebner{} basis detection\cite{gritzmann1993minkowski}}
 \groebner{} basis detectionの問題を解くあたって，多項式集合の項順序に幾何的な解釈を与えることで，項順序の同値類に分けて考えることができるようになる．ここで，多項式集合$F$に対して，項順序$\bm{w_1}, \bm{w_2}$は，$\mathrm{HT}_{\bm{w_1}}(F) = \mathrm{HT}_{\bm{w_2}}(F)$を満たすときに同値であるという．まずは前提とする定義を与える．
 \subsection{前提とする定義}
 
@@ -113,4 +113,137 @@ $2$つ以上のpolytopeの和を次のように定義する．
 \end{figure}
 図\ref{chapter03:figure:NewtonPolytopeExample}のように，Newton polytopeは単に多項式$f$に含まれる項の指数ベクトルを頂点とした集合となっている．
 対して，図\ref{chapter03:figure:NewtonPolytopeExample}のように，affine Newton polyhedronでは，$\mathcal{N}(f)$と$\mathbb{R}^2_{-}$とのMinkowski和を取ることで，"左下"全体を含んだ領域を取る無限集合となっているが，頂点に着目すると，それに伴って"左下"にあった頂点$(1, 1)$がなくなっている．これは，多項式の中で「先頭項になりそうにない次数の低い項」を取り除く操作に対応できる．この例では，項$xy$は項順序の定義から先頭項にはならず，affine Newton polyhedronを取ることでそのような項を検出することができることを意味している．
+
+\subsection{\groebner{}基底とNewton polytope}
+多項式集合が\groebner{}基底となるためには，Buchbergerアルゴリズムの計算過程にもある通り，全てのSペアが$0$へ簡約される必要がある．その際にS多項式の計算を行うためには，多項式の先頭項を確定させる必要がある．もし，多項式集合における項順序の同値類の数が分かれば，それぞれの適当な代表元において，全てのSペアの簡約が$0$となるかどうかを調べることで，与えられた多項式集合がそのまま\groebner{}基底となるような項順序が存在するのかどうかを確かめることができる．
+次の定理では，項順序の同値類を，先程定義した多項式集合のaffine Newton polyhedronで記述するものとなっている．
+\begin{theorem}[{\cite[p263, Proposition3.2.1]{gritzmann1993minkowski}}]
+	\label{chapter03:theorem:GBD_main_theorem}
+	多項式集合$F = \{f_1, \dots, f_k\} \subset K[\bar{X}]$に対して，affine Newton polyhedron $\mathcal{N}_{\mathrm{aff}}(F)$の各頂点は，$F$に関する項順序の同値類と一対一に対応している．
+\end{theorem}
+
+\begin{proof}
+	多項式$f_i \in F$は$\displaystyle f_i = \sum_{j=1}^{t_i}c_{ij}X^{\alpha_{ij}}$で表されるとする．
+	2つの異なる項順序$\bm{w_1}, \bm{w_2} \in \mathbb{R}^n$は多項式集合$F$が任意の$i \in \{1, \dots, k\}$に対して
+	$$\max \{(\alpha_{ij}, \bm{w_1}) \; : \; 1 \le j \le t_i\} = \max \{(\alpha_{ij}, \bm{w_2}) \; : \; 1 \le j \le t_i\}$$
+	を満たすときに限り等しくなる．
+	以下のような項のインデックスに関する集合$\mathcal{J}$を考える．
+	$$\mathcal{J} = \{ \bm{j} = (j_1, \dots, j_k) \in \mathbb{N}^k \;:\; \forall i \in \{1, \dots, k\}, \; 1 \le j_i \le t_i\}$$
+	$\mathcal{J}$の各要素$\bm{j}$にpolyhedral cone $C_{\bm{j}}$を
+	$$C_{\bm{j}} = \{\bm{w} \in \mathbb{R}^n \;:\; \forall i \in \{1, \dots, k\}, \; \forall j \in \{1, \dots, t_i\} \setminus \{j_i\}, \; (\alpha_{ij_i}, \bm{w}) > (\alpha_{ij}, \bm{w}) \}$$
+	のように定義する．
+	重みベクトル$\bm{w}$が$C_{\bm{j}}$に含まれるのは，$\bm{j}$でインデックス付けされた単項式が$\bm{w}$に関する$F$の先頭項である場合に限られる．したがって，$F$に関する項順序の同値類は、空ではない$C_{\bm{j}}$と一対一に対応している．
+	\par
+	Newton polytope $\mathcal{N}(F)$は、点$\displaystyle \alpha_{\bm{j}} = \sum^k_{i=1} \alpha_{ij_i}$のconvex hullである(ただし$\bm{j} = (j_1, \dots, j_k) \in \mathcal{J}$)．
+	また，affine Newton polyhedron $\mathcal{N}_{\mathrm{aff}}(F)$の頂点の集合は，$\mathcal{N}(F)$の頂点の部分集合である．
+	頂点$\alpha_{\bm{j}}$は$\mathbb{R}^n$への線型汎関数$(\mathbb{R}_{+}^d \to \mathbb{R}_+)$が最大値である場合に先頭項となるため，その場合に限って$\mathcal{N}_{\mathrm{aff}}(F) (= \mathcal{N}(F) + \mathbb{R}_{-}^n)$の頂点となる．
+	これは、$\displaystyle (\alpha_{\bm{j}}, \bm{w}) = \sum_{i = 1}^k \alpha_{j_i}\bm{w}$が他のすべての$\bm{j}^\prime \in \mathcal{J}$に対して$(\alpha_{\bm{j}^\prime}, \bm{w})$より大きいような重みベクトル$\bm{w}$が存在することを意味している．
+	しかし，このとき$\bm{w} \in C_{\bm{j}}$となる．よって，空でない$C_{\bm{j}}$はpolyhedron $\mathcal{N}_{\mathrm{aff}}(F)$の頂点への法線円錐(the normal cones to the vertices)であることを示した。
+\end{proof}
+
+特に，多項式集合が斉次のとき，次のような系を得られる．
+\begin{corollary}[{\cite[p264, Corollary3.2.2]{gritzmann1993minkowski}}]
+	\label{chapter03:corollary:GBD_main_corollary}
+	斉次な多項式集合$F = \{f_1, \dots, f_k\}$に対して，Newton polytope $\mathcal{N}(F)$の各頂点は，$F$に対する項順序の同値類と一対一対応している．
+\end{corollary}
+\begin{proof}
+	$f_i$が$R_i$-斉次であるとし，$R = R_1 + \cdots + R_k$とする．
+	このとき，Newton polytope $\mathcal{N}(F)$はaffine超平面(affine hyperplane)
+	$$\left\{ \bm{y} \in \mathbb{R}^n \;:\; \sum_{j=1}^n y_j = R\right\}$$
+	に含まれる．
+	$\mathcal{N}(F)$のある頂点$\alpha_{\bm{j}}$があるベクトル$\bm{w}$に対して極大(extremal)であるならば，それは任意の$c \in \mathbb{R}_+$に対して$\bm{w} +(c, c, \dots, c)$の方向でも極大(extremal)である．$$(\because \forall \alpha \in \mathcal{N}(F), \; (\alpha, \bm{c}) = cR = (const)\; )$$
+	\par
+	$c$を適切にとったときに，$\alpha_{\bm{j}}$は$\mathcal{N}_{\mathrm{aff}}(F)$の頂点でもあることを示す．
+	$$\beta \in \mathcal{N}_{\mathrm{aff}}(F), \; \gamma \in \mathbb{R}^n_{-}, \; \beta = \alpha + \gamma$$とする．
+	$\mathcal{N}_{\mathrm{aff}}(F) \subseteq \mathcal{N}(F)$より，$\beta \in \mathcal{N}(F)$．故に，$(\alpha_{\bm{j}}, \bm{c}) = (\beta, \bm{c}) = cR$．
+	よって，
+	\begin{align}
+		(\bm{w} + \bm{c}, \beta) &= (\bm{w}, \beta) + cR \label{chapter03:formula:GBD_main_corollary_1}\\
+		(\bm{w} + \bm{c}, \alpha_{\bm{j}}+\gamma) &= (\bm{w}, \alpha_{\bm{j}}) + cR + (\bm{w}, \gamma) + (\bm{c}, \gamma) \label{chapter03:formula:GBD_main_corollary_2}
+	\end{align}
+	式(\ref{chapter03:formula:GBD_main_corollary_1})と式(\ref{chapter03:formula:GBD_main_corollary_2})は等しくなるため，
+	\begin{equation*}
+		(\bm{w}, \gamma) + (\bm{c}, \gamma) = \bm{0}
+	\end{equation*}
+	よって，
+	\begin{align*}
+		&\gamma = \bm{0} \\
+		\Longleftrightarrow \; & \alpha_{\bm{j}} = \beta \in \mathcal{N}_{\mathrm{aff}}(F)
+	\end{align*}
+	$\alpha_{\bm{j}} \in \mathcal{N}_{\mathrm{aff}}(F)$がわかったため，定理\ref{chapter03:theorem:GBD_main_theorem}と同様に導ける．
+\end{proof}
+
+これらの定理により，\groebner{} basis detectionは次のように解くことができる．多項式集合$F$に対して，
+\begin{itemize}
+	\item affine Newton polyhedron $\mathcal{N}_{\mathrm{aff}}(F)$を求める．$F$が斉次の場合はNewton polytope $\mathcal{N}(F)$を考える．
+	\item その頂点の数をして項順序の同値類の数がわかる．
+	\item 適当な代表元において，S多項式のペアが全て$0$に簡約化されるかどうかを調べ，そのような項順序がGBDで求めたいものである．
+\end{itemize}
+具体的には，定理\ref{chapter03:theorem:GBD_main_theorem}の証明より，次の図のように各頂点を結ぶ辺の法線ベクトルで区切られた領域が，一つの同値類に対応している．
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[scale=0.6]
+		% x軸y軸の描画
+		\draw[->,>=stealth,semithick] (-2,0)--(8,0)node[below]{$x$};
+		\draw[->,>=stealth,semithick] (0,-2)--(0,9)node[left]{$y$};
+		% 点の定義
+		\coordinate (A) at (2, 7);
+		\coordinate (B) at (5, 6);
+		\coordinate (C) at (6, 3);
+		\coordinate (A_out) at (-2, 7);
+		\coordinate (C_out) at (6, -1);
+		\coordinate (x_start) at (1, 7);
+		\coordinate (x_end) at (1, 9);
+		\coordinate (y_start) at (3.5, 6.5);
+		\coordinate (y_end) at (4.33333, 9);
+		\coordinate (z_start) at (5.5, 4.5);
+		\coordinate (z_end) at (8, 5.3333);
+		\coordinate (w_start) at (6, 1.5);
+		\coordinate (w_end) at (8, 1.5);
+		% 斜線用の点
+		\coordinate (x_start_right) at (1.1, 7);
+		\coordinate (x_end_right) at (1.1, 9);
+		\coordinate (y_start_left) at (3.4, 6.55);
+		\coordinate (y_end_left) at (4.23333, 9);
+		\coordinate (y_start_right) at (3.6, 6.45);
+		\coordinate (y_end_right) at (4.43333, 9);
+		\coordinate (z_start_left) at (5.45, 4.6);
+		\coordinate (z_end_left) at (8, 5.4333);
+		\coordinate (z_start_right) at (5.55, 4.4);
+		\coordinate (z_end_right) at (8, 5.2333);
+		\coordinate (w_start_left) at (6, 1.6);
+		\coordinate (w_end_left) at (8, 1.6);
+		% 点の描画
+		\draw (0,0) node[below right]{$O$};
+		% \draw (A) node [above, circle] {$(1, 3)$};
+		% \draw (C) node [right, circle] {$(3, 2)$};
+		% \draw (explanation_point) node [above right] {$\mathcal{N}_{\mathrm{aff}}(f)$};
+		\fill (A) circle (3pt) (B) circle (3pt) (C) circle (3pt);
+		% 線の描画
+		\draw (A)--(B);
+		\draw (B)--(C);
+		\draw (A_out)--(A);
+		\draw (C)--(C_out);
+		\draw [->] (x_start)--(x_end);
+		\draw [->] (y_start)--(y_end);
+		\draw [->] (z_start)--(z_end);
+		\draw [->] (w_start)--(w_end);
+		% 斜線の描画
+		% \path [pattern=north east lines] plot [smooth] (D)--(B)--(C)--(E)--(F);
+		\path [pattern=north west lines] plot [smooth] (x_end_right)--(x_start_right)--(A)--(y_start_left)--(y_end_left);
+		\path [pattern=north east lines] plot [smooth] (y_end_right)--(y_start_right)--(B)--(z_start_left)--(z_end_left)--(8, 9);
+		\path [pattern=north west lines] plot [smooth] (z_end_right)--(z_start_right)--(C)--(w_start_left)--(w_end_left);
+		% 領域を表す記号の描画
+		\draw (2.5, 9.5) node {$A_1$};
+		\draw (8.5, 9.5) node {$A_2$};
+		\draw (8.5, 3) node {$A_3$};
+	\end{tikzpicture}
+	\caption{項順序の同値類に対応している領域}
+\end{figure}
+
+
+
+
+
+
 

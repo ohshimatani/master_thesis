@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2020.2.26)  22 DEC 2021 18:54
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2020.2.26)  22 DEC 2021 21:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -632,15 +632,20 @@ LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 8.64899pt on input line 80.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 8.64899pt on input line 80.
-) (./chapter03_section03.tex [12] [13]) (./chapter03_section04.tex) [14] [15]
+ [12] [13]) (./chapter03_section03.tex [14] [15]
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 67.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 4.805pt on input line 67.
+ [16]) [17]
 第4章
-[16
+[18
 
 ]
 第5章
-(./main.bbl [17
+(./main.bbl [19
 
-]) [18
+]) [20
 
 ] (./main.aux)
 
@@ -649,12 +654,12 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 14395 strings out of 493223
- 279697 string characters out of 6144415
- 341437 words of memory out of 5000000
- 18044 multiletter control sequences out of 15000+600000
- 32495 words of font info for 143 fonts, out of 8000000 for 9000
+ 14410 strings out of 493223
+ 279962 string characters out of 6144415
+ 341506 words of memory out of 5000000
+ 18062 multiletter control sequences out of 15000+600000
+ 32873 words of font info for 145 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  57i,13n,61p,689b,803s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (18 pages, 93272 bytes).
+Output written on main.dvi (20 pages, 103900 bytes).
