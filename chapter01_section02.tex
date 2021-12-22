@@ -16,6 +16,7 @@ $n$変数の項全体の集合を$T_n = \left\{ x_1^{e_1} \cdots x_n^{e_n} : e_i
 \end{definition}
 項順序$\prec$において，多項式$f\in K[\bar{X}]$に含まれる項で，最も項順序が大きい単項式を$\mathrm{hm}_{\prec}(f)$，その係数を除いた部分を$\mathrm{ht}_{\prec}(f)$，その係数を$\mathrm{hc}_{\prec}(f)$と定義し，それぞれ\emph{頭単項式，頭項，頭係数}と呼ぶ．
 項順序が明らかな場合には，$\mathrm{hm}_{\prec}(f)$を単に$\mathrm{hm}(f)$などと書くこともある．
+また，多項式集合$F$に関して，$\mathrm{HM}_{\prec}(F) = \{ \mathrm{HM}_{\prec}(f_i) \;:\; f_i \in F \}$と定義する（$\mathrm{HT}_{\prec}(F), \mathrm{HC}_{\prec}(F)$についても同様に定義する）．
 項$t \in T_n$の指数ベクトルを$e(t) \in \mathbb{N}^{n}$と表す．
 重み行列$M$で表されるmatrix order$\prec_M$を以下のように定義する．
 \begin{definition}[matrix order]
@@ -28,9 +29,8 @@ matrix orderは任意の項順序を表現可能である\cite{MR826583}とい�
 項順序を$M$とする．多項式$f, g \in K[\bar{X}]$に対し，$f$に含まれる単項式$t$が$\mathrm{ht}_M(g)$で割り切られるとする．このとき，$h = f - \frac{t}{\mathrm{ht}_M(g)}g$に対し，$f \to_g h$と書き，\emph{$f$の$g$での単項簡約}と呼ぶ．この操作を$0$回を含む有限回繰り返し，これ以上単項簡約できない$h$が得られたとき，$h$を\emph{$f$の$g$による正規形（normal form）}と呼び，$h = \mathrm{nf}_g(f)$で表す．
 また，有限な多項式集合$G=\left\{g_i :i \in \{1,2, \dots\}\right\} \subset K[\bar{X}]$において，$g_i \in G$で$f$を単項簡約することを繰り返すことで$h$が得られるとき，同様に$h$を\emph{$f$の$G$による正規形}と呼び，$h = \mathrm{nf}_G(f)$で表す．
 \begin{definition}[S多項式]
-	項順序を$M$とし$f, g \in K[\bar{X}]$とする．このとき，$f, g$のS多項式を
+	項順序を$M$とし$f, g \in K[\bar{X}]$とする．このとき，$f, g$のS多項式を次のように定義する．
 	$$\mathrm{Spoly}(f, g)=\frac{\mathrm{hc}_M(g)\cdot \mathrm{lcm}(\mathrm{ht}_M(f), \mathrm{ht}_M(g))}{\mathrm{ht}_M(f)}\cdot f - \frac{\mathrm{hc}_M(f)\cdot \mathrm{lcm}(\mathrm{ht}_M(f), \mathrm{ht}_M(g))}{\mathrm{ht}_M(g)}\cdot g$$
-	と定義する．
 	\end{definition}
 
 

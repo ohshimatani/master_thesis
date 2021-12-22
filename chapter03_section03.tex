@@ -1,0 +1,59 @@
+% chapter 03
+\section{\groebner{}基底とNewton polytope}
+多項式集合が\groebner{}基底となるためには，Buchbergerアルゴリズムの計算過程にもある通り，全てのSペアが$0$へ簡約される必要がある．その際にS多項式の計算を行うためには，多項式の先頭項を確定させる必要がある．もし，多項式集合における項順序の同値類の数が分かれば，それぞれの適当な代表元において，全てのSペアの簡約が$0$となるかどうかを調べることで，与えられた多項式集合がそのまま\groebner{}基底となるような項順序が存在するのかどうかを確かめることができる．
+次の定理では，項順序の同値類を，先程定義した多項式集合のaffine Newton polyhedronで記述するものとなっている．
+\begin{theorem}[{\cite[p263, Proposition3.2.1]{gritzmann1993minkowski}}]
+	\label{chapter03:theorem:GBD_main_theorem}
+	多項式集合$F = \{f_1, \dots, f_k\} \subset K[\bar{X}]$に対して，affine Newton polyhedron $\mathcal{N}_{\mathrm{aff}}(F)$の各頂点は，$F$に関する項順序の同値類と一対一に対応している．
+\end{theorem}
+
+\begin{proof}
+	多項式$f_i \in F$は$\displaystyle f_i = \sum_{j=1}^{t_i}c_{ij}X^{\alpha_{ij}}$で表されるとする．
+	2つの異なる項順序$\bm{w_1}, \bm{w_2} \in \mathbb{R}^n$は多項式集合$F$が任意の$i \in \{1, \dots, k\}$に対して
+	$$\max \{(\alpha_{ij}, \bm{w_1}) \; : \; 1 \le j \le t_i\} = \max \{(\alpha_{ij}, \bm{w_2}) \; : \; 1 \le j \le t_i\}$$
+	を満たすときに限り等しくなる．
+	以下のような項のインデックスに関する集合$\mathcal{J}$を考える．
+	$$\mathcal{J} = \{ \bm{j} = (j_1, \dots, j_k) \in \mathbb{N}^k \;:\; \forall i \in \{1, \dots, k\}, \; 1 \le j_i \le t_i\}$$
+	$\mathcal{J}$の各要素$\bm{j}$にpolyhedral cone $C_{\bm{j}}$を
+	$$C_{\bm{j}} = \{\bm{w} \in \mathbb{R}^n \;:\; \forall i \in \{1, \dots, k\}, \; \forall j \in \{1, \dots, t_i\} \setminus \{j_i\}, \; (\alpha_{ij_i}, \bm{w}) > (\alpha_{ij}, \bm{w}) \}$$
+	のように定義する．
+	重みベクトル$\bm{w}$が$C_{\bm{j}}$に含まれるのは，$\bm{j}$でインデックス付けされた単項式が$\bm{w}$に関する$F$の先頭項である場合に限られる．したがって，$F$に関する項順序の同値類は、空ではない$C_{\bm{j}}$と一対一に対応している．
+	\par
+	Newton polytope $\mathcal{N}(F)$は、点$\displaystyle \alpha_{\bm{j}} = \sum^k_{i=1} \alpha_{ij_i}$のconvex hullである(ただし$\bm{j} = (j_1, \dots, j_k) \in \mathcal{J}$)．
+	また，affine Newton polyhedron $\mathcal{N}_{\mathrm{aff}}(F)$の頂点の集合は，$\mathcal{N}(F)$の頂点の部分集合である．
+	頂点$\alpha_{\bm{j}}$は$\mathbb{R}^n$への線型汎関数$(\mathbb{R}_{+}^d \to \mathbb{R}_+)$が最大値である場合に先頭項となるため，その場合に限って$\mathcal{N}_{\mathrm{aff}}(F) (= \mathcal{N}(F) + \mathbb{R}_{-}^n)$の頂点となる．
+	これは、$\displaystyle (\alpha_{\bm{j}}, \bm{w}) = \sum_{i = 1}^k \alpha_{j_i}\bm{w}$が他のすべての$\bm{j}^\prime \in \mathcal{J}$に対して$(\alpha_{\bm{j}^\prime}, \bm{w})$より大きいような重みベクトル$\bm{w}$が存在することを意味している．
+	しかし，このとき$\bm{w} \in C_{\bm{j}}$となる．よって，空でない$C_{\bm{j}}$はpolyhedron $\mathcal{N}_{\mathrm{aff}}(F)$の頂点への法線円錐(the normal cones to the vertices)であることを示した。
+\end{proof}
+
+特に，多項式集合が斉次のとき，次のような系を得られる．
+\begin{corollary}[{\cite[p264, Corollary3.2.2]{gritzmann1993minkowski}}]
+	\label{chapter03:corollary:GBD_main_corollary}
+	斉次な多項式集合$F = \{f_1, \dots, f_k\}$に対して，Newton polytope $\mathcal{N}(F)$の各頂点は，$F$に対する項順序の同値類と一対一対応している．
+\end{corollary}
+\begin{proof}
+	$f_i$が$R_i$-斉次であるとし，$R = R_1 + \cdots + R_k$とする．
+	このとき，Newton polytope $\mathcal{N}(F)$はaffine超平面(affine hyperplane)
+	$$\left\{ \bm{y} \in \mathbb{R}^n \;:\; \sum_{j=1}^n y_j = R\right\}$$
+	に含まれる．
+	$\mathcal{N}(F)$のある頂点$\alpha_{\bm{j}}$があるベクトル$\bm{w}$に対して極大(extremal)であるならば，それは任意の$c \in \mathbb{R}_+$に対して$\bm{w} +(c, c, \dots, c)$の方向でも極大(extremal)である．$$(\because \forall \alpha \in \mathcal{N}(F), \; (\alpha, \bm{c}) = cR = (const)\; )$$
+	\par
+	$c$を適切にとったときに，$\alpha_{\bm{j}}$は$\mathcal{N}_{\mathrm{aff}}(F)$の頂点でもあることを示す．
+	$$\beta \in \mathcal{N}_{\mathrm{aff}}(F), \; \gamma \in \mathbb{R}^n_{-}, \; \beta = \alpha + \gamma$$とする．
+	$\mathcal{N}_{\mathrm{aff}}(F) \subseteq \mathcal{N}(F)$より，$\beta \in \mathcal{N}(F)$．故に，$(\alpha_{\bm{j}}, \bm{c}) = (\beta, \bm{c}) = cR$．
+	よって，
+	\begin{align}
+		(\bm{w} + \bm{c}, \beta) &= (\bm{w}, \beta) + cR \label{chapter03:formula:GBD_main_corollary_1}\\
+		(\bm{w} + \bm{c}, \alpha_{\bm{j}}+\gamma) &= (\bm{w}, \alpha_{\bm{j}}) + cR + (\bm{w}, \gamma) + (\bm{c}, \gamma) \label{chapter03:formula:GBD_main_corollary_2}
+	\end{align}
+	式(\ref{chapter03:formula:GBD_main_corollary_1})と式(\ref{chapter03:formula:GBD_main_corollary_2})は等しくなるため，
+	\begin{equation*}
+		(\bm{w}, \gamma) + (\bm{c}, \gamma) = \bm{0}
+	\end{equation*}
+	よって，
+	\begin{align*}
+		&\gamma = \bm{0} \\
+		\Longleftrightarrow \; & \alpha_{\bm{j}} = \beta \in \mathcal{N}_{\mathrm{aff}}(F)
+	\end{align*}
+	$\alpha_{\bm{j}} \in \mathcal{N}_{\mathrm{aff}}(F)$がわかったため，定理\ref{chapter03:theorem:GBD_main_theorem}と同様に導ける．
+\end{proof}

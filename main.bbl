@@ -18,6 +18,10 @@ Jean-Charles Faugere, Patrizia Gianni, Daniel Lazard, and Teo Mora.
   of ordering.
 \newblock {\em Journal of Symbolic Computation}, 16(4):329--344, 1993.
 
+\bibitem[Fre09]{freeke2009linking}
+Jacqueline Freeke.
+\newblock Linking groebner bases and toric varieties, 2009.
+
 \bibitem[GS93]{gritzmann1993minkowski}
 Peter Gritzmann and Bernd Sturmfels.
 \newblock Minkowski addition of polytopes: computational complexity and

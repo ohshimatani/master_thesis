@@ -3,10 +3,9 @@
 第\ref{chapter02:chapter_num}章では，項順序をmatrix orderの重み行列$M$で表現し，$M$は多項式環の変数の個数$n$に対して$n$次の正方且つ正則な行列として扱っていた．本章以降は，項順序を重みベクトル$\bm{w}\in \mathbb{R}^n_{+}$にて表現する．ただし，$\mathbb{R}_{+}$は正の実数全体の集合とする．
 \begin{remark*}[ベクトルで表現された項順序について]
 	項順序はcolumn full rankな行列$M$だけでなくベクトル$\bm{w}\in \mathbb{R}^n_{+}$でも表現可能である．
-	ただし，$\bm{w} = (w_i\;:\; i\in \{1, 2, \dots, n\})$において，少なくとも$(n-1)$個の要素が無理数である必要がある．これは項順序の定義より，相異なる項$t_1, t_2 \in T_n$に対して$t_1 \ne_{\bm{w}} t_2$を満たす必要があるためである．
-	\par
-	ベクトル$\bm{w}$に有理数である要素が$w_1,w_2$の$2$つ存在していると仮定すると，
-
+	ただし，$\bm{w} = (w_i\;:\; i\in \{1, 2, \dots, n\})$において，少なくとも$(n-1)$個の要素が無理数である必要がある．仮に$\bm{w}$に有理数の要素が$2$つ以上存在してしまうと，$\bm{w}$が$\mathbb{Z}$上一次従属となってしまい，項順序の定義である「相異なる項$t_1, t_2 \in T_n$に対して$t_1 \ne_{\bm{w}} t_2$」を満たすことができなくなってしまうためである．
+	% \par
+	% ベクトル$\bm{w}$に有理数である要素が$w_1,w_2$の$2$つ存在していると仮定すると，
 \end{remark*}
 \par
 この章では，問題\ref{chapter02:problem:original_SGBD}についてのSturmfelsらによる先行研究について述べる．第\ref{chapter02:chapter_num}章では同じ問題設定の中で，互いに素な項の選出を，探索数を減らせるとはいえ全探索により行ったり，求めたい項順序の計算についての効率的な計算方法については与えなかったが，先行研究では，何れにおいても効率的なアルゴリズムが与えられている．
@@ -14,6 +13,10 @@
 先行研究では，この問題を\emph{\groebner{} basis detection}と名付けており，次のように定義されている．
 \begin{definition}[\groebner{} basis detection(GBD)\cite{gritzmann1993minkowski}]
 	多項式集合$F \subset K[\bar{X}]$とイデアル$I = \ideal{F}$が与えられたとき，$F$が$I$の\groebner{}基底となるような項順序$\bm{w} \in \mathbb{R}^n_{+}$は存在するか．存在するならば$1$つ求めよ．
+\end{definition}
+また，GBDの問題をBuchbergerの判定条件（定理\ref{chapter02:theorem:buchbergers_criterion}）により簡単にしたものが，次の\emph{structural \groebner{} basis detection}である．
+\begin{definition}[structural \groebner{} basis detection(SGBD)\cite{sturmfels1997structural}]
+	多項式集合$F \subset K[\bar{X}]$とイデアル$I = \ideal{F}$が与えられたとき，$\mathrm{HT}_{\bm{w}}(F)$に含まれる全ての項が互いに素であるような項順序$\bm{w} \in \mathbb{R}^n_{+}$は存在するか．存在するならば$1$つ求めよ．
 \end{definition}
 
 

@@ -7,7 +7,7 @@
 	\label{chapter02:problem:original_SGBD}
 	多項式集合$F$がイデアル$I = \ideal{F}$の\groebner{}基底となるような項順序$M$を求めよ．
 \end{problem}
-この問題を解くにあたって，\groebner{}基底となるための必要十分条件ではなく，以下の定理\ref{chapter02:theorem:buchbergers_criterion}をもとに十分条件を考えることで，系\ref{chapter02:corollary:buchberger}を満たすような項順序$M$を考える（この問題は，structural \groebner{} basis detectionと同じ問題設定である）．
+この問題を解くにあたって，\groebner{}基底となるための必要十分条件ではなく，以下の定理\ref{chapter02:theorem:buchbergers_criterion}をもとに十分条件を考えることで，系\ref{chapter02:corollary:buchberger}を満たすような項順序$M$を考える（この問題は，後に説明するstructural \groebner{} basis detectionと同じ問題設定である）．
 \begin{theorem}[Buchbergerの判定条件]
 	\label{chapter02:theorem:buchbergers_criterion}
 	項順序を$M$とする．任意の多項式$f, g \in K[\bar{X}]$において，$$\gcd(\mathrm{ht}_M(f), \mathrm{ht}_M(g))=1$$が成り立つとき，$\mathrm{nf}_{\{f, g\}}(\mathrm{Spoly}(f, g)) = 0$が成立する．
