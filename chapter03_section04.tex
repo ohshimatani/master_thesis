@@ -1,0 +1,10 @@
+% chapter 03
+\section{\groebner{}基底の構造的な検出}
+\groebner{} basis detectionの問題は，結局は項順序の同値類の数だけS多項式の計算をする必要があり，Buchbergerアルゴリズム等の前処理としての役割には適していない．そこで，Buchbergerの判定条件を用いて問題を簡略化したものが問題\ref{chapter03:problem:SGBD}のstructural \groebner{} basis detectionである．
+まずは次のような多項式を例に考える．
+\begin{example}
+	多項式集後$F = \{f_1, \dots, f_n\}$を$n$変数の多項式環$K[\bar{X}]$の部分集合とし，
+	$$f_i = X_{1}^{a_{i1}} + \cdots + X_n^{a_{in}} - 1$$
+	と表されるとものとする．
+\end{example}
+この多項式集合$F$に対して，項順序$\bm{w} \in \mathbb{R}_{+}^n$における各多項式の先頭項の集合は，$\mathrm{HT}_{\bm{w}}(F) = \{X_{\varphi(1)}^{a_{1\varphi(1)}}, \dots, X_{\varphi(i)}^{a_{i\varphi(i)}}\}$

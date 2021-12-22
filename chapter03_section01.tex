@@ -11,13 +11,14 @@
 この章では，問題\ref{chapter02:problem:original_SGBD}についてのSturmfelsらによる先行研究について述べる．第\ref{chapter02:chapter_num}章では同じ問題設定の中で，互いに素な項の選出を，探索数を減らせるとはいえ全探索により行ったり，求めたい項順序の計算についての効率的な計算方法については与えなかったが，先行研究では，何れにおいても効率的なアルゴリズムが与えられている．
 \par
 先行研究では，この問題を\emph{\groebner{} basis detection}と名付けており，次のように定義されている．
-\begin{definition}[\groebner{} basis detection(GBD)\cite{gritzmann1993minkowski}]
+\begin{problem}[\groebner{} basis detection(GBD)\cite{gritzmann1993minkowski}]
 	多項式集合$F \subset K[\bar{X}]$とイデアル$I = \ideal{F}$が与えられたとき，$F$が$I$の\groebner{}基底となるような項順序$\bm{w} \in \mathbb{R}^n_{+}$は存在するか．存在するならば$1$つ求めよ．
-\end{definition}
+\end{problem}
 また，GBDの問題をBuchbergerの判定条件（定理\ref{chapter02:theorem:buchbergers_criterion}）により簡単にしたものが，次の\emph{structural \groebner{} basis detection}である．
-\begin{definition}[structural \groebner{} basis detection(SGBD)\cite{sturmfels1997structural}]
+\begin{problem}[structural \groebner{} basis detection(SGBD)\cite{sturmfels1997structural}]
+	\label{chapter03:problem:SGBD}
 	多項式集合$F \subset K[\bar{X}]$とイデアル$I = \ideal{F}$が与えられたとき，$\mathrm{HT}_{\bm{w}}(F)$に含まれる全ての項が互いに素であるような項順序$\bm{w} \in \mathbb{R}^n_{+}$は存在するか．存在するならば$1$つ求めよ．
-\end{definition}
+\end{problem}
 
 
 
