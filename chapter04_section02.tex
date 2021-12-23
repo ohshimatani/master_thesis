@@ -157,7 +157,7 @@ $a \in L^m$に対して，特化準同型(specialization homomorphism)$\; \sigma
 \begin{lemma}
 	\label{chapter04:lemma:for_alg_3}
 	$E \ne \phi,\; N = \{a_N\} \ne \phi \;(a_N \in K[\bar{A}])$を仮定する．
-	Algorithm \ref{chapter04:algorithm:PDmain_alg_num}において，パラメータ制約$(E, N)$がinconsistentであるとき，必ず\ref{chapter04:algorithm:if_1}，\ref{chapter04:algorithm:if_2}行目のif文の条件のうちのどちらか一方を満たす．
+	アルゴリズム \ref{chapter04:algorithm:PDmain_alg_num}において，パラメータ制約$(E, N)$がinconsistentであるとき，必ず\ref{chapter04:algorithm:if_1}，\ref{chapter04:algorithm:if_2}行目のif文の条件のうちのどちらか一方を満たす．
 \end{lemma}
 
 \begin{proof}
@@ -178,7 +178,7 @@ $a \in L^m$に対して，特化準同型(specialization homomorphism)$\; \sigma
 \end{proof}
 
 \begin{theorem}
-	Algorithm \ref{chapter04:algorithm:PDmain_alg_num}は正当性と有限停止性を有する．
+	アルゴリズム \ref{chapter04:algorithm:PDmain_alg_num}は正当性と有限停止性を有する．
 % アルゴリズム\ref{chapter04:algorithm:PDmain_alg_num}は正当性と有限停止性を有し，その計算量は$\mathcal{O}(\cdot)$である．
 \end{theorem}
 
@@ -193,15 +193,15 @@ $a \in L^m$に対して，特化準同型(specialization homomorphism)$\; \sigma
 	\par
 	\ref{chapter04:algorithm:if_4}行目のif文では，\ref{chapter04:algorithm:if_3}行目のif文の条件を満たしていないため，$T \in \mathscr{T}$においてパラメータを含む項$t$が必ず存在する．ここで，$S = V(E) \setminus V(N), \; S_E = V(E \cup \{ c \}) \setminus V(N), \; S_N = V(E) \setminus V(N \land \{ c \})$とする．
 	補題\ref{chapter04:lemma:for_alg_2}より，$S_E, S_N$は$S_E \cup S_N \supseteq S,\; S_E \cap S_N = \phi$を満たす$L^m$の構成的部分集合である．
-	これに加え，これまでの証明の中で，それぞれのif文での出力の正当性が示されているため，最終的に関数を再帰的に呼び出す\ref{chapter04:algorithm:if_4}行目のif文の出力も正しいことが導かれ，Algorithm \ref{chapter04:algorithm:PDmain_alg_num}の正当性が示された．
+	これに加え，これまでの証明の中で，それぞれのif文での出力の正当性が示されているため，最終的に関数を再帰的に呼び出す\ref{chapter04:algorithm:if_4}行目のif文の出力も正しいことが導かれ，アルゴリズム \ref{chapter04:algorithm:PDmain_alg_num}の正当性が示された．
 	\par
-	次に，Algorithm \ref{chapter04:algorithm:PDmain_alg_num}の有限停止性を示す．
+	次に，アルゴリズム \ref{chapter04:algorithm:PDmain_alg_num}の有限停止性を示す．
 	$4$つに分岐するif文の中で，\ref{chapter04:algorithm:if_1}, \ref{chapter04:algorithm:if_2}, \ref{chapter04:algorithm:if_3}行目のif文に入った場合は明らかに有限停止性を有する．
-	\ref{chapter04:algorithm:if_4}行目のif文に入った場合，$m \notin K[\bar{X}]$を満たす単項式$m$が存在するが，\ref{chapter04:algorithm:TE}, \ref{chapter04:algorithm:TN}行目にて，もともと$m$が属していた単項式集合$T_j$から$m$が取り除かれるため，集合族$\mathscr{T}_E$及び$\mathscr{T}_N$全体では，$\bar{m} \notin K[\bar{X}]$を満たす単項式は必ず$1$つ減っている．そのため，再帰呼び出しの中で必ず\ref{chapter04:algorithm:if_3}行目のif文の条件を満たすときが訪れるため，Algorithm \ref{chapter04:algorithm:PDmain_alg_num}は有限停止性を有する．
+	\ref{chapter04:algorithm:if_4}行目のif文に入った場合，$m \notin K[\bar{X}]$を満たす単項式$m$が存在するが，\ref{chapter04:algorithm:TE}, \ref{chapter04:algorithm:TN}行目にて，もともと$m$が属していた単項式集合$T_j$から$m$が取り除かれるため，集合族$\mathscr{T}_E$及び$\mathscr{T}_N$全体では，$\bar{m} \notin K[\bar{X}]$を満たす単項式は必ず$1$つ減っている．そのため，再帰呼び出しの中で必ず\ref{chapter04:algorithm:if_3}行目のif文の条件を満たすときが訪れるため，アルゴリズム \ref{chapter04:algorithm:PDmain_alg_num}は有限停止性を有する．
 \end{proof}
 
 \begin{corollary}
-	Algorithm \ref{chapter04:algorithm:PD_alg_num}は正当性と有限停止性を有する．
+	アルゴリズム \ref{chapter04:algorithm:PD_alg_num}は正当性と有限停止性を有する．
 \end{corollary}
 
 

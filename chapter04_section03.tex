@@ -1,6 +1,6 @@
 % chapter 04
 \section{パラメータ空間の分割の効率化}
-Algorighm \ref{chapter04:algorithm:PD_alg_num}, \ref{chapter04:algorithm:PDmain_alg_num}で包括的多項式項集合系を直接的に構成し，各セグメントにおけるSGBDの計算を行うことでComprehensive SGBDの問題を解くことが可能である．しかし，あくまでも直接的な方法であるため，効率的な方法であるとは言えない．例えば，次の例のように，SGBDの計算を踏まえたときに無駄なセグメントが発生してしまう可能性がある．
+アルゴリズム \ref{chapter04:algorithm:PD_alg_num}, \ref{chapter04:algorithm:PDmain_alg_num}で包括的多項式項集合系を直接的に構成し，各セグメントにおけるSGBDの計算を行うことでComprehensive SGBDの問題を解くことが可能である．しかし，あくまでも直接的な方法であるため，効率的な方法であるとは言えない．例えば，次の例のように，SGBDの計算を踏まえたときに無駄なセグメントが発生してしまう可能性がある．
 \begin{example}
 	次のような多項式集合$F \subset (K[a, b])[x, y]$を考える．
 	\begin{equation*}
@@ -23,22 +23,42 @@ Algorighm \ref{chapter04:algorithm:PD_alg_num}, \ref{chapter04:algorithm:PDmain_
 			\end{aligned}
 		\right\}
 	\end{equation*}
-	この$\mathcal{P}$自体は，パラメータ制約がconsistentなCPSSの条件を満たしているが，セグメント$P_4$では$f_1 = x^3 + x^2 + y$となっているため，SGBDの計算を行うAlgorithm \ref{chapter03:algorithm:SGBD}の1〜9行目のfor文において$x^2$が取り除かれてしまう．すなわち，$P_4$から$x^2$と$b$が必要なくなり，実質的に$P_3$と等しいセグメントとなってしまっている．
+	この$\mathcal{P}$自体は，パラメータ制約がconsistentなCPSSの条件を満たしているが，セグメント$P_4$では$f_1 = x^3 + x^2 + y$となっているため，SGBDの計算を行うアルゴリズム \ref{chapter03:algorithm:SGBD}の1〜9行目のfor文において$x^2$が取り除かれてしまう．すなわち，$P_4$から$x^2$と$b$が必要なくなり，実質的に$P_3$と等しいセグメントとなってしまっている．
 \end{example}
-このように，特にAlgorithm \ref{chapter03:algorithm:SGBD}の1〜9行目のfor文を主な原因として，無駄なセグメントが発生してしまう可能性がある．
+このように，特にアルゴリズム \ref{chapter03:algorithm:SGBD}の1〜9行目のfor文を主な原因として，無駄なセグメントが発生してしまう可能性がある．
 
-\subsection{affine Newton polyhedronを用いた改善}
-
-
-
-
-
-
+\subsection{affine Newton polyhedron $\mathcal{N}_{\mathrm{aff}}(t)$を用いた改善}
+\label{chapter04:subsection:section_num}
+第\ref{chapter03:chapter_num}章で定義したaffine Newton polyhedronは，項$t \in T_n$に関して取ると，各変数において$t$より次数の低い全ての項を得ることができる．つまり，$\mathcal{N}_{\mathrm{aff}}(t)$は$t$を倍単項式として持つような項全体の集合と言い換えることができる（ただし，$t$自身も含まれている）．よって，CPSSを構成するアルゴリズム \ref{chapter04:algorithm:PD_alg_num}, \ref{chapter04:algorithm:PDmain_alg_num}の段階で項のaffine Newton polyhedronを項集合から取り除くことで，アルゴリズム\ref{chapter03:algorithm:SGBD}の1〜9行目の一部に相当する手続きを予め行うことができる．
+つまり，アルゴリズム\ref{chapter04:algorithm:PDmain_alg_num}の16行目において，
+$$\mathscr{T}_N \gets \{ T_1, \dots, T_{j-1}, (T_j \cup \{ t \}) \setminus \{ m \}, T_{j+1}, \dots, T_k \})$$
+としていたものを，
+$$\mathscr{T}_N \gets \{ T_1, \dots, T_{j-1}, (T_j \setminus \mathcal{N}_{\mathrm{aff}}(t))\cup \{ t \}, T_{j+1}, \dots, T_k \})$$
+と置き換えることで，これが実現可能となる．
 
 \subsection{加群$R^k$の極小な包括的\groebner{}基底系を用いた改善}
-
-
-
+\ref{chapter04:subsection:section_num}節で述べたような改善は，加群の極小な包括的\groebner{}基底系（CGS）を考えることでも可能となる．$R = K[\bar{X}, \bar{A}]$とし，多項式集合$F = \{f_1, \dots, f_k\} \subset R$において，多項式$f_i \in F$は
+$$f_i = t_{i1} + t_{i2} + \cdots + t_{ir_i} \in F$$
+と表されるものとする．ベクトル$\bm{e_i} \in \mathbb{R}^k$はKronecker delta $\delta_{ij}$を用いて$\bm{e_i} = (\delta_{ij})$と表されるものとする．このとき，加群$R^k$の部分加群$M$を次のように定める．
+$$M = \bigcup_{i=1}^k \{t_{i1}\bm{e_i}, t_{i2}\bm{e_i}, \dots, t_{ir_i}\bm{e_i}\} \subset R^k$$
+部分加群$M$の生成系は全て単項から成るため，$M$はそのまま包括的\groebner{}基底（CGB）となっている．
+しかし，極小なCGSとはなっていない．極小な\groebner{}基底では，基底に項$t_\alpha, t_\beta \in T_n$が存在し，$t_\beta \mid t_\alpha$を満たすとき，基底から$t_\alpha$が取り除かれる．
+今，SGBDでは倍単項式の存在する項を取り除きたいので，$t_\beta$が取り除きたい項である．
+そこで，多項式の次数を反転させるために，次を定義する．
+\begin{definition}[相反多項式]
+	多項式$f(x_1, \dots, x_n) \in K[\bar{X}]$において，$f$のに含まれる項各変数$x_i \; (i \in \{1, \dots, n\})$の最大のべきを$d_i$とおく．このとき，
+	$$f(x_1^{-1}, \dots, x_n^{-1})\cdot \prod_{i=1}^n d_i$$
+	を$f$の\textbf{相反多項式}といい，$f^{\star}$で表す．
+\end{definition}
+これを踏まえて，部分加群の構成の段階から見直す．多項式$f = t_{i1} + t_{i2} + \cdots + t_{ir_i}$の相反多項式$f^{\star}$を$f^{\star} = t_{i1}^{\star} + t_{i2}^{\star} + \cdots + t_{ir_i}^{\star}$とする．ただし，$f^\star$の項$t_{ij}^\star$は，元の多項式$f$の項$t_{ij}$に対応している．
+加群$R^k$の部分加群$M^\star$を
+$$M^\star = \bigcup_{i=1}^k \{t_{i1}^{\star}\bm{e_i}, t_{i2}^{\star}\bm{e_i}, \dots, t_{ir_i}^{\star}\bm{e_i}\} \subset R^k$$
+このとき，部分加群$M^{\star}$の極小なCGSを考える．今，項$t_\alpha^\star, t_\beta^\star$において，
+\begin{equation}
+	t_\alpha^\star \mid t_\beta^\star \label{chapter04:equation:t_star}
+\end{equation}
+が成り立っているとする．このとき，極小なCGSを考えると，$t_\beta^{\star}$が基底から取り除かれる．
+式(\ref{chapter04:equation:t_star})より，$t_\beta \mid t_\alpha$が成り立つため，結果的に取り除きたい項である$t_\beta$を取り除くことができている．
 
 
 

@@ -21,6 +21,6 @@
 \contentsline {section}{\numberline {4.1}はじめに}{18}% 
 \contentsline {section}{\numberline {4.2}包括的多項式項集合系の構成}{19}% 
 \contentsline {section}{\numberline {4.3}パラメータ空間の分割の効率化}{22}% 
-\contentsline {subsection}{\numberline {4.3.1}affine Newton polyhedronを用いた改善}{23}% 
+\contentsline {subsection}{\numberline {4.3.1}affine Newton polyhedron $\mathcal {N}_{\mathrm {aff}}(t)$を用いた改善}{23}% 
 \contentsline {subsection}{\numberline {4.3.2}加群$R^k$の極小な包括的Gr\"{o}bner基底系を用いた改善}{23}% 
-\contentsline {chapter}{参考文献}{24}% 
+\contentsline {chapter}{参考文献}{25}% 

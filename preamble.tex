@@ -6,7 +6,6 @@
 \usepackage{amsmath, amssymb, amsthm}
 % \usepackage{ascmac}
 \usepackage{mathtools}
-% \mathtoolsset{showonlyrefs=true}
 \usepackage{bm}
 \usepackage{graphicx}
 
@@ -55,9 +54,14 @@
 \newtheorem*{remark*}{remark}
 \def\proofname{証明}
 
+\makeatletter
+\renewcommand{\ALG@name}{アルゴリズム}% algorithmicのAlgorithmを日本語に
+\makeatother
+
 %-------番号のカスタマイズ
 \numberwithin{equation}{section}
 \numberwithin{theorem}{section}
+\setcounter{tocdepth}{3}% 目次をsubsubsectionから
 
 %-------マクロ
 \newcommand{\groebner}[1]{Gr\"{o}bner#1}
