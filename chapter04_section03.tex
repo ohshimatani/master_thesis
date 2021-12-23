@@ -1,0 +1,48 @@
+% chapter 04
+\section{パラメータ空間の分割の効率化}
+Algorighm \ref{chapter04:algorithm:PD_alg_num}, \ref{chapter04:algorithm:PDmain_alg_num}で包括的多項式項集合系を直接的に構成し，各セグメントにおけるSGBDの計算を行うことでComprehensive SGBDの問題を解くことが可能である．しかし，あくまでも直接的な方法であるため，効率的な方法であるとは言えない．例えば，次の例のように，SGBDの計算を踏まえたときに無駄なセグメントが発生してしまう可能性がある．
+\begin{example}
+	次のような多項式集合$F \subset (K[a, b])[x, y]$を考える．
+	\begin{equation*}
+		F = \left\{
+			\begin{aligned}
+				f_1 &= ax^3 + bx^2 + y \\
+				f_2 &= y^3 + x
+			\end{aligned}
+		\right\}
+	\end{equation*}
+	この例において，CPSSは次のようになる．
+	\begin{equation*}
+		\mathcal{P} = 
+		\left\{
+			\begin{aligned}
+				&P_1 = \left( \{a, b\}, \{\}, \{ \{y\}, \{y^3, x\} \} \right), \\
+				&P_2 = \left( \{a\}, \{b\}, \{ \{x^2, y\}, \{y^3, x\} \} \right), \\
+				&P_3 = \left( \{b\}, \{a\}, \{ \{x^3, y\}, \{y^3, x\} \} \right), \\
+				&P_4 = \left( \{\}, \{a, b\}, \{ \{x^3, x^2, y\}, \{y^3, x\} \} \right)
+			\end{aligned}
+		\right\}
+	\end{equation*}
+	この$\mathcal{P}$自体は，パラメータ制約がconsistentなCPSSの条件を満たしているが，セグメント$P_4$では$f_1 = x^3 + x^2 + y$となっているため，SGBDの計算を行うAlgorithm \ref{chapter03:algorithm:SGBD}の1〜9行目のfor文において$x^2$が取り除かれてしまう．すなわち，$P_4$から$x^2$と$b$が必要なくなり，実質的に$P_3$と等しいセグメントとなってしまっている．
+\end{example}
+このように，特にAlgorithm \ref{chapter03:algorithm:SGBD}の1〜9行目のfor文を主な原因として，無駄なセグメントが発生してしまう可能性がある．
+
+\subsection{affine Newton polyhedronを用いた改善}
+
+
+
+
+
+
+
+\subsection{加群$R^k$の極小な包括的\groebner{}基底系を用いた改善}
+
+
+
+
+
+
+
+
+
+

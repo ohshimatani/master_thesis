@@ -13,10 +13,9 @@
 \par
 このように「そのまま\groebner{}基底である」ような項順序を検出する問題は，\emph{\groebner{} basis detection}\cite{gritzmann1993minkowski}や\emph{structural \groebner{} basis detection}\cite{sturmfels1997structural}という名前が付けられており，何れもSturmfelsらによって解かれた既知の問題である．
 \par
-一方で，パラメータを伴った多項式環において，場合分けされたパラメータ空間と，それぞれに対応する\groebner{}基底を組にしたものを\emph{包括的\groebner{}基底系}\cite{weispfenning1992comprehensive}と呼ぶ．包括的\groebner{}基底系は，\groebner{}基底計算の中で，\textrm{S-polynomial}の計算が行われる際にパラメータの付いた係数が$0$か否かで場合分けを行い，項を確定させながら\groebner{}基底の計算を行っている．
+一方で，パラメータを伴った多項式環において，場合分けされたパラメータ空間と，それぞれに対応する\groebner{}基底を組にしたものを\textbf{包括的\groebner{}基底系}\cite{weispfenning1992comprehensive}と呼ぶ．包括的\groebner{}基底系は，\groebner{}基底計算の中で，\textrm{S-polynomial}の計算が行われる際にパラメータの付いた係数が$0$か否かで場合分けを行い，項を確定させながら\groebner{}基底の計算を行っている．
 \par
 これら$2$つの議論を踏まえ，本論文では，(structural) \groebner{} basis detectionにおいて，問題の設定をパラメータを伴った多項式環へと拡張し，それに付随して発見された定理についても取り上げる．
 まず第\ref{chapter02:chapter_num}章では，Sturmfelsらとは違ったアプローチでstructural \groebner{} basis detectionの問題を捉え，そこで新たに発見された定理とアルゴリズムを紹介する．
 次に，第\ref{chapter03:chapter_num}章では，\groebner{} basis detectionとstructural \groebner{} basis detectionについて，既に知られている部分について述べる．
-第\ref{chapter04:chapter_num}章では，これらの問題をパラメータを伴った多項式環へと拡張するために，パラメータ空間を分割するためのアルゴリズムの直接的な方法を紹介する．
-最後に，第\ref{chapter05:chapter_num}章では，パラメータ空間の分割を効率化するための議論を行う．
+第\ref{chapter04:chapter_num}章では，これらの問題をパラメータを伴った多項式環へと拡張するために，パラメータ空間を分割するためのアルゴリズムの直接的な方法と，分割の効率化のための方法について記す．

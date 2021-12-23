@@ -1,12 +1,13 @@
 % chapter 04
 \section{はじめに}
-第\ref{chapter03:chapter_num}章では，\groebner{} basis detection及びstructural \groebner{} basis detectionにおけるSturmfelsらの先行研究について述べた．この章では，特にstructural \groebner{} basis detectionの問題において，対象の多項式環が，パラメータを伴った多項式環へと拡張された場合について述べる．
+第\ref{chapter03:chapter_num}章では，\groebner{} basis detection及びstructural \groebner{} basis detectionにおけるSturmfelsらの先行研究について述べた．
+この章では，特にstructural \groebner{} basis detectionの問題において，対象の多項式環が，パラメータを伴った多項式環へと拡張された場合について述べる．
 \par
 簡単な例を考える．
 \begin{example}
 	\label{chapter04:example:PD_example}
-	$K[a][x, y, z]$を$x, y, z$に関する多項式環とする．次のような多項式集合$F\subset K[a][x, y, z]$を考える．
-	\begin{equation}
+	$K[a][x, y, z]$を主変数$x, y, z$に関する多項式環とする．次のような多項式集合$F\subset K[a][x, y, z]$を考える．
+	\begin{equation*}
 		F = \left\{
 			\begin{aligned}
 				f_1 &= x + (a-3)y^2, \\
@@ -14,7 +15,7 @@
 				f_3 &= y + z^3
 			\end{aligned}
 		\right\}
-	\end{equation}
+	\end{equation*}
 	\begin{itemize}
 		\item $a - 3 \ne 0$のとき\\
 			$f_1$の$y^2$の項は$0$にならず，SGBDを行うと，$$\mathrm{HT}_{\bm{w_1}}(f_1) = y^2, \quad \mathrm{HT}_{\bm{w_1}}(f_2) = x^3,\quad \mathrm{HT}_{\bm{w_1}}(f_3) = z^3$$を満たすような項順序$\bm{w_1}$を求めたい．実際，$\bm{w_1}=(1, 2, 3)$などが条件を満たすベクトルとなる．
@@ -22,8 +23,20 @@
 			$f_1$の$y^2$の項が$0$となるため，残った項でSGBDを行うと，$$\mathrm{HT}_{\bm{w_2}}(f_1) = x,\quad \mathrm{HT}_{\bm{w_2}}(f_2) = z,\quad \mathrm{HT}_{\bm{w_3}}(f_3) = y$$を満たすような項順序$\bm{w_2}$を求めたい．実際，$\bm{w_2} = (1, 16, 4)$などが条件を満たすベクトルとなる．
 	\end{itemize}
 \end{example}
-このように，パラメータを伴った多項式環においては，パラメータの付いた係数が$0$となるか否かによって多項式に含まれる項が変わるため，項を確定させるためにパラメータ空間を分割させる必要がある．逆に，最初にパラメータ空間を確定させる事ができれば，SGBDにおいてはその後に項同士の計算が発生しないため，パラメータを伴わない通常のSGBDに帰着することができる．
-
+このように，パラメータを伴った多項式環においては，パラメータの付いた係数が$0$となるか否かによって多項式に含まれる項が変わるため，項を確定させるためにパラメータ空間を包括的に分割する必要がある．逆に，最初にパラメータ空間の分割を行い項を確定させる事ができれば，SGBDにおいてはその後に項同士の計算が発生しないため，パラメータを伴わない通常のSGBDに帰着することができる．
+このように，パラメータを伴った多項式環におけるSGBDの問題を，次のように定義する．尚，以降は，多項式環$K[\bar{X}, \bar{A}]$を，主変数$\bar{X}$に関する多項式環$(K[\bar{A}])[\bar{X}]$と同じものとして考える．
+\newpage
+\begin{problem}[comprehensive structural \groebner{} basis detection; comprehensive SGBD]
+	$S \subseteq L^m$を代数構成的集合(algebraically constructible subsets)とする．多項式集合$F \subset K[\bar{X}, \bar{A}]$に対して，
+	集合$\tilde{\mathcal{G}}$を次の条件を満たすように構成せよ．
+	\begin{itemize}
+		\item $S_1, \dots, S_\ell$は構成的部分集合
+		\item $\displaystyle \bigcup_{i=1}^\ell S_i \supseteq S, \; S_i \cap S_j = \phi \quad (\forall i, j \in \{1, \dots, \ell\}, \; i \ne j)$
+		\item $\tilde{\mathcal{G}} = \{(S_1, \bm{w_1}), \dots, (S_\ell, \bm{w_\ell}))\}$
+		\item $\bar{a} \in S_i$に対し，$\sigma_{\bar{a}}(F)$が項順序$\bm{w_i}$におけるイデアル$\ideal{\sigma_{\bar{a}}(F)}$の\groebner{}基底
+		\item そのような項順序がない場合，$\bm{w_i} = 0$
+	\end{itemize}
+\end{problem}
 
 
 

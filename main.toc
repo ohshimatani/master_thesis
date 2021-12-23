@@ -17,8 +17,10 @@
 \contentsline {section}{\numberline {3.3}structural Gr\"{o}bner basis detection\cite {sturmfels1997structural}}{14}% 
 \contentsline {subsection}{\numberline {3.3.1}$n = k$のとき}{14}% 
 \contentsline {subsection}{\numberline {3.3.2}$n \not =k$のとき}{17}% 
-\contentsline {chapter}{\numberline {第4章}パラメータを伴った場合への拡張}{18}% 
+\contentsline {chapter}{\numberline {第4章}SGBDのパラメータを伴った場合への拡張}{18}% 
 \contentsline {section}{\numberline {4.1}はじめに}{18}% 
-\contentsline {section}{\numberline {4.2}包括的多項式項集合系の構成}{18}% 
-\contentsline {chapter}{\numberline {第5章}パラメータ空間の分割の効率化}{20}% 
-\contentsline {chapter}{参考文献}{21}% 
+\contentsline {section}{\numberline {4.2}包括的多項式項集合系の構成}{19}% 
+\contentsline {section}{\numberline {4.3}パラメータ空間の分割の効率化}{22}% 
+\contentsline {subsection}{\numberline {4.3.1}affine Newton polyhedronを用いた改善}{23}% 
+\contentsline {subsection}{\numberline {4.3.2}加群$R^k$の極小な包括的Gr\"{o}bner基底系を用いた改善}{23}% 
+\contentsline {chapter}{参考文献}{24}% 

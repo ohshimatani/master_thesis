@@ -1,26 +1,27 @@
 % chapter 04
 \section{包括的多項式項集合系の構成}
-まず，必要な操作と用語について定義する．
+comprehensive SGBDを解くために，まずは必要な操作と用語について定義する．
 \par
-単項式集合族または項集合族である$\mathscr{T}$に対し，$\displaystyle \mathrm{PolySet}(\mathscr{T}) = \left\{ \sum_{t \in T} t \; : \; T \in \mathscr{T} \right\}$
-と書く．
-$K[\bar{X}, \bar{A}]$を$\bar{X}$に関する多項式環$K[\bar{A}][\bar{X}]$とみなしたときの単項式$m \in K[\bar{X}, \bar{A}]$と$\bar{Y} \subset \bar{X} \cup \bar{A}$に対し，$m$を$\bar{Y}$の単項式とみたときの係数部分と項の部分をそれぞれ$\mathrm{coeff}_{\bar{Y}}(m), \; \mathrm{term}_{\bar{Y}(m)}$と定義する．
+単項式集合族または項集合族である$\mathscr{T}$に対し，$$\displaystyle \mathrm{PolySet}(\mathscr{T}) = \left\{ \sum_{t \in T} t \; : \; T \in \mathscr{T} \right\}$$
+と定義する．
+単項式$m \in K[\bar{X}, \bar{A}]$と$\bar{Y} \subset \bar{X} \cup \bar{A}$に対し，$m$を$\bar{Y}$の単項式とみたときの係数部分と項の部分をそれぞれ$\mathrm{coeff}_{\bar{Y}}(m), \; \mathrm{term}_{\bar{Y}(m)}$と定義する．
 $a \in L^m$に対して，特化準同型(specialization homomorphism)$\; \sigma_a : K[\bar{X}, \bar{A}] \to L[\bar{X}]$を各$a_i \in \bar{A}$への$a$の自然な代入として定義する．
 \begin{definition}
 	\label{chapter04:definition:parameter_constraint}
-	集合$E, N \subset K[\bar{A}]$に対して，組$(E, N)$を\textbf{パラメータ制約(parametric constraint)}と呼ぶ．
+	集合$E, N \subset K[\bar{A}]$に対して，組$(E, N)$を\textbf{パラメータ制約(parametric constraint)}と呼ぶ．\\
 	$V(E) \setminus V(N) \ne \phi$のとき，$(E, N)$は\textbf{consistent}であるといい，$V(E) \setminus V(N) = \phi$のとき，$(E, N)$は\textbf{inconsistent}であるという．
 	$S = V(E) \setminus V(N)$を満たすとき，単に$S$をパラメータ制約と呼ぶ場合もある．
 \end{definition}
-目的とするものは，例\ref{chapter04:example:PD_example}のように，
-\begin{itemize}
-	\item パラメータ空間の制約$S$
-	\item $S$を反映させた多項式集合$F$又は項集合族$\mathscr{T}$
-\end{itemize}
-の$2$つをセットにしてたものがパラメータ空間の分割の数だけ必要となる．パラメータ空間が包括的に分割されているかに注意しながら，多項式集合の項の確定を行ったものが次の定義である．
+% 目的とするものは，例\ref{chapter04:example:PD_example}のように，
+% \begin{itemize}
+% 	\item パラメータ空間の制約$S$
+% 	\item $S$を反映させた多項式集合$F$又は項集合族$\mathscr{T}$
+% \end{itemize}
+% の$2$つをセットにしてたものがパラメータ空間の分割の数だけ必要となる．
+パラメータ空間が包括的に分割されているかに注意しながら，多項式集合の項の確定を行うためのものが次の定義である．
 \begin{definition}[包括的多項式項集合系（comprehensive polynomial support system; CPSS）]
 	\label{chapter04:definition:CPSS}
-	$S \subseteq L^m$を代数構成的集合(algebraically constructible subsets)とする．多項式集合$F \subset K[\bar{X}, \bar{A}]$が以下の条件を満たすとき，$\mathcal{P} = \{ (S_1, \mathscr{T}_1), \dots , (S_\ell, \mathscr{T}_\ell)  \}$を$F$に関する$S$上の\textbf{包括的多項式項集合系（comprehensive polynomial support system; CPSS）}と呼ぶ．
+	$S \subseteq L^m$を代数構成的集合とする．多項式集合$F \subset K[\bar{X}, \bar{A}]$が以下の条件を満たすとき，$\mathcal{P} = \{ (S_1, \mathscr{T}_1), \dots , (S_\ell, \mathscr{T}_\ell)  \}$を$F$に関する$S$上の\textbf{包括的多項式項集合系（comprehensive polynomial support system; CPSS）}と呼ぶ．
 	\begin{itemize}
 		\item $S_1, \dots, S_\ell$は$L^m$の構成的部分集合
 		\item $\displaystyle \bigcup_{i=1}^\ell S_i\supseteq S, \; S_i \cap S_j = \phi \quad (\forall i,j \in \{ 1, \dots, \ell \}, \; i \ne j)$
@@ -30,8 +31,182 @@ $a \in L^m$に対して，特化準同型(specialization homomorphism)$\; \sigma
 	また，$S=\phi$であるとき，任意の多項式集合$F$の$S$上の包括的多項式項集合系を$\phi$とする．
 \end{definition}
 
-\begin{remark}
+\begin{remark*}
 	包括的多項式項集合系を求める実際のアルゴリズムでは，扱いやすさの観点から$L^m$の構成的部分集合$S_i$をパラメータ制約$(E_i, N_i)$と分けて記述する．尚，元の集合$S_i$は，パラメータ制約のAffine多様体の差$V(E_i) \setminus V(N_i)$として表現できる．
-\end{remark}
+\end{remark*}
 
-次に，包括的多項式項集合系を構成するためのアルゴリズムにおける重要な補題を記す．
+次に，包括的多項式項集合系を構成するためのアルゴリズムに関する補題を記す．
+
+\begin{lemma}
+	\label{chapter04:lemma:for_alg_1}
+	パラメータ制約$(E, N)$と多項式集合$F \subset K[\bar{X}, \bar{A}]$に対して，$\forall t \in M_{\bar{X}}(F), t \in K[\bar{X}]$を満たすとき，$F$の$V(E) \setminus V(N)$上の包括的多項式項集合系は$\{(E, N, M_{\bar{X}}(F))\}$となる．
+\end{lemma}
+
+\begin{proof}
+	仮定より，$\forall a \in V(E) \setminus V(N), \sigma_a(F) = F$が成立する．よって，$T_{\bar{X}}(\sigma_a(F)) = T_{\bar{X}}(F)$．
+\end{proof}
+
+\begin{lemma}
+	\label{chapter04:lemma:for_alg_2}
+	パラメータ制約$(E, N)$に対し$S = V(E) \setminus V(N)$とする．多項式集合$F \subset K[\bar{X}, \bar{A}]$に対し，$F$に含まれる多項式の中で$m \notin K[\bar{X}]$を満たす単項式$m$を含むものが存在すると仮定する．ただし，$c \in K,\; t \in T_n, \; m = c \cdot t$とする．このとき，$S_E = V(E \cup \{ c \}) \setminus V(N), \; S_N = V(E) \setminus V(N \land \{ c \})$は$S_E \cup S_N \supseteq S,\; S_E \cap S_N = \phi$を満たす$L^m$の構成的部分集合である．
+\end{lemma}
+
+
+\begin{proof}
+	まず
+	\begin{align*}
+		S_E &= V(E \cup \{ c \}) \setminus V(N) \\
+		&= (V(E) \cap V(\{ c \})) \setminus V(N) \\
+		&= \left( V(E) \setminus V(N) \right) \cap \left( V(\{ c \}) \setminus V(N) \right) \\
+		&= S \cap \tilde{N}
+	\end{align*}
+	ただし，$\tilde{N} :=  V(\{ c \}) \setminus V(N)$．
+	次に，
+	\begin{align*}
+		S_N &= V(E) \setminus V(N \land \{ c \}) \\
+		&= V(E) \setminus ( V(N) \cup V(\{ c \}) ) \\
+		&= \left( V(E) \setminus V(N) \right) \cap \left( V(E) \setminus V(\{ c \}) \right) \\
+		&= S \cap \tilde{E}
+	\end{align*}
+	となる．ただし，$\tilde{E} := V(E) \setminus V(\{ c \})$．
+	よって，
+	\begin{align}
+		S_E \cup S_N &= (S \cap \tilde{N}) \cup (S \cap \tilde{E}) \notag\\
+		&= ((S \cap \tilde{N}) \cup S) \cap ((S \cap \tilde{N}) \cup \tilde{E}) \notag\\
+		&= S \cap ((S \cap \tilde{N}) \cup \tilde{E}) \notag\\
+		&= S \cap ((S \cup \tilde{E}) \cap (\tilde{N} \cup \tilde{E})) \notag\\
+		&= S \cap (S \cup \tilde{E}) \cap (\tilde{N} \cup \tilde{E}) \label{chapter04:equation:lem_2_eq_se_sn_1}
+	\end{align}
+	ここで，この式(\ref{chapter04:equation:lem_2_eq_se_sn_1})に出てきた$\tilde{N} \cup \tilde{E}$は
+	\begin{align}
+		\tilde{N} \cup \tilde{E} &= (V(\{ c \}) \setminus V(N)) \cup (V(E) \setminus V(\{ c \})) \notag \\
+		&= (V(N)^c \cap V(\{ c \})) \cup (V(\{ c \})^c \cap V(E)) \notag \\
+		&= \{ (V(N)^c \cap V(\{ c \}) \cup V(\{c\})^c) \} \cap \{ (V(N)^c \cap V(\{ c \}) \cup V(E)) \} \notag \\
+		&= \{ (V(N)^c \cup V(\{c\})^c) \cap L^m\} \cap \{ (V(N)^c \cup V(E)) \cap (V(\{c\}) \cup V(E)) \} \notag \\
+		&= (V(N)^c \cup V(\{c\})^c) \cap (V(N)^c \cup V(E)) \cap (V(\{c\}) \cup V(E)) \label{chapter04:equation:lem_2_eq_nc_ec}
+	\end{align}
+	と式変形できる．
+	今，$S = V(E) \setminus V(N) = V(N)^c \cap V(E)$
+	より，
+	$V(N)^c \supseteq S, \; V(E) \supseteq S$
+	が成り立つ．よって，
+	$$V(N)^c \cup V(\{c\})^c \supseteq S, \quad V(N)^c \cup V(E) \supseteq S, \quad V(\{c\}) \cup V(E) \supseteq S$$
+	が成立し，これと(\ref{chapter04:equation:lem_2_eq_nc_ec})の結果より，
+	\begin{align}
+		\tilde{N} \cup \tilde{E} &\supseteq S \cap S \cap S \notag\\
+		&\supseteq S \label{chapter04:equation:lem_2_eq_se_sn_2}
+	\end{align}
+	が成立する．
+	よって，$S \cup \tilde{E} \supseteq S$であることと，(\ref{chapter04:equation:lem_2_eq_se_sn_1}), (\ref{chapter04:equation:lem_2_eq_se_sn_2})より，
+	\begin{align}
+		S_E \cup S_N &\supseteq S \cap S \cap S \notag\\
+		&\supseteq S \label{chapter04:algorithm:if_4_proof_1}
+	\end{align}
+	また，
+	\begin{align}
+		S_E \cap S_N &= (S \cap \tilde{E}) \cap (S \cap \tilde{N}) \notag \\
+		&= S \cap (\tilde{E} \cap \tilde{N}) \notag \\
+		&= \phi \label{chapter04:algorithm:if_4_proof_2}
+	\end{align}
+	以上(\ref{chapter04:algorithm:if_4_proof_1}), (\ref{chapter04:algorithm:if_4_proof_2})より，$S_E, S_N$は$S_E \cup S_N \supseteq S,\; S_E \cap S_N = \phi$を満たす$L^m$の構成的部分集合である．
+\end{proof}
+
+これらの補題を基に，多項式集合$F$から，その包括的多項式集合系$\mathcal{P}$を求めるアルゴリズムを記す．ただし，集合$A, B$に対して，$A \land B := \{ ab \; : \: a \in A, \; b \in B \}$と定義する．
+
+\begin{algorithm}[htbp]
+\caption{パラメータ空間の分割（呼び出し）}
+\label{chapter04:algorithm:PD_alg_num}
+\begin{algorithmic}[1]
+\Require 多項式集合$F=\{ f_1, \dots, f_k \} \subset K[\bar{X}, \bar{A}]$
+\Ensure $F$の包括的多項式項集合系$\mathcal{P}=\{ (E_1, N_1, \mathscr{T}_1), \dots, (E_\ell, N_\ell, \mathscr{T}_\ell) \}$
+\Function{$\mathrm{ParameterDivision}$}{$F$}
+	\State \Return $ \mathrm{ParameterDivisionMain}(\{(\phi, \{ 1 \}, M_{\bar{X}}(F))\})$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[htbp]
+	\caption{パラメータ空間の分割（本体）}
+	\label{chapter04:algorithm:PDmain_alg_num}
+	\begin{algorithmic}[1]
+
+		\Require $\{ (E, N, \mathscr{T}) \}$（ただし$\mathscr{T} = \{ T_1, \dots, T_k \}, \; N = \{ a_N \}, \; a_N \in K[\bar{A}]$とする．）
+		\Ensure $\mathrm{PolySet}(\mathscr{T})$の$V(E) \setminus V(N)$上の包括的多項式項集合系$\{ (E_1, N_1, \mathscr{T}_1), \dots, (E_{\ell^\prime}, N_{\ell^\prime}, \mathscr{T}_{\ell^\prime})\}$
+
+		\Function{$\mathrm{ParameterDivisionMain}$}{$\{ (E, N, \mathscr{T}) \}$}
+		\If{$E \ne \phi \land \mathrm{ReducedGr\ddot{o}bnerBasis}(E, \prec_{\bar{A}}) = \{ 1 \}$} \label{chapter04:algorithm:if_1}
+			\State \Return $\phi$
+		\EndIf
+		\If{$a_N \ne 1 \land E \ne \phi \land \mathrm{ReducedGr\ddot{o}bnerBasis}(E \cup \{ 1 - y\cdot a_N \}, \prec_{\bar{A}, y}) = \{ 1 \}$} \label{chapter04:algorithm:if_2}
+			\State \Return $\phi$
+		\EndIf
+		\If{$\forall i \in \{ 1, \dots, k \},  \; \forall t_i \in T_i, \; t_i \in K[\bar{X}]$} \label{chapter04:algorithm:if_3}
+			\State \Return $\{ (E, N,\mathscr{T}) \}$
+		\EndIf
+		\If{$\forall j \in \{ 1, \dots, \ell \}, \; \exists t_j \in T_j, \; t_j \notin K[\bar{X}]$} \label{chapter04:algorithm:if_4}
+			\State $m \gets t_j$
+			\State $c, \; t \gets \mathrm{coeff}_{\bar{X}}(m), \; \mathrm{term}_{\bar{X}}(m)$
+		\EndIf
+		\State $\mathscr{T}_E \gets \{ T_1, \dots, T_{j-1}, T_j \setminus \{ m \}, T_{j+1}, \dots, T_k \})$ \label{chapter04:algorithm:TE}
+		\State $\mathscr{T}_N \gets \{ T_1, \dots, T_{j-1}, (T_j \cup \{ t \}) \setminus \{ m \}, T_{j+1}, \dots, T_k \})$ \label{chapter04:algorithm:TN}
+		\State \Return $\mathrm{ParameterDivisionMain}(E \cup \{ c \}, N, \mathscr{T}_E) \cup \mathrm{ParameterDivisionMain}(E, N \land \{ c \}, \mathscr{T}_N)$ \label{chapter04:algorithm:return}
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{lemma}
+	\label{chapter04:lemma:for_alg_3}
+	$E \ne \phi,\; N = \{a_N\} \ne \phi \;(a_N \in K[\bar{A}])$を仮定する．
+	Algorithm \ref{chapter04:algorithm:PDmain_alg_num}において，パラメータ制約$(E, N)$がinconsistentであるとき，必ず\ref{chapter04:algorithm:if_1}，\ref{chapter04:algorithm:if_2}行目のif文の条件のうちのどちらか一方を満たす．
+\end{lemma}
+
+\begin{proof}
+	パラメータ制約$(E, N)$がinconsistentであるとき，$V(E) \setminus V(N) = \phi$が成り立つ．
+	\par
+	$V(E) = \phi$のとき，$E$の固定された項順序における$\ideal{E}$の簡約\groebner{}基底は$\{1\}$となる．つまり，\ref{chapter04:algorithm:if_1}行目のif文に必ず入る．
+	\par
+	$V(E) \ne \phi$のとき，$V(E) \subseteq V(N)$が成り立つ．このとき，$a_N \in \sqrt{E}$を満たす．従って，新たな変数$y \notin \bar{X}\cup \bar{A}$に対して，集合$\left\{E \cup \{1 - y \cdot a_N\}\right\}$の簡約\groebner{}基底が$\{1\}$となる．つまり，\ref{chapter04:algorithm:if_2}行目のif文に必ず入る．
+
+	% \begin{align}
+	% 	&V(E) \setminus V(N) = \phi \notag\\
+	% 	\Leftrightarrow & V(E) \subseteq V(N) \notag\\
+	% 	\Leftrightarrow & \sqrt{E} \subseteq \sqrt{N} \label{chapter04:equation:lem_3_1}
+	% \end{align}
+	% 以下，式(\ref{chapter04:equation:lem_3_1})が成り立つと仮定する．
+	% \par
+	% $V(E) = \phi$のとき，
+\end{proof}
+
+\begin{theorem}
+	Algorithm \ref{chapter04:algorithm:PDmain_alg_num}は正当性と有限停止性を有する．
+% アルゴリズム\ref{chapter04:algorithm:PDmain_alg_num}は正当性と有限停止性を有し，その計算量は$\mathcal{O}(\cdot)$である．
+\end{theorem}
+
+\begin{proof}
+	まず，正当性を示す．
+	\par
+	\ref{chapter04:algorithm:if_1}，\ref{chapter04:algorithm:if_2}行目のif文では，パラメータ制約がinconsistentな場合を検出している．
+	% それぞれ補題\ref{chapter04:lemma:for_alg_1}，\ref{chapter04:lemma:for_alg_2}により，それぞれの場合での包括的多項式項集合系が$\phi$となることが確認できる．
+	逆にこのとき，補題\ref{chapter04:lemma:for_alg_3}より，パラメータ制約がinconsistentな場合を全て検出することができている．
+	\par
+	補題\ref{chapter04:lemma:for_alg_1}より，\ref{chapter04:algorithm:if_3}行目のif文の条件を満たす場合の包括的多項式項集合系は$\{(E, N, \mathscr{T})\}$である．
+	\par
+	\ref{chapter04:algorithm:if_4}行目のif文では，\ref{chapter04:algorithm:if_3}行目のif文の条件を満たしていないため，$T \in \mathscr{T}$においてパラメータを含む項$t$が必ず存在する．ここで，$S = V(E) \setminus V(N), \; S_E = V(E \cup \{ c \}) \setminus V(N), \; S_N = V(E) \setminus V(N \land \{ c \})$とする．
+	補題\ref{chapter04:lemma:for_alg_2}より，$S_E, S_N$は$S_E \cup S_N \supseteq S,\; S_E \cap S_N = \phi$を満たす$L^m$の構成的部分集合である．
+	これに加え，これまでの証明の中で，それぞれのif文での出力の正当性が示されているため，最終的に関数を再帰的に呼び出す\ref{chapter04:algorithm:if_4}行目のif文の出力も正しいことが導かれ，Algorithm \ref{chapter04:algorithm:PDmain_alg_num}の正当性が示された．
+	\par
+	次に，Algorithm \ref{chapter04:algorithm:PDmain_alg_num}の有限停止性を示す．
+	$4$つに分岐するif文の中で，\ref{chapter04:algorithm:if_1}, \ref{chapter04:algorithm:if_2}, \ref{chapter04:algorithm:if_3}行目のif文に入った場合は明らかに有限停止性を有する．
+	\ref{chapter04:algorithm:if_4}行目のif文に入った場合，$m \notin K[\bar{X}]$を満たす単項式$m$が存在するが，\ref{chapter04:algorithm:TE}, \ref{chapter04:algorithm:TN}行目にて，もともと$m$が属していた単項式集合$T_j$から$m$が取り除かれるため，集合族$\mathscr{T}_E$及び$\mathscr{T}_N$全体では，$\bar{m} \notin K[\bar{X}]$を満たす単項式は必ず$1$つ減っている．そのため，再帰呼び出しの中で必ず\ref{chapter04:algorithm:if_3}行目のif文の条件を満たすときが訪れるため，Algorithm \ref{chapter04:algorithm:PDmain_alg_num}は有限停止性を有する．
+\end{proof}
+
+\begin{corollary}
+	Algorithm \ref{chapter04:algorithm:PD_alg_num}は正当性と有限停止性を有する．
+\end{corollary}
+
+
+
+
+
+
+

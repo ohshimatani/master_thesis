@@ -28,10 +28,10 @@ SGBDの問題を解くためには，この$\mathrm{HT}_{\bm{w}}(F)$を適切に
 	$$w_{\varphi(i)}a_{i\varphi(i)} > w_{\rho(i)}a_{i\rho(i)}$$
 	となる．つまり，$\varphi(i) \ne \rho(i)$を満たす$i$が少なくとも$1$つ存在する．
 	従って，$n$個の不等式の総積によって，以下の式が得られる．
-	\begin{align}
+	\begin{align*}
 		& \prod_{i=1}^n w_{\varphi(i)}a_{i\varphi(i)} > \prod_{i=1}^n w_{\rho(i)}a_{i\rho(i)} \\
 		\Longleftrightarrow & \prod_{i=1}^n w_i a_{i\varphi(i)} > \prod_{i=1}^n w_i a_{i\rho(i)}
-	\end{align}
+	\end{align*}
 	両辺を$\displaystyle \prod_{i=1}^n w_i > 0$で割ると，
 	$$\prod_{i=1}^n a_{i\rho(i)} < \prod_{i=1}^n a_{i\varphi(i)}$$
 \end{proof}
@@ -59,8 +59,8 @@ $$X_{\varphi(1)}^{a_{1\varphi(1)}}, \dots, X_{\varphi(n)}^{a_{n\varphi(n)}}$$
 	\caption{solving structural \groebner{} basis detection for $n = k$ {\cite[Algorighm7]{sturmfels1997structural}}}
 	\begin{algorithmic}[1]
 		\Require 多項式集合$F \subset K[\bar{X}]$
-		\Ensure $F$が$\ideal{F}$の\groebner{}基底となるような項順序$w \in \mathbb{R}_{+}^n$ or ゼロベクトル$\bm{0} \in \mathbb{R}^n$
-		\For{$1 \le i, j \le n$}
+		\Ensure $F$が$\ideal{F}$の\groebner{}基底となるような項順序$\bm{w} \in \mathbb{R}_{+}^n$ or ゼロベクトル$\bm{0} \in \mathbb{R}^n$
+		\For{$\ForEach{i, j \in \{1, 2, \dots, n\}$}}
 			\If{$X_j^\alpha \notin T(f_i) \quad (\alpha \ne 0)$}
 				\State $a_{ij} \gets 0$
 			\EndIf

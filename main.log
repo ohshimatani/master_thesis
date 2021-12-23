@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2020.2.26)  22 DEC 2021 23:25
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2020.2.26)  23 DEC 2021 15:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -639,13 +639,18 @@ LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 4.805pt on input line 67.
  [16]) [17]
 第4章
-(./chapter04_section01.tex) (./chapter04_section02.tex [18
+(./chapter04_section01.tex [18
 
-]) [19]
-第5章
-(./main.bbl [20
-
-]) [21
+]) (./chapter04_section02.tex [19] [20]
+LaTeX Font Info:    Font shape `JT1/mc/m/sc' in size <10> not available
+(Font)              Font shape `JT1/mc/m/n' tried instead on input line 122.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 122.
+LaTeX Font Info:    Font shape `JY1/mc/m/sc' in size <10> not available
+(Font)              Font shape `JY1/mc/m/n' tried instead on input line 122.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 122.
+ [21]) (./chapter04_section03.tex [22]) (./main.bbl [23]) [24
 
 ] (./main.aux)
 
@@ -654,12 +659,12 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 14419 strings out of 493223
- 280196 string characters out of 6144415
- 341557 words of memory out of 5000000
- 18065 multiletter control sequences out of 15000+600000
- 32873 words of font info for 145 fonts, out of 8000000 for 9000
+ 14446 strings out of 493223
+ 280867 string characters out of 6144415
+ 346667 words of memory out of 5000000
+ 18088 multiletter control sequences out of 15000+600000
+ 33174 words of font info for 146 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  57i,13n,61p,689b,803s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (21 pages, 116036 bytes).
+Output written on main.dvi (24 pages, 136992 bytes).
