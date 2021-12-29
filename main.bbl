@@ -2,20 +2,20 @@
 
 \bibitem[Buc06]{buchberger2006bruno}
 Bruno Buchberger.
-\newblock Bruno buchberger’s phd thesis 1965: An algorithm for finding the
+\newblock Bruno {Buchberger’s PhD} thesis 1965: An algorithm for finding the
   basis elements of the residue class ring of a zero dimensional polynomial
   ideal.
 \newblock {\em Journal of symbolic computation}, 41(3-4):475--511, 2006.
 
 \bibitem[CKM93]{collart1993grobner}
 Stephane Collart, Michael Kalkbrener, and Daniel Mall.
-\newblock The gr{\"o}bner walk.
+\newblock The {G}r{\"o}bner walk.
 \newblock {\em Dept. of Math., Swiss Federal Inst. of Tech}, 8092, 1993.
 
 \bibitem[FGLM93]{faugere1993efficient}
 Jean-Charles Faugere, Patrizia Gianni, Daniel Lazard, and Teo Mora.
-\newblock Efficient computation of zero-dimensional gr{\"o}bner bases by change
-  of ordering.
+\newblock Efficient computation of zero-dimensional {G}r{\"o}bner bases by
+  change of ordering.
 \newblock {\em Journal of Symbolic Computation}, 16(4):329--344, 1993.
 
 \bibitem[Fre09]{freeke2009linking}
@@ -25,8 +25,14 @@ Jacqueline Freeke.
 \bibitem[GS93]{gritzmann1993minkowski}
 Peter Gritzmann and Bernd Sturmfels.
 \newblock Minkowski addition of polytopes: computational complexity and
-  applications to gr{\"o}bner bases.
+  applications to {G}r{\"o}bner bases.
 \newblock {\em SIAM Journal on Discrete Mathematics}, 6(2):246--269, 1993.
+
+\bibitem[KSW10]{kapur2010new}
+Deepak Kapur, Yao Sun, and Dingkang Wang.
+\newblock A new algorithm for computing comprehensive {G}r{\"o}bner systems.
+\newblock In {\em Proceedings of the 2010 International Symposium on Symbolic
+  and Algebraic Computation}, pages 29--36, 2010.
 
 \bibitem[PL86]{plummer1986matching}
 Michael~D Plummer and L{\'a}szl{\'o} Lov{\'a}sz.
@@ -44,9 +50,14 @@ Alexander Schrijver.
 \newblock {\em Theory of linear and integer programming}.
 \newblock John Wiley \& Sons, 1998.
 
+\bibitem[SS03]{suzuki2003alternative}
+Akira Suzuki and Yosuke Sato.
+\newblock An alternative approach to comprehensive gr{\"o}bner bases.
+\newblock {\em Journal of Symbolic Computation}, 36(3-4):649--667, 2003.
+
 \bibitem[SW97]{sturmfels1997structural}
 Bernd Sturmfels and Markus Wiegelmann.
-\newblock Structural gr{\"o}bner basis detection.
+\newblock Structural {G}r{\"o}bner basis detection.
 \newblock {\em Applicable Algebra in Engineering, Communication and Computing},
   8(4):257--263, 1997.
 

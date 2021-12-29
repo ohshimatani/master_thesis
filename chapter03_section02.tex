@@ -1,6 +1,6 @@
 % chapter 03
 \section{\groebner{} basis detection\cite{gritzmann1993minkowski}}
-\groebner{} basis detectionの問題を解くあたって，多項式集合の項順序に幾何的な解釈を与えることで，項順序の同値類に分けて考えることができるようになる．ここで，多項式集合$F$に対して，項順序$\bm{w_1}, \bm{w_2}$は，$\mathrm{HT}_{\bm{w_1}}(F) = \mathrm{HT}_{\bm{w_2}}(F)$を満たすときに同値であるという．まずは前提とする定義を与える．
+\groebner{} basis detectionの問題を解くあたって，多項式集合の項順序に幾何的な解釈を与えることで，項順序の同値類に分けて考えることができるようになる．ここで，項順序$\bm{w_1}, \bm{w_2}$は，$\mathrm{HT}_{\bm{w_1}}(F) = \mathrm{HT}_{\bm{w_2}}(F)$を満たすときに$F$に関して同値であるという．まずは前提とする定義を与える．
 \subsection{前提とする定義}
 
 \begin{definition}[{\cite[p8,9, Definition3.1]{freeke2009linking}}]
@@ -24,7 +24,9 @@ $2$つ以上のpolytopeの和を次のように定義する．
 	のように定義する．
 	Minkowski和は，可換であり結合法則が成り立つため，$2$つ以上のpolytopeにも自然に一般化することができる．
 \end{definition}
-変数の集合$\bar{X}$に対し，$\bar{X}$の任意の指数ベクトル$\alpha \in \mathbb{N}^n$とし，$K[\bar{X}]$の任意の単項式を$X^\alpha$と表現する．また，ベクトル$\bm{u}, \bm{v}$の内積を$(\bm{u}, \bm{v})$と表す．集合$\mathbb{R}_{-}$は$0$以下の実数全体の集合である．
+% 変数の集合$\bar{X}$に対し，$\bar{X}$の任意の指数ベクトル$\alpha \in \mathbb{N}^n$とし，$K[\bar{X}]$の任意の単項式を$X^\alpha$と表現する．
+変数全体の集合$\bar{X} = \{x_1, \dots, x_n\}$に対し，ベクトル$\alpha = (\alpha_i)$で項が$x_1^{\alpha_1} \cdots x_n^{\alpha_n}$と表されるとき，その項を単に$X^{\alpha}$と表す．
+また，ベクトル$\bm{u}, \bm{v}$の内積を$(\bm{u}, \bm{v})$と表す．集合$\mathbb{R}_{-}$は$0$以下の実数全体の集合である．
 \begin{definition}[Newton polytope]
 	多項式$\displaystyle f = \sum_{i=1}^t c_i X^{\alpha_i}$の\textbf{Newton polytope} $\mathcal{N}(f)$を，$\mathbb{R}^n$における単項式のconvex hullで定義する．つまり，
 	$$\mathcal{N}(f) = \mathrm{conv}\{\alpha_1, \dots, \alpha_t\}$$

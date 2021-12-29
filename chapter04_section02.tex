@@ -6,11 +6,13 @@ comprehensive SGBDを解くために，まずは必要な操作と用語につ�
 と定義する．
 単項式$m \in K[\bar{X}, \bar{A}]$と$\bar{Y} \subset \bar{X} \cup \bar{A}$に対し，$m$を$\bar{Y}$の単項式とみたときの係数部分と項の部分をそれぞれ$\mathrm{coeff}_{\bar{Y}}(m), \; \mathrm{term}_{\bar{Y}(m)}$と定義する．
 $a \in L^m$に対して，特化準同型(specialization homomorphism)$\; \sigma_a : K[\bar{X}, \bar{A}] \to L[\bar{X}]$を各$a_i \in \bar{A}$への$a$の自然な代入として定義する．
+\par
+本論文では，代数構成的集合$S$を，集合$E, N \subset K[\bar{A}]$を用いて$S = V(E) \setminus V(N)$と表される集合として扱う．
 \begin{definition}
 	\label{chapter04:definition:parameter_constraint}
 	集合$E, N \subset K[\bar{A}]$に対して，組$(E, N)$を\textbf{パラメータ制約(parametric constraint)}と呼ぶ．\\
 	$V(E) \setminus V(N) \ne \phi$のとき，$(E, N)$は\textbf{consistent}であるといい，$V(E) \setminus V(N) = \phi$のとき，$(E, N)$は\textbf{inconsistent}であるという．
-	$S = V(E) \setminus V(N)$を満たすとき，単に$S$をパラメータ制約と呼ぶ場合もある．
+	$L^m$の代数構成的集合$S = V(E) \setminus V(N)$を満たすとき，単に$S$をパラメータ制約と呼ぶ場合もある．
 \end{definition}
 % 目的とするものは，例\ref{chapter04:example:PD_example}のように，
 % \begin{itemize}
@@ -21,18 +23,19 @@ $a \in L^m$に対して，特化準同型(specialization homomorphism)$\; \sigma
 パラメータ空間が包括的に分割されているかに注意しながら，多項式集合の項の確定を行うためのものが次の定義である．
 \begin{definition}[包括的多項式項集合系（comprehensive polynomial support system; CPSS）]
 	\label{chapter04:definition:CPSS}
-	$S \subseteq L^m$を代数構成的集合とする．多項式集合$F \subset K[\bar{X}, \bar{A}]$が以下の条件を満たすとき，$\mathcal{P} = \{ (S_1, \mathscr{T}_1), \dots , (S_\ell, \mathscr{T}_\ell)  \}$を$F$に関する$S$上の\textbf{包括的多項式項集合系（comprehensive polynomial support system; CPSS）}と呼ぶ．
+	代数構成的集合$S \subseteq L^m$と多項式集合$F \subset K[\bar{X}, \bar{A}]$に対して，$\mathcal{P} = \{ (S_1, \mathscr{T}_1), \dots , (S_\ell, \mathscr{T}_\ell)  \}$が以下の条件を満たすとき，$\mathcal{P}$を$F$に関する$S$上の\textbf{包括的多項式項集合系（comprehensive polynomial support system; CPSS）}と呼ぶ．
 	\begin{itemize}
-		\item $S_1, \dots, S_\ell$は$L^m$の構成的部分集合
+		\item $S_1, \dots, S_\ell$は$L^m$の構成的部分集合，$\mathscr{T}_1, \dots, \mathscr{T}_\ell$は項$t \in T_n$の集合族
 		\item $\displaystyle \bigcup_{i=1}^\ell S_i\supseteq S, \; S_i \cap S_j = \phi \quad (\forall i,j \in \{ 1, \dots, \ell \}, \; i \ne j)$
 		\item $\forall i \in \{1, \dots, \ell \}, \; \forall a_i \in S_i \subset L^m, \; \mathscr{T}_i = T_{\bar{X}}(\sigma_{a_i}(F))$
 	\end{itemize}
 	特に，$S=L^m$を満たす場合，上記$\mathcal{P}$を単に$F$の包括的多項式項集合系と呼ぶ．
 	また，$S=\phi$であるとき，任意の多項式集合$F$の$S$上の包括的多項式項集合系を$\phi$とする．
+	$\mathcal{P}$の要素である組$(S_i, \mathscr{T}_i)$を\textbf{セグメント}と呼ぶ．
 \end{definition}
 
 \begin{remark*}
-	包括的多項式項集合系を求める実際のアルゴリズムでは，扱いやすさの観点から$L^m$の構成的部分集合$S_i$をパラメータ制約$(E_i, N_i)$と分けて記述する．尚，元の集合$S_i$は，パラメータ制約のAffine多様体の差$V(E_i) \setminus V(N_i)$として表現できる．
+	包括的多項式項集合系を求める実際のアルゴリズムでは，扱いやすさの観点から$L^m$の構成的部分集合$S_i$をパラメータ制約$(E_i, N_i)$を用いて記述する．尚，元の集合$S_i$は，パラメータ制約のAffine多様体の差$V(E_i) \setminus V(N_i)$として表現する．
 \end{remark*}
 
 次に，包括的多項式項集合系を構成するためのアルゴリズムに関する補題を記す．

@@ -32,3 +32,19 @@
 		\end{tabular}
 	}
 \end{minipage}
+\\
+
+% ------main
+本論文では，パラメータを伴った多項式集合$F$がそのまま$\ideal{F}$の\groebner{}基底となっているような項順序を求める方法について論じる．
+\par
+パラメータを伴っていない多項式集合において，この問題は\groebner{} basis detection（GBD）と呼ばれている．GBDはSturmfelsらにより，affine Newton polyhedronを用いて項順序を同値類に分類し，それぞれの代表元においてS多項式が全て$0$へと簡約される（$\Leftrightarrow$ 「\groebner{}基底となっている」）ことを確かめるという方法が提案されている\cite{gritzmann1993minkowski}．しかし，このアルゴリズムでは結局S多項式の簡約化の計算を（多くの場合では）複数回行わなくてはならず，与えられたアルゴリズムはNP-Hardであることが分かっている\cite[Corollary11]{sturmfels1997structural}．そこで，問題の条件を，「先頭項同士が全て互いに素となるような項順序は存在するか」（Buchbergerの判定条件）という\groebner{}基底となるための十分条件に置き換えて問題を簡単にする．この問題をstructural \groebner{} basis detection（SGBD）と呼ぶ．SGBDについても，Sturmfelsらによって二部グラフの最大マッチング問題と線形計画問題に帰着されたアルゴリズムが存在しており，多項式集合の濃度を固定したときにはNP-Compreteであることが証明されている\cite[Corollary3]{sturmfels1997structural}．
+\par
+本論文では，特にこのSGBDに着目し，多項式集合がパラメータを伴った場合についての拡張を行う．パラメータを伴ったSGBDは，最初にパラメータ空間を包括的に分割することで，後に新たな場合分けを発生させずに通常のSGBDのアルゴリズムを計算することができる．また，このような直接的な方法の他にも，affine Newton polyhedronや，多項式環の加群の包括的\groebner{}基底系を用いてパラメータを伴ったSGBDを効率化する方法についても議論している．
+
+
+
+
+
+
+
+
