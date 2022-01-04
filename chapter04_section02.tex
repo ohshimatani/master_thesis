@@ -4,7 +4,7 @@ comprehensive SGBDを解くために，まずは必要な操作と用語につ�
 \par
 単項式集合族または項集合族である$\mathscr{T}$に対し，$$\displaystyle \mathrm{PolySet}(\mathscr{T}) = \left\{ \sum_{t \in T} t \; : \; T \in \mathscr{T} \right\}$$
 と定義する．
-単項式$m \in K[\bar{X}, \bar{A}]$と$\bar{Y} \subset \bar{X} \cup \bar{A}$に対し，$m$を$\bar{Y}$の単項式とみたときの係数部分と項の部分をそれぞれ$\mathrm{coeff}_{\bar{Y}}(m), \; \mathrm{term}_{\bar{Y}(m)}$と定義する．
+% 単項式$m \in K[\bar{X}, \bar{A}]$と$\bar{Y} \subset \bar{X} \cup \bar{A}$に対し，$m$を$\bar{Y}$の単項式とみたときの係数部分と項の部分をそれぞれ$\mathrm{coeff}_{\bar{Y}}(m), \; \mathrm{term}_{\bar{Y}(m)}$と定義する．
 $a \in L^m$に対して，特化準同型(specialization homomorphism)$\; \sigma_a : K[\bar{X}, \bar{A}] \to L[\bar{X}]$を各$a_i \in \bar{A}$への$a$の自然な代入として定義する．
 \par
 本論文では，代数構成的集合$S$を，集合$E, N \subset K[\bar{A}]$を用いて$S = V(E) \setminus V(N)$と表される集合として扱う．
@@ -12,7 +12,7 @@ $a \in L^m$に対して，特化準同型(specialization homomorphism)$\; \sigma
 	\label{chapter04:definition:parameter_constraint}
 	集合$E, N \subset K[\bar{A}]$に対して，組$(E, N)$を\textbf{パラメータ制約(parametric constraint)}と呼ぶ．\\
 	$V(E) \setminus V(N) \ne \phi$のとき，$(E, N)$は\textbf{consistent}であるといい，$V(E) \setminus V(N) = \phi$のとき，$(E, N)$は\textbf{inconsistent}であるという．
-	$L^m$の代数構成的集合$S = V(E) \setminus V(N)$を満たすとき，単に$S$をパラメータ制約と呼ぶ場合もある．
+	$L^m$の代数構成的集合$S$が$S = V(E) \setminus V(N)$と表されるとき，単に$S$をパラメータ制約と呼ぶ場合もある．
 \end{definition}
 % 目的とするものは，例\ref{chapter04:example:PD_example}のように，
 % \begin{itemize}
@@ -42,16 +42,16 @@ $a \in L^m$に対して，特化準同型(specialization homomorphism)$\; \sigma
 
 \begin{lemma}
 	\label{chapter04:lemma:for_alg_1}
-	パラメータ制約$(E, N)$と多項式集合$F \subset K[\bar{X}, \bar{A}]$に対して，$\forall t \in M_{\bar{X}}(F), t \in K[\bar{X}]$を満たすとき，$F$の$V(E) \setminus V(N)$上の包括的多項式項集合系は$\{(E, N, M_{\bar{X}}(F))\}$となる．
+	パラメータ制約$(E, N)$と多項式集合$F \subset K[\bar{X}, \bar{A}]$に対して，$\forall m \in M_{\bar{X}}(F),\; m \in K[\bar{X}]$を満たすとき，$F$の$V(E) \setminus V(N)$上の包括的多項式項集合系は$\{(E, N, T_{\bar{X}}(F))\}$となる．
 \end{lemma}
 
 \begin{proof}
-	仮定より，$\forall a \in V(E) \setminus V(N), \sigma_a(F) = F$が成立する．よって，$T_{\bar{X}}(\sigma_a(F)) = T_{\bar{X}}(F)$．
+	仮定より，$\forall a \in V(E) \setminus V(N),\; \sigma_a(F) = F$が成立する．よって，$T_{\bar{X}}(\sigma_a(F)) = T_{\bar{X}}(F)$．
 \end{proof}
 
 \begin{lemma}
 	\label{chapter04:lemma:for_alg_2}
-	パラメータ制約$(E, N)$に対し$S = V(E) \setminus V(N)$とする．多項式集合$F \subset K[\bar{X}, \bar{A}]$に対し，$F$に含まれる多項式の中で$m \notin K[\bar{X}]$を満たす単項式$m$を含むものが存在すると仮定する．ただし，$c \in K,\; t \in T_n, \; m = c \cdot t$とする．このとき，$S_E = V(E \cup \{ c \}) \setminus V(N), \; S_N = V(E) \setminus V(N \land \{ c \})$は$S_E \cup S_N \supseteq S,\; S_E \cap S_N = \phi$を満たす$L^m$の構成的部分集合である．
+	パラメータ制約$(E, N)$に対し$S = V(E) \setminus V(N)$とする．多項式集合$F \subset K[\bar{X}, \bar{A}]$に対し，$F$に含まれる多項式の中で$m \notin K[\bar{X}]$を満たす単項式$m$を含むものが存在すると仮定する．ただし，$c \in K,\; t \in T_n, \; m = c \cdot t$とする．このとき，集合$S_E = V(E \cup \{ c \}) \setminus V(N), \; S_N = V(E) \setminus V(N \land \{ c \})$は$S_E \cup S_N \supseteq S,\; S_E \cap S_N = \phi$を満たす$L^m$の構成的部分集合である．
 \end{lemma}
 
 
@@ -117,7 +117,7 @@ $a \in L^m$に対して，特化準同型(specialization homomorphism)$\; \sigma
 これらの補題を基に，多項式集合$F$から，その包括的多項式集合系$\mathcal{P}$を求めるアルゴリズムを記す．ただし，集合$A, B$に対して，$A \land B := \{ ab \; : \: a \in A, \; b \in B \}$と定義する．
 
 \begin{algorithm}[htbp]
-\caption{パラメータ空間の分割（呼び出し）}
+\caption{CPSSの構成（呼び出し）}
 \label{chapter04:algorithm:PD_alg_num}
 \begin{algorithmic}[1]
 \Require 多項式集合$F=\{ f_1, \dots, f_k \} \subset K[\bar{X}, \bar{A}]$
@@ -129,30 +129,30 @@ $a \in L^m$に対して，特化準同型(specialization homomorphism)$\; \sigma
 \end{algorithm}
 
 \begin{algorithm}[htbp]
-	\caption{パラメータ空間の分割（本体）}
+	\caption{CPSSの構成（本体）}
 	\label{chapter04:algorithm:PDmain_alg_num}
 	\begin{algorithmic}[1]
 
-		\Require $\{ (E, N, \mathscr{T}) \}$（ただし$\mathscr{T} = \{ T_1, \dots, T_k \}, \; N = \{ a_N \}, \; a_N \in K[\bar{A}]$とする．）
-		\Ensure $\mathrm{PolySet}(\mathscr{T})$の$V(E) \setminus V(N)$上の包括的多項式項集合系$\{ (E_1, N_1, \mathscr{T}_1), \dots, (E_{\ell^\prime}, N_{\ell^\prime}, \mathscr{T}_{\ell^\prime})\}$
+		\Require $\{ (E, N, \mathcal{M}) \}$（ただし$\mathcal{M} = \{ M_1, \dots, M_k \}, \; N = \{ a_N \}, \; a_N \in K[\bar{A}]$とする．）
+		\Ensure $\mathrm{PolySet}(\mathcal{M})$の$V(E) \setminus V(N)$上の包括的多項式項集合系$\{ (E_1, N_1, \mathscr{T}_1), \dots, (E_{\ell^\prime}, N_{\ell^\prime}, \mathscr{T}_{\ell^\prime})\}$
 
-		\Function{$\mathrm{ParameterDivisionMain}$}{$\{ (E, N, \mathscr{T}) \}$}
+		\Function{$\mathrm{ParameterDivisionMain}$}{$\{ (E, N, \mathcal{M}) \}$}
 		\If{$E \ne \phi \land \mathrm{ReducedGr\ddot{o}bnerBasis}(E, \prec_{\bar{A}}) = \{ 1 \}$} \label{chapter04:algorithm:if_1}
 			\State \Return $\phi$
 		\EndIf
 		\If{$a_N \ne 1 \land E \ne \phi \land \mathrm{ReducedGr\ddot{o}bnerBasis}(E \cup \{ 1 - y\cdot a_N \}, \prec_{\bar{A}, y}) = \{ 1 \}$} \label{chapter04:algorithm:if_2}
 			\State \Return $\phi$
 		\EndIf
-		\If{$\forall i \in \{ 1, \dots, k \},  \; \forall t_i \in T_i, \; t_i \in K[\bar{X}]$} \label{chapter04:algorithm:if_3}
-			\State \Return $\{ (E, N,\mathscr{T}) \}$
+		\If{$\forall i \in \{ 1, \dots, k \},  \; \forall m_i \in M_i, \; m_i \in K[\bar{X}]$} \label{chapter04:algorithm:if_3}
+			\State \Return $\{ (E, N,\mathcal{M}) \}$
 		\EndIf
-		\If{$\forall j \in \{ 1, \dots, \ell \}, \; \exists t_j \in T_j, \; t_j \notin K[\bar{X}]$} \label{chapter04:algorithm:if_4}
-			\State $m \gets t_j$
+		\If{$\forall j \in \{ 1, \dots, \ell \}, \; \exists m_j \in M_j, \; m_j \notin K[\bar{X}]$} \label{chapter04:algorithm:if_4}
+			\State $m \gets m_j$
 			\State $c, \; t \gets \mathrm{coeff}_{\bar{X}}(m), \; \mathrm{term}_{\bar{X}}(m)$
 		\EndIf
-		\State $\mathscr{T}_E \gets \{ T_1, \dots, T_{j-1}, T_j \setminus \{ m \}, T_{j+1}, \dots, T_k \})$ \label{chapter04:algorithm:TE}
-		\State $\mathscr{T}_N \gets \{ T_1, \dots, T_{j-1}, (T_j \cup \{ t \}) \setminus \{ m \}, T_{j+1}, \dots, T_k \})$ \label{chapter04:algorithm:TN}
-		\State \Return $\mathrm{ParameterDivisionMain}(E \cup \{ c \}, N, \mathscr{T}_E) \cup \mathrm{ParameterDivisionMain}(E, N \land \{ c \}, \mathscr{T}_N)$ \label{chapter04:algorithm:return}
+		\State $\mathcal{M}_E \gets \{ M_1, \dots, M_{j-1}, M_j \setminus \{ m \}, M_{j+1}, \dots, M_k \})$ \label{chapter04:algorithm:TE}
+		\State $\mathcal{M}_N \gets \{ M_1, \dots, M_{j-1}, (M_j \cup \{ t \}) \setminus \{ m \}, M_{j+1}, \dots, M_k \})$ \label{chapter04:algorithm:TN}
+		\State \Return $\mathrm{ParameterDivisionMain}(E \cup \{ c \}, N, \mathcal{M}_E) \cup \mathrm{ParameterDivisionMain}(E, N \land \{ c \}, \mathcal{M}_N)$ \label{chapter04:algorithm:return}
 		\EndFunction
 	\end{algorithmic}
 \end{algorithm}
@@ -168,7 +168,7 @@ $a \in L^m$に対して，特化準同型(specialization homomorphism)$\; \sigma
 	\par
 	$V(E) = \phi$のとき，$E$の固定された項順序における$\ideal{E}$の簡約\groebner{}基底は$\{1\}$となる．つまり，\ref{chapter04:algorithm:if_1}行目のif文に必ず入る．
 	\par
-	$V(E) \ne \phi$のとき，$V(E) \subseteq V(N)$が成り立つ．このとき，$a_N \in \sqrt{E}$を満たす．従って，新たな変数$y \notin \bar{X}\cup \bar{A}$に対して，集合$\left\{E \cup \{1 - y \cdot a_N\}\right\}$の簡約\groebner{}基底が$\{1\}$となる．つまり，\ref{chapter04:algorithm:if_2}行目のif文に必ず入る．
+	$V(E) \ne \phi$のとき，$V(E) \subseteq V(N)$が成り立つ．このとき，$a_N \in \sqrt{\ideal{E}}$を満たす．従って，新たな変数$y \notin \bar{X}\cup \bar{A}$に対して，集合$\left\{E \cup \{1 - y \cdot a_N\}\right\}$の簡約\groebner{}基底が$\{1\}$となる．つまり，\ref{chapter04:algorithm:if_2}行目のif文に必ず入る．
 
 	% \begin{align}
 	% 	&V(E) \setminus V(N) = \phi \notag\\
@@ -192,15 +192,15 @@ $a \in L^m$に対して，特化準同型(specialization homomorphism)$\; \sigma
 	% それぞれ補題\ref{chapter04:lemma:for_alg_1}，\ref{chapter04:lemma:for_alg_2}により，それぞれの場合での包括的多項式項集合系が$\phi$となることが確認できる．
 	逆にこのとき，補題\ref{chapter04:lemma:for_alg_3}より，パラメータ制約がinconsistentな場合を全て検出することができている．
 	\par
-	補題\ref{chapter04:lemma:for_alg_1}より，\ref{chapter04:algorithm:if_3}行目のif文の条件を満たす場合の包括的多項式項集合系は$\{(E, N, \mathscr{T})\}$である．
+	補題\ref{chapter04:lemma:for_alg_1}より，\ref{chapter04:algorithm:if_3}行目のif文の条件を満たす場合の包括的多項式項集合系は$\{(E, N, \mathcal{M})\}$である．
 	\par
-	\ref{chapter04:algorithm:if_4}行目のif文では，\ref{chapter04:algorithm:if_3}行目のif文の条件を満たしていないため，$T \in \mathscr{T}$においてパラメータを含む項$t$が必ず存在する．ここで，$S = V(E) \setminus V(N), \; S_E = V(E \cup \{ c \}) \setminus V(N), \; S_N = V(E) \setminus V(N \land \{ c \})$とする．
+	\ref{chapter04:algorithm:if_4}行目のif文では，\ref{chapter04:algorithm:if_3}行目のif文の条件を満たしていないため，$M \in \mathcal{M}$において係数にパラメータを含む単項式$m$が必ず存在する．ここで，$S = V(E) \setminus V(N), \; S_E = V(E \cup \{ c \}) \setminus V(N), \; S_N = V(E) \setminus V(N \land \{ c \})$とする．
 	補題\ref{chapter04:lemma:for_alg_2}より，$S_E, S_N$は$S_E \cup S_N \supseteq S,\; S_E \cap S_N = \phi$を満たす$L^m$の構成的部分集合である．
 	これに加え，これまでの証明の中で，それぞれのif文での出力の正当性が示されているため，最終的に関数を再帰的に呼び出す\ref{chapter04:algorithm:if_4}行目のif文の出力も正しいことが導かれ，アルゴリズム \ref{chapter04:algorithm:PDmain_alg_num}の正当性が示された．
 	\par
 	次に，アルゴリズム \ref{chapter04:algorithm:PDmain_alg_num}の有限停止性を示す．
 	$4$つに分岐するif文の中で，\ref{chapter04:algorithm:if_1}, \ref{chapter04:algorithm:if_2}, \ref{chapter04:algorithm:if_3}行目のif文に入った場合は明らかに有限停止性を有する．
-	\ref{chapter04:algorithm:if_4}行目のif文に入った場合，$m \notin K[\bar{X}]$を満たす単項式$m$が存在するが，\ref{chapter04:algorithm:TE}, \ref{chapter04:algorithm:TN}行目にて，もともと$m$が属していた単項式集合$T_j$から$m$が取り除かれるため，集合族$\mathscr{T}_E$及び$\mathscr{T}_N$全体では，$\bar{m} \notin K[\bar{X}]$を満たす単項式は必ず$1$つ減っている．そのため，再帰呼び出しの中で必ず\ref{chapter04:algorithm:if_3}行目のif文の条件を満たすときが訪れるため，アルゴリズム \ref{chapter04:algorithm:PDmain_alg_num}は有限停止性を有する．
+	\ref{chapter04:algorithm:if_4}行目のif文に入った場合，$m \notin K[\bar{X}]$を満たす単項式$m$が存在するが，\ref{chapter04:algorithm:TE}, \ref{chapter04:algorithm:TN}行目にて，もともと$m$が属していた単項式集合$M_j$から$m$が取り除かれるため，集合族$\mathcal{M}_E$及び$\mathcal{M}_N$全体では，$m \notin K[\bar{X}]$を満たす単項式は必ず$1$つ減っている．そのため，再帰呼び出しの中で必ず\ref{chapter04:algorithm:if_3}行目のif文の条件を満たすときが訪れるため，アルゴリズム \ref{chapter04:algorithm:PDmain_alg_num}は有限停止性を有する．
 \end{proof}
 
 \begin{corollary}

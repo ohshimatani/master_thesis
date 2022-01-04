@@ -6,7 +6,7 @@
 簡単な例を考える．
 \begin{example}
 	\label{chapter04:example:PD_example}
-	$K[a][x, y, z]$を主変数$x, y, z$に関する多項式環とする．次のような多項式集合$F\subset K[a][x, y, z]$を考える．
+	$K[x, y, z, a]$を主変数$x, y, z$に関する多項式環とする．次のような多項式集合$F\subset K[x, y, z, a]$を考える．
 	\begin{equation*}
 		F = \left\{
 			\begin{aligned}
@@ -24,17 +24,17 @@
 	\end{itemize}
 \end{example}
 このように，パラメータを伴った多項式環においては，パラメータの付いた係数が$0$となるか否かによって多項式に含まれる項が変わるため，項を確定させるためにパラメータ空間を包括的に分割する必要がある．逆に，最初にパラメータ空間の分割を行い項を確定させる事ができれば，SGBDにおいてはその後に項同士の計算が発生しないため，パラメータを伴わない通常のSGBDに帰着することができる．
-このように，パラメータを伴った多項式環におけるSGBDの問題を，次のように定義する．尚，以降は，多項式環$K[\bar{X}, \bar{A}]$を，主変数$\bar{X}$に関する多項式環$(K[\bar{A}])[\bar{X}]$と同じものとして考える．
+このように，パラメータを伴った多項式環におけるSGBDの問題を，次のように定義する．
 \newpage
 \begin{problem}[comprehensive structural \groebner{} basis detection; comprehensive SGBD]
 	$S \subseteq L^m$を代数構成的集合(algebraically constructible subsets)とする．多項式集合$F \subset K[\bar{X}, \bar{A}]$に対して，
 	集合$\tilde{\mathcal{G}}$を次の条件を満たすように構成せよ．
 	\begin{itemize}
-		\item $S_1, \dots, S_\ell$は$L^m$の構成的部分集合，$w_1, \dots, w_\ell$は$\mathbb{R}_+^{n}$のベクトル
+		\item $S_1, \dots, S_\ell$は$L^m$の構成的部分集合，$\bm{w_1}, \dots, \bm{w_\ell}$は$\mathbb{R}_{\ge 0}^{n}$のベクトル
 		\item $\displaystyle \bigcup_{i=1}^\ell S_i \supseteq S, \; S_i \cap S_j = \phi \quad (\forall i, j \in \{1, \dots, \ell\}, \; i \ne j)$
 		\item $\tilde{\mathcal{G}} = \{(S_1, \bm{w_1}), \dots, (S_\ell, \bm{w_\ell}))\}$
 		\item $\bar{a} \in S_i$に対し，$\sigma_{\bar{a}}(F)$が$\bm{w_i}$を重みベクトルに持つ項順序におけるイデアル$\ideal{\sigma_{\bar{a}}(F)}$の\groebner{}基底
-		\item そのような項順序がない場合，$\bm{w_i} = 0$
+		\item そのような項順序がない場合，$\bm{w_i} = \bm{0}$
 	\end{itemize}
 \end{problem}
 

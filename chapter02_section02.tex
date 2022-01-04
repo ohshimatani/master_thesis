@@ -1,6 +1,9 @@
 % chapter 02
 \section{互いに素な項の選出（Step1）}
-多項式集合$F = \{f_1, \dots, f_k\}\subset K[\bar{X}]$に対して，多項式$f_i$に含まれる係数が$0$でない項で，定数項を除く項全体の集合を$T(f_i)$とする．また多項式集合$F$に対しても$\displaystyle T(F) = \bigotimes_{i=1}^k T(f_i)$と定義する．
+% 多項式集合$F = \{f_1, \dots, f_k\}\subset K[\bar{X}]$に対して，
+% 多項式$f_i$に含まれる係数が$0$でない項で，定数項を除く項全体の集合を$T(f_i)$とする．
+% また多項式集合$F$に対しても
+% $\displaystyle T(F) = \bigotimes_{i=1}^k T(f_i)$と定義する．
 集合$V(t)$を項$t$に含まれる次数$1$以上の変数全体の集合とし，集合$T_{\mathrm{cp}}$を
 $$
 T_{\mathrm{cp}} = \{ (t_1, \dots, t_k)\in T(F) \;:\; \forall t_i, t_j \in T_n, \; \gcd(t_i,  t_j)=1\; (i\ne j) \}
@@ -43,7 +46,8 @@ Step1では，互いに素である項を探索し集合$T_{\mathrm{cp}}$を構�
 	$$n<k \Longrightarrow T_{\mathrm{cp}}= \phi$$
 \end{corollary}
 系\ref{chapter02:cororally:2}より，$n<k$のときに系\ref{chapter02:corollary:buchberger}を満たすような項順序は存在せず，問題\ref{chapter02:problem:original_SGBD}の解が存在しないことがわかり，補題\ref{chapter02:lemma:1}より，$F$の多項式に含まれる項から互いに素になり得ないものを除外することができる．
-\subsection{互いに素にはなるが，それぞれが頭項となるような項順序に矛盾が生じる項の性質}
+\subsection{互いに素にはなるが，矛盾が発生する項の性質}
+\subsubsection{互いに素にはなるが，同じ多項式内で頭項としたときに矛盾が生じる項の性質}
 \begin{lemma}
 	\label{chapter02:lemma:3}
 	多項式$f$において，$t \mid t^\prime\; (t \ne t^\prime)$を満たすような項$t, t^\prime \in T(f)$が存在するとき，$t$は$f$の頭項となり得ない．
@@ -131,7 +135,7 @@ Step1では，互いに素である項を探索し集合$T_{\mathrm{cp}}$を構�
 	次に，$y \in T(f_1)$と$y^2 \in T(f_2)$において，$y \mid y^2$を満たし，$x \in T(f_2)$と$x^2 \in T(f_1)$において，$x \mid x^2$を満たすことから，補題\ref{chapter02:lemma:4}より$f_1$の$y$と$f_2$の$x$が除外される．
 	よって，最終的に
 	\begin{equation}
-		\tilde{T}(\tilde{F}) = \{ (x^2, y^2) \} \notag
+		T(\tilde{F}) = \{ (x^2, y^2) \} \notag
 	\end{equation}
 	から互いに素となる項の組を選べば良いことになり，
 	$$t_1 = x^2, \; t_2 = y^2$$
@@ -158,7 +162,7 @@ Step1では，互いに素である項を探索し集合$T_{\mathrm{cp}}$を構�
 	\end{equation}
 	を考えると，$xy \in T(f_1)$と$x^2y \in T(y \cdot f_2)$が$xy \mid x^2y$を満たすので，補題\ref{chapter02:lemma:5}より，$f_1$の$xy$と$f_2$の$z$は除外され，最終的に
 	\begin{equation}
-		\tilde{T}(\tilde{F}) = \{ (yz, x^2), (yz, y) \} \notag
+		T(\tilde{F}) = \{ (yz, x^2), (yz, y) \} \notag
 	\end{equation}
 	から互いに素となる項の組を選べば良いことになり，
 	$$t_1 = yz, \; t_2 = x^2$$

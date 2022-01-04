@@ -41,7 +41,7 @@ $2$つ以上のpolytopeの和を次のように定義する．
 \end{definition}
 
 \begin{remark*}
-	多項式のNewton polytopeのMinkowski和は，多項式の積のMinkowski和と対応している．つまり，
+	多項式のNewton polytopeのMinkowski和は，多項式の積のNewton polytopeと対応している．つまり，
 	多項式$f_1, \dots, f_k \subset K[\bar{X}]$に対して，
 	$$\mathcal{N}(f_1) + \mathcal{N}(f_2) + \cdots + \mathcal{N}(f_k) = \mathcal{N}(f_1 \cdots f_k)$$
 	である．
@@ -114,7 +114,7 @@ $2$つ以上のpolytopeの和を次のように定義する．
 	\end{minipage}
 \end{figure}
 図\ref{chapter03:figure:NewtonPolytopeExample}のように，Newton polytopeは単に多項式$f$に含まれる項の指数ベクトルを頂点とした集合となっている．
-対して，図\ref{chapter03:figure:NewtonPolytopeExample}のように，affine Newton polyhedronでは，$\mathcal{N}(f)$と$\mathbb{R}^2_{-}$とのMinkowski和を取ることで，"左下"全体を含んだ領域を取る無限集合となっているが，頂点に着目すると，それに伴って"左下"にあった頂点$(1, 1)$がなくなっている．これは，多項式の中で「先頭項になりそうにない次数の低い項」を取り除く操作に対応できる．この例では，項$xy$は項順序の定義から先頭項にはならず，affine Newton polyhedronを取ることでそのような項を検出することができることを意味している．
+対して，図\ref{chapter03:figure:NewtonPolytopeExample}のように，affine Newton polyhedronでは，$\mathcal{N}(f)$と$\mathbb{R}^2_{-}$とのMinkowski和を取ることで，"左下"全体を含んだ領域を取る無限集合となっているが，頂点に着目すると，それに伴って"左下"にあった頂点$(1, 1)$がなくなっている．これは，多項式の中で「先頭項になりそうにない次数の低い項」を取り除く操作に対応している．この例では，項$xy$は項順序の定義から先頭項にはならず，affine Newton polyhedronを取ることでそのような項を検出することができることを意味している．
 
 \subsection{\groebner{}基底とNewton polytope}
 多項式集合が\groebner{}基底となるためには，Buchbergerアルゴリズムの計算過程にもある通り，全てのSペアが$0$へ簡約される必要がある．その際にS多項式の計算を行うためには，多項式の先頭項を確定させる必要がある．もし，多項式集合における項順序の同値類の数が分かれば，それぞれの適当な代表元において，全てのSペアの簡約が$0$となるかどうかを調べることで，与えられた多項式集合がそのまま\groebner{}基底となるような項順序が存在するのかどうかを確かめることができる．

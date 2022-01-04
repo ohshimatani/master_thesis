@@ -1,3 +1,4 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
 \begin{thebibliography}{FGLM93}
 
 \bibitem[Buc06]{buchberger2006bruno}
@@ -11,6 +12,12 @@ Bruno Buchberger.
 Stephane Collart, Michael Kalkbrener, and Daniel Mall.
 \newblock The {G}r{\"o}bner walk.
 \newblock {\em Dept. of Math., Swiss Federal Inst. of Tech}, 8092, 1993.
+
+\bibitem[CLO{\etalchar{+}}12]{BC04873022}
+David~A. Cox, John~B. Little, Donal O'Shea, 啓之 落合, 信一 示野, 享~西山, 政和
+  室, 敦子 山本, and シュプリンガージャパン.
+\newblock {\em グレブナ基底と代数多様体入門 : イデアル・多様体・アルゴリズム}.
+\newblock 丸善出版, 2012.
 
 \bibitem[FGLM93]{faugere1993efficient}
 Jean-Charles Faugere, Patrizia Gianni, Daniel Lazard, and Teo Mora.
@@ -33,6 +40,13 @@ Deepak Kapur, Yao Sun, and Dingkang Wang.
 \newblock A new algorithm for computing comprehensive {G}r{\"o}bner systems.
 \newblock In {\em Proceedings of the 2010 International Symposium on Symbolic
   and Algebraic Computation}, pages 29--36, 2010.
+
+\bibitem[Nab07]{nabeshima2007speed}
+Katsusuke Nabeshima.
+\newblock A speed-up of the algorithm for computing comprehensive gr{\"o}bner
+  systems.
+\newblock In {\em Proceedings of the 2007 international symposium on Symbolic
+  and Algebraic Computation}, pages 299--306, 2007.
 
 \bibitem[PL86]{plummer1986matching}
 Michael~D Plummer and L{\'a}szl{\'o} Lov{\'a}sz.
@@ -65,5 +79,15 @@ Bernd Sturmfels and Markus Wiegelmann.
 Volker Weispfenning.
 \newblock Comprehensive gr{\"o}bner bases.
 \newblock {\em Journal of Symbolic Computation}, 14(1):1--29, 1992.
+
+\bibitem[野05]{Noro2005ca}
+野呂正行.
+\newblock 計算機代数入門, 2005.
+\newblock \url{http://www.math.kobe-u.ac.jp/Asir/ca.pdf}.
+
+\bibitem[鈴07]{鈴木晃2007グレブナー基底を用いた包括的グレブナー基底計算}
+鈴木晃.
+\newblock グレブナー基底を用いた包括的グレブナー基底計算.
+\newblock {\em 数式処理}, 14(1):17--23, 2007.
 
 \end{thebibliography}

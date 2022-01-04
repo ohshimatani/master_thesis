@@ -3,8 +3,18 @@
 以下では本論文全体を通して使用される記法を定義しておく．
 \par
 $\mathbb{N}$は$0$以上の整数全体の集合とする．$K$を体とし，$L$を$K$の代数閉包とする．
-$n$個の変数全体の集合を$\bar{X} = \{x_1, \dots, x_n\}$とし，$m$個のパラメータ全体の集合を$\bar{A} = \{a_1, \dots, a_m\}$とする．ただし，$\bar{X}\cap \bar{A} = \phi$．$T(f)$を$f$の$0$でない項全体の集合とする．
+$n$個の変数全体の集合を$\bar{X} = \{x_1, \dots, x_n\}$とし，$m$個のパラメータ全体の集合を$\bar{A} = \{a_1, \dots, a_m\}$とする（ただし，$\bar{X}\cap \bar{A} = \phi$）．
+このような集合$\bar{X}, \bar{A}$に対して，多項式環$K[\bar{X}, \bar{A}]$を，主変数$\bar{X}$に関する多項式環$(K[\bar{A}])[\bar{X}]$とみなす．
+\par
+多項式環上のイデアルを多項式集合$F$を用いて$\ideal{F}$と表す．イデアル$I$に対して，その根基イデアルを$\sqrt{I}$と表す．
+\par
+多項式$f \in K[\bar{X}]$に対して$T_{\bar{X}}(f)$を$\bar{X}$に関する$f$の$\bar{X}$に関する$0$でない項全体の集合，$M_{\bar{X}}(f)$を$f$の$\bar{X}$に関する$0$でない単項式全体の集合とする．多項式集合$F$に対しては，
+$$\displaystyle T_{\bar{X}}(F) = \bigotimes_{i=1}^k T_{\bar{X}}(f_i), \quad M_{\bar{X}}(F) = \bigotimes_{i=1}^k M_{\bar{X}}(f_i)$$
+のように定義する．
+単項式$m \in K[\bar{X}]$に対して，$\mathrm{coeff}_{\bar{X}}(m)$を$m$の$\bar{X}$に関する係数，$\mathrm{term}_{\bar{X}}(m)$を$m$の$\bar{X}$に関する項として定義する．
+尚，多項式環の主変数が明らかな場合には単に$T(f)$や$\mathrm{coeff}(m)$のように省略して書くこともある．
 $n$変数の項全体の集合を$T_n = \left\{ x_1^{e_1} \cdots x_n^{e_n} : e_i \in \mathbb{N} \right\}$とする．
+\par
 項順序を次のように定義する．
 \begin{definition}[項順序]
 	$T_n$における全順序$\prec$が項順序であるとは，
@@ -14,27 +24,54 @@ $n$変数の項全体の集合を$T_n = \left\{ x_1^{e_1} \cdots x_n^{e_n} : e_i
 	\end{itemize}
 	を満たすことを言う．
 \end{definition}
-項順序$\prec$において，多項式$f\in K[\bar{X}]$に含まれる項で，最も項順序が大きい単項式を$\mathrm{hm}_{\prec}(f)$，その係数を除いた部分を$\mathrm{ht}_{\prec}(f)$，その係数を$\mathrm{hc}_{\prec}(f)$と定義し，それぞれ\textbf{頭単項式，頭項，頭係数}と呼ぶ．
+項順序$\prec$において，多項式$f\in K[\bar{X}]$に含まれる項で，最も項順序が大きい単項式を$\mathrm{hm}_{\prec}(f)$とし，$f$の\textbf{頭単項式}と呼ぶ．
+また，
+$\mathrm{ht}_{\prec}(f) = \mathrm{coeff}_{\bar{X}}(\mathrm{hm}_{\prec}(f)), \; \mathrm{hc}_{\prec}(f) = \mathrm{term}_{\bar{X}}(\mathrm{hm}_{\prec}(f))$と定義し，それぞれ\textbf{頭項，頭係数}と呼ぶ．
 項順序が明らかな場合には，$\mathrm{hm}_{\prec}(f)$を省略して単に$\mathrm{hm}(f)$などと書くこともある．
 また，多項式集合$F$に関して，$\mathrm{HM}_{\prec}(F) = \{ \mathrm{hm}_{\prec}(f_i) \;:\; f_i \in F \}$と定義する（$\mathrm{HT}_{\prec}(F)\text{と}\mathrm{HC}_{\prec}(F)$についても同様に定義する）．
+$K[\bar{X}]$の$0$でないイデアル$I$に対しては，$\mathrm{HT}_\prec(I)$を$I$の元の頭項全体の集合として定義する（$\mathrm{HT}_{\prec}(I)\text{と}\mathrm{HC}_{\prec}(I)$についても同様に定義する）．
+\par
 項$t \in T_n$の指数ベクトルを$e(t) \in \mathbb{N}^{n}$と表す．
 重み行列$M$を用いて表されるmatrix order $\prec$を以下のように定義する．
 \begin{definition}[matrix order]
-	項$t_1, t_2 \in T_n$の指数ベクトル$e(t_1), e(t_2) \in \mathbb{N}^{n}$に対し，行列$M \in \mathbb{R}^{d\times n}$が項順序$\prec$におけるmatrix orderであるとは，
+	項順序$\prec$が重み行列$M \in \mathbb{R}^{d\times n}$を用いて表されるmatrix orderであるとは，項$t_1, t_2 \in T_n$の指数ベクトル$e(t_1), e(t_2) \in \mathbb{N}^{n}$に対して，
 	$$t_1 \prec t_2 \Longleftrightarrow Me(t_1) <_{\ne} Me(t_2)$$
 	を満たすことを言う．ただし，$<_{\ne}$や$>_{\ne}$は，ベクトルの等しくない最初の成分での比較を表す不等号である．$d=1$のときは，通常の大小関係での比較となる．
 \end{definition}
 matrix orderは任意の項順序を表現可能である\cite{MR826583}ということがわかっており，column full rankな行列を考えれば十分であるということもわかっている．
 \par
-項順序を$\prec$で固定する．多項式$f, g \in K[\bar{X}]$に対し，$f$に含まれる単項式$t$が$\mathrm{ht}(g)$で割り切られるとする．このとき，$h = f - \frac{t}{\mathrm{ht}(g)}g$に対し，$f \to_g h$と書き，\textbf{$f$の$g$での単項簡約}と呼ぶ．この操作を$0$回を含む有限回繰り返し，これ以上単項簡約できない$h$が得られたとき，$h$を\textbf{$f$の$g$による正規形（normal form）}と呼び，$h = \mathrm{nf}_g(f)$で表す．
+項順序を$\prec$で固定する．多項式$f, g \in K[\bar{X}]$に対し，$f$に含まれる単項式$m$が$\mathrm{ht}(g)$で割り切られるとする．このとき，$h = f - \frac{m}{\mathrm{hm}(g)}g$に対し，$f \to_g h$と書き，\textbf{$f$の$g$での単項簡約}と呼ぶ．この操作を$0$回を含む有限回繰り返し，これ以上単項簡約できない$h$が得られたとき，$h$を\textbf{$f$の$g$による正規形（normal form）}と呼び，$h = \mathrm{nf}_g(f)$で表す．
 また，有限な多項式集合$G=\left\{g_i :i \in \{1,2, \dots\}\right\} \subset K[\bar{X}]$において，$G$に含まれる多項式$g_i$で$f$を単項簡約することで$h$が得られるとき，同様に$f \to_G h$と書く．
-また，$g_i$による単項簡約を$0$回を含む有限回繰り返すことで$h$が得られるとき，$h$を\textbf{$f$の$G$による正規形}と呼び，$h = \mathrm{nf}_G(f)$で表す．
+また，$g_i$による単項簡約を$0$回を含む有限回繰り返すことで，これ以上$g_i$による単項簡約ができない$h$が得られるとき，$h$を\textbf{$f$の$G$による正規形}と呼び，$h = \mathrm{nf}_G(f)$で表す．
 \begin{definition}[S多項式]
-	項順序を$\prec$で固定し$f, g \in K[\bar{X}]$とする．このとき，$f, g$のS多項式を次のように定義する．
-	$$\mathrm{Spoly}(f, g)=\frac{\mathrm{hc}(g)\cdot \mathrm{lcm}(\mathrm{ht}(f), \mathrm{ht}(g))}{\mathrm{ht}(f)}\cdot f - \frac{\mathrm{hc}(f)\cdot \mathrm{lcm}(\mathrm{ht}(f), \mathrm{ht}(g))}{\mathrm{ht}(g)}\cdot g$$
-	\end{definition}
+	項順序を$\prec$で固定し$f, g \in K[\bar{X}]$とする．このとき，$f, g$の\textbf{S多項式}を次のように定義する．
+	$$\mathrm{Spoly}(f, g)=\frac{\mathrm{lcm}(\mathrm{ht}(f), \mathrm{ht}(g))}{\mathrm{hm}(f)}\cdot f - \frac{\mathrm{lcm}(\mathrm{ht}(f), \mathrm{ht}(g))}{\mathrm{hm}(g)}\cdot g$$
+\end{definition}
+これらを用いて，\groebner{}基底を次のように定義する．
+\begin{definition}[\groebner{}基底]
+	多項式集合$F \subset K[\bar{X}]$と$F$が生成するイデアル$I = \ideal{F}$に対して，
+	$$\ideal{\mathrm{HT}_\prec(I)} = \ideal{\mathrm{HT}_\prec(f_1), \dots, \mathrm{HT}_\prec(f_k)}$$
+	が満たされるとき，$F$を項順序$\prec$に対する\textbf{\groebner{}基底}であるという．
+\end{definition}
+パラメータ$\bar{A}$を含む$\bar{X}$に関する多項式環$K[\bar{X}, \bar{A}]$における包括的\groebner{}基底系及び包括的\groebner{}基底を次のように定義する．
+\nocite{鈴木晃2007グレブナー基底を用いた包括的グレブナー基底計算}
+\begin{definition}[包括的\groebner{}基底系（Comprehensive \groebner{} system; CGS）]
+	主変数$\bar{X}$に関する項順序を$\prec$で固定する．
+	多項式集合$F \subset K[\bar{X}, \bar{A}]$と$L^m$の代数構成的集合$S$に対して，
+	$$\mathcal{G} = \{(S_1, G_1), \dots, (S_1, G_\ell)\}$$
+	が$F$の$S$上の\textbf{包括的\groebner{}基底系（comprehensive \groebner{} system; CGS）}であるとは，
+	\begin{itemize}
+		\item $S_1, \dots, S_\ell$は$L^m$の構成的部分集合
+		\item $G_1, \dots, G_\ell$は$K[\bar{X}, \bar{A}]$の有限な部分集合
+		\item $\displaystyle \bigcup_{i=1}^{\ell} S_i \supseteq S$
+		\item 任意の$\bar{a} \in S_i$に対して，$\sigma_{\bar{a}}(G_i)$が$\sigma_{\bar{a}}(F)$の$L[\bar{X}]$における\groebner{}基底である
+	\end{itemize}
+	を満たすときにいう．特に$S = L^m$のとき，$\mathcal{G}$を単に$F$の包括的\groebner{}基底系であるという．
+\end{definition}
 
-
+\begin{definition}[包括的\groebner{}基底（comprehensive \groebner{} basis; CGB）]
+	多項式集合$F,\; G \subset K[\bar{X}, \bar{A}]$に対して，$\{(L^m, G)\}$が$F$の包括的\groebner{}基底系であるとき，$G$を$F$の\textbf{包括的\groebner{}基底（comprehensive \groebner{} basis; CGB）}という．
+\end{definition}
 
 
 

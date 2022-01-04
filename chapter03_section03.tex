@@ -37,8 +37,11 @@ SGBDの問題を解くためには，この$\mathrm{HT}_{\bm{w}}(F)$を適切に
 \end{proof}
 この補題により，SGBDを解くために先頭項候補は，総積$\displaystyle \prod_{i=1}^n a_{i\varphi(i)}$
 を最大化するような項の組
-$$X_{\varphi(1)}^{a_{1\varphi(1)}}, \dots, X_{\varphi(n)}^{a_{n\varphi(n)}}$$
-であることがわかる．このような項の組は二部グラフの最大マッチング問題を解くことによって求めることができる（詳細は後述のアルゴリズム\ref{chapter03:algorithm:SGBD}を参照）．
+$X_{\varphi(1)}^{a_{1\varphi(1)}}, \dots, X_{\varphi(n)}^{a_{n\varphi(n)}}$
+であることがわかる．このような項の組は二部グラフの最大マッチング問題を解くことによって求めることができる（詳細は後述のアルゴリズム
+% \ref{chapter03:algorithm:SGBD}
+2
+を参照）．
 \par
 次に，実際にそのような項の組$X_{\varphi(1)}^{a_{1\varphi(1)}}, \dots, X_{\varphi(n)}^{a_{n\varphi(n)}}$がそれぞれの先頭項となるような項順序$\bm{w} \in \mathbb{R}_{+}^n$を求める方法を考える．以下の補題により，これは線形計画問題を解くことで求めることができることがわかる．
 \begin{lemma}[{\cite[Lemma6]{sturmfels1997structural}}]
@@ -108,7 +111,7 @@ $$X_{\varphi(1)}^{a_{1\varphi(1)}}, \dots, X_{\varphi(n)}^{a_{n\varphi(n)}}$$
 	$\bar{X} \cap \bar{Y} = \phi$を満たすような新たな変数の集合として$\bar{Y} = \{y_1, \dots, y_p\}$を定義する．
 	$S_1 \cup \cdots \cup S_p$を変数$\{ x_1, \dots, x_n \}$の分割とし，写像$\pi$を$x_i \mapsto y_i$で定義される$K[\bar{X}]$から$K[\bar{Y}]$への写像とする．
 写像$\varphi:\{1, \dots, p\} \to \{1, \dots, p\}$を今までと同様のものとする．
-$\mathrm{HT}_{\bm{w}_y}(\pi(f_i))$が$y_{\varphi(i)}$のべき乗であるような$K[\bar{Y}]$上の項順序$\bm{w}_y$がある場合に限り，$\mathrm{HT}_{\bm{w}_x}(f_i)$が$S_{\varphi(i)}$にサポートを持つような$K[\bar{X}]$上の項順序$\bm{w}_x$が存在する．
+$\mathrm{HT}_{\bm{w}_y}(\pi(f_i))$が$y_{\varphi(i)}$のべき乗であるような$K[\bar{Y}]$上の項順序$\bm{w}_y$がある場合に限り，$\mathrm{HT}_{\bm{w}_x}(f_i)$が$S_{\varphi(i)}$に含まれているような$K[\bar{X}]$上の項順序$\bm{w}_x$が存在する．
 \end{lemma}
 \begin{proof}
 	項順序$\bm{w}_y$を，$\displaystyle \bm{w}_y(j) = \sum_{i \in S_j}\bm{w}_x(i)$を満たすようにとることで，

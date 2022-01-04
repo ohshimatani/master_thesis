@@ -1,5 +1,9 @@
 % \chapter{はじめに}
+\nocite{BC04873022}
+\nocite{Noro2005ca}
 \section{研究の背景}
+計算機代数分野における重要な計算の一つに連立代数方程式の求解がある．一変数多項式系においては，Gauss消去法のように行列の掃き出しの計算へと帰着することができる．しかし，多変数多項式系においては多項式の割り算が一意に行えないため，項の順序を導入し多変数に拡張した割り算を定義する必要がある．これらによって定められる，多変数の多項式環における割り算を一意に行うことのできるイデアルの生成系を\groebner{}基底という．\groebner{}基底は他にも多くの重要な性質を持っていることから，連立代数方程式の求解だけでなく，代数統計学・代数幾何学・組合せ論などの計算機代数の分野を越えて幅広く応用がなされている．
+\par
 多項式集合$F$が与えられイデアル$\ideal{F}$での\groebner{}基底の計算を行う際，Buchbergerアルゴリズム\cite{buchberger2006bruno}などにより項順序を固定した上で，\groebner{}基底を得るための計算を行うのが一般的である．
 しかし，以下の例のように，計算を行う前に$F$がそのまま\groebner{}基底であるような項順序を得ることができる場合もある．
 \begin{example}
@@ -13,7 +17,7 @@
 \par
 このように「そのまま\groebner{}基底である」ような項順序を検出する問題は，\emph{\groebner{} basis detection}\cite{gritzmann1993minkowski}や\emph{structural \groebner{} basis detection}\cite{sturmfels1997structural}という名前が付けられており，何れもSturmfelsらによって解かれた既知の問題である．
 \par
-一方で，パラメータを伴った多項式環において，場合分けされたパラメータ空間と，それぞれに対応する\groebner{}基底を組にしたものを\textbf{包括的\groebner{}基底系}\cite{weispfenning1992comprehensive}と呼ぶ．包括的\groebner{}基底系は，\groebner{}基底計算の中で，\textrm{S-polynomial}の計算が行われる際にパラメータの付いた係数が$0$か否かで場合分けを行い，項を確定させながら\groebner{}基底の計算を行われているが，現在はより効率的な方法が考案されている\cite{kapur2010new}．
+一方で，パラメータを伴った多項式環において，場合分けされたパラメータ空間と，それぞれに対応する\groebner{}基底を組にしたものを\textbf{包括的\groebner{}基底系}\cite{weispfenning1992comprehensive}と呼ぶ．包括的\groebner{}基底系は，\groebner{}基底計算の中でS多項式の計算が行われる際に，パラメータの付いた係数が$0$か否かで場合分けを行い項を確定させることで得ることができるが，現在はより効率的な方法も考案されている\cite{nabeshima2007speed, kapur2010new}．
 \par
 これら$2$つの議論を踏まえ，本論文では，(structural) \groebner{} basis detectionにおいて，問題の設定をパラメータを伴った多項式環へと拡張し，それに付随して発見された定理についても取り上げる．
 まず第\ref{chapter02:chapter_num}章では，Sturmfelsらとは違ったアプローチでstructural \groebner{} basis detectionの問題を捉え，そこで新たに発見された定理とアルゴリズムを紹介する．
