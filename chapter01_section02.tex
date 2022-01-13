@@ -26,7 +26,7 @@ $n$変数の項全体の集合を$T_n = \left\{ x_1^{e_1} \cdots x_n^{e_n} : e_i
 \end{definition}
 項順序$\prec$において，多項式$f\in K[\bar{X}]$に含まれる項で，最も項順序が大きい単項式を$\mathrm{hm}_{\prec}(f)$とし，$f$の\textbf{頭単項式}と呼ぶ．
 また，
-$\mathrm{ht}_{\prec}(f) = \mathrm{coeff}_{\bar{X}}(\mathrm{hm}_{\prec}(f)), \; \mathrm{hc}_{\prec}(f) = \mathrm{term}_{\bar{X}}(\mathrm{hm}_{\prec}(f))$と定義し，それぞれ\textbf{頭項，頭係数}と呼ぶ．
+$\mathrm{ht}_{\prec}(f) = \mathrm{term}_{\bar{X}}(\mathrm{hm}_{\prec}(f)), \; \mathrm{hc}_{\prec}(f) = \mathrm{coeff}_{\bar{X}}(\mathrm{hm}_{\prec}(f))$と定義し，それぞれ\textbf{頭項，頭係数}と呼ぶ．
 項順序が明らかな場合には，$\mathrm{hm}_{\prec}(f)$を省略して単に$\mathrm{hm}(f)$などと書くこともある．
 また，多項式集合$F$に関して，$\mathrm{HM}_{\prec}(F) = \{ \mathrm{hm}_{\prec}(f_i) \;:\; f_i \in F \}$と定義する（$\mathrm{HT}_{\prec}(F)\text{と}\mathrm{HC}_{\prec}(F)$についても同様に定義する）．
 $K[\bar{X}]$の$0$でないイデアル$I$に対しては，$\mathrm{HT}_\prec(I)$を$I$の元の頭項全体の集合として定義する（$\mathrm{HT}_{\prec}(I)\text{と}\mathrm{HC}_{\prec}(I)$についても同様に定義する）．
@@ -63,7 +63,7 @@ matrix orderは任意の項順序を表現可能である\cite{MR826583}とい�
 	\begin{itemize}
 		\item $S_1, \dots, S_\ell$は$L^m$の構成的部分集合
 		\item $G_1, \dots, G_\ell$は$K[\bar{X}, \bar{A}]$の有限な部分集合
-		\item $\displaystyle \bigcup_{i=1}^{\ell} S_i \supseteq S$
+		\item $\displaystyle \bigcup_{i=1}^{\ell} S_i \supseteq S, \; S_i \cap S_j = \phi \quad (\forall i,j \in \{ 1, \dots, \ell \}, \; i \ne j)$
 		\item 任意の$\bar{a} \in S_i$に対して，$\sigma_{\bar{a}}(G_i)$が$\sigma_{\bar{a}}(F)$の$L[\bar{X}]$における\groebner{}基底である
 	\end{itemize}
 	を満たすときにいう．特に$S = L^m$のとき，$\mathcal{G}$を単に$F$の包括的\groebner{}基底系であるという．
